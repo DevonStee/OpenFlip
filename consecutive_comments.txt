@@ -1,0 +1,9 @@
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:19: // SettingsCardGroup, SettingsSwitchItem, SettingsDivider,
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:20: // SettingsNavigationItem, SettingsActionItem, SettingsRadioItem
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:21: // → Already accessible via same package
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:24: // MainOptionsButton
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:25: // → Already accessible via same package
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:28: // SquircleShape, collectIsPressedAsState, setupSettingsContent
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:29: // → Already accessible via same package
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:32: // accessible without explicit re-exports. This file serves as documentation
+app/src/main/java/com/bokehforu/openflip/ui/compose/SettingsItemComponents.kt:33: // and a single entry point for the Settings UI component API.
