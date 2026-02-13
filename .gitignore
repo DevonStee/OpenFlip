@@ -1,0 +1,75 @@
+# Android Studio / IntelliJ
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/modules/
+/.idea/shelf/
+/.idea/codeStyles/
+/.idea/inspectionProfiles/
+/.idea/vcs.xml
+/.idea/compiler.xml
+/.idea/jarRepositories.xml
+/.idea/deviceManager.xml
+*.ipr
+*.iws
+
+# Build artifacts
+**/build/
+/build
+/app/build
+/core/build
+/data/build
+/domain/build
+/feature-clock/build
+/feature-settings/build
+/feature-chime/build
+/captures
+.externalNativeBuild
+.cxx
+/app/release/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Kotlin
+.kotlin/
+.scripts/
+
+# Misc
+*.md.bak
+开发复盘日志.md
+local.properties
+全开发总结建议.md
+.ai/widget_refine.md
+.gemini/
+.config/
+
+# Agent specific
+.agent/history/
+
+
+# Temporary/Development files
+.agent/task.md
+codex.md
+.cursor/
+.alma-snapshots/
+*.log
+debug.log
+__pycache__/
+ui_verify_*/
+
+# IDE specific (additional)
+# Ignore user-specific IDE files
+.idea/appInsightsSettings.xml
+.idea/deploymentTargetSelector.xml
+.idea/migrations.xml
+.idea/AndroidProjectSystem.xml
+.idea/assetWizardSettings.xml
+.idea/workspace.xml
