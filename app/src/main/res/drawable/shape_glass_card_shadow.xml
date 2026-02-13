@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Glass Widget Shadow: Clean Base with Ultra-Subtle Internal Glow -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="132dp"
+    android:height="132dp"
+    android:viewportWidth="132"
+    android:viewportHeight="132">
+
+    <!-- Base: Semi-Transparent Black Card with Internal Radial Glow -->
+    <!-- Single unified path with gradient that subtly lightens edges -->
+    <path
+        android:pathData="M 0 26 C 0 7 7 0 26 0 L 106 0 C 125 0 132 7 132 26 L 132 106 C 132 125 125 132 106 132 L 26 132 C 7 132 0 125 0 106 L 0 26 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="66"
+                android:centerY="66"
+                android:gradientRadius="93">
+                <!-- Center: Pure semi-transparent black -->
+                <item android:offset="0.0" android:color="#80000000" />
+                <!-- Middle: Still black, no change -->
+                <item android:offset="0.7" android:color="#80000000" />
+                <!-- Edge: Very slightly lighter (adds 3% white) -->
+                <item android:offset="0.92" android:color="#78080808" />
+                <!-- Outer edge: Subtly brighter (adds 5% white) -->
+                <item android:offset="1.0" android:color="#70101010" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+</vector>

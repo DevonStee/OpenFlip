@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Apple-style squircle bottom card with Classic gradient and tiny inner corner radius -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="144dp"
+    android:height="71dp"
+    android:viewportWidth="144"
+    android:viewportHeight="71">
+
+    <!-- Squircle path: tiny 4dp radius at top inner corners, large radius at bottom -->
+    <path
+        android:pathData="M 0 4 C 0 0 0 0 4 0 L 140 0 C 144 0 144 0 144 4 L 144 43 C 144 63 136 71 116 71 L 28 71 C 8 71 0 63 0 43 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startY="0"
+                android:endY="71"
+                android:type="linear">
+                <item android:offset="0.00" android:color="#FF0C0C0C" />
+                <item android:offset="0.16" android:color="#FF101010" />
+                <item android:offset="0.32" android:color="#FF141414" />
+                <item android:offset="0.50" android:color="#FF1A1A1A" />
+                <item android:offset="0.68" android:color="#FF202020" />
+                <item android:offset="0.84" android:color="#FF262626" />
+                <item android:offset="1.00" android:color="#FF2C2C2C" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Canvas: 320dp x 120dp fixed size -->
+    <item>
+        <shape android:shape="rectangle">
+            <size android:width="320dp" android:height="120dp" />
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+    <!-- Content Width: 120 + 8 + 120 = 248dp -->
+    <!-- Start Left: (320 - 248) / 2 = 36dp -->
+
+    <!-- Left Card -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:left="36dp"
+        android:top="0dp"
+        android:drawable="@drawable/shape_openflip_split" />
+
+    <!-- Left Digits -->
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:left="46dp"
+        android:top="10dp"
+        android:drawable="@drawable/icon_preview_digit_12_light_24dp" />
+
+    <!-- Right Card (36 + 120 + 8 = 164dp) -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:left="164dp"
+        android:top="0dp"
+        android:drawable="@drawable/shape_openflip_split" />
+
+    <!-- Right Digits -->
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:left="174dp"
+        android:top="10dp"
+        android:drawable="@drawable/icon_preview_digit_00_light_24dp" />
+</layer-list>

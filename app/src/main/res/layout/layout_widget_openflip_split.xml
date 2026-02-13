@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/openflipWidgetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="8dp"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- HOUR CARD -->
+    <LinearLayout
+        android:id="@+id/widgetHourCard"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginEnd="6dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:clipChildren="true"
+        android:clipToPadding="true">
+        
+        <!-- Top Half: 64dp -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:background="@drawable/shape_card_top">
+            <TextClock
+                android:id="@+id/clockHourTop"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:format12Hour="h"
+                android:format24Hour="HH"
+                android:includeFontPadding="false"
+                android:textAppearance="@style/TextAppearance.OpenFlip.ClockDigits"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="86sp" />
+        </FrameLayout>
+
+        <!-- 2dp Gap -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="3.5dp"
+            android:layout_marginEnd="3.5dp"
+            android:background="@android:color/transparent" />
+
+        <!-- Bottom Half: 64dp -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:background="@drawable/shape_card_bottom">
+            <TextClock
+                android:id="@+id/clockHourBottom"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:format12Hour="h"
+                android:format24Hour="HH"
+                android:includeFontPadding="false"
+                android:textAppearance="@style/TextAppearance.OpenFlip.ClockDigits"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="86sp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- MINUTE CARD -->
+    <LinearLayout
+        android:id="@+id/widgetMinuteCard"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="6dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:clipChildren="true"
+        android:clipToPadding="true">
+        
+        <!-- Top Half: 64dp -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:background="@drawable/shape_card_top">
+            <TextClock
+                android:id="@+id/clockMinuteTop"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:format12Hour="mm"
+                android:format24Hour="mm"
+                android:includeFontPadding="false"
+                android:textAppearance="@style/TextAppearance.OpenFlip.ClockDigits"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="86sp" />
+        </FrameLayout>
+
+        <!-- 2dp Gap -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="3.5dp"
+            android:layout_marginEnd="3.5dp"
+            android:background="@android:color/transparent" />
+
+        <!-- Bottom Half: 64dp -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:background="@drawable/shape_card_bottom">
+            <TextClock
+                android:id="@+id/clockMinuteBottom"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:format12Hour="mm"
+                android:format24Hour="mm"
+                android:includeFontPadding="false"
+                android:textAppearance="@style/TextAppearance.OpenFlip.ClockDigits"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="86sp" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

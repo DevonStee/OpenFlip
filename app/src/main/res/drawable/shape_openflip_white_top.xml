@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HTC Sense V2 Style: White Card TOP HALF Background - 160dp WIDE VERSION -->
+<!-- With subtle multi-layer left-side shadows (Solid widget style) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="71dp"
+    android:viewportWidth="160"
+    android:viewportHeight="72">
+
+
+    <!-- ===================== -->
+    <!-- LAYER 3 (Deepest/Back) - TOP HALF ONLY -->
+    <!-- ===================== -->
+    <path
+        android:pathData="M 8 72 L 6.2 9 Q 6.2 1 14.5 1 L 145.5 1 Q 153.8 1 153.8 9 L 152 72"
+        android:strokeWidth="0.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#D5D5D5">
+        <aapt:attr name="android:strokeColor" xmlns:aapt="http://schemas.android.com/aapt">
+            <gradient
+                android:startX="0"
+                android:endX="160"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#80000000" />
+                <item android:offset="1.0" android:color="#20000000" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- ===================== -->
+    <!-- LAYER 2 (Middle) - TOP HALF ONLY -->
+    <!-- ===================== -->
+    <path
+        android:pathData="M 8 72 L 6.1 11 Q 6.1 4 14.5 4 L 145.5 4 Q 153.9 4 153.9 11 L 152 72"
+        android:strokeWidth="0.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#E8E8E8">
+        <aapt:attr name="android:strokeColor" xmlns:aapt="http://schemas.android.com/aapt">
+            <gradient
+                android:startX="0"
+                android:endX="160"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#80000000" />
+                <item android:offset="1.0" android:color="#20000000" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Shadow L2 on L3 - TOP edge -->
+    <path
+        android:pathData="M 6.2 9 Q 6.2 3.5 10 2 Q 12 1.2 14.5 1 L 145.5 1 Q 148 1.2 150 2 Q 153.8 3.5 153.8 9 L 153.9 11 Q 153.9 5 150.2 3.5 Q 148.2 2.7 145.5 2.5 L 14.5 2.5 Q 12 2.7 10 3.5 Q 6.1 5 6.1 11 Z">
+        <aapt:attr name="android:fillColor" xmlns:aapt="http://schemas.android.com/aapt">
+            <gradient
+                android:startY="1"
+                android:endY="11"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#00000000" />
+                <item android:offset="0.3" android:color="#18000000" />
+                <item android:offset="1.0" android:color="#00000000" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- ===================== -->
+    <!-- LAYER 1 (Front/Main Card) - TOP HALF -->
+    <!-- Fill to bottom edge completely to avoid gap -->
+    <!-- ===================== -->
+    <path
+        android:pathData="M 8 72 L 6 14 Q 6 7 14 7 L 146 7 Q 154 7 154 14 L 152 72"
+        android:strokeWidth="0.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round">
+        <aapt:attr name="android:strokeColor" xmlns:aapt="http://schemas.android.com/aapt">
+            <gradient
+                android:startX="0"
+                android:endX="160"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#80000000" />
+                <item android:offset="1.0" android:color="#20000000" />
+            </gradient>
+        </aapt:attr>
+        <aapt:attr name="android:fillColor" xmlns:aapt="http://schemas.android.com/aapt">
+            <gradient
+                android:startY="7"
+                android:endY="71"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFFFFFFF" />
+                <item android:offset="0.5" android:color="#FFFAFAFA" />
+                <item android:offset="0.8" android:color="#FFF0F0F0" />
+                <item android:offset="1.0" android:color="#FFDCDCDC" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Shadow L1 on L2 - TOP edge -->
+    <path
+        android:pathData="M 6 14 Q 6 7 9.5 5.5 Q 11.5 4.7 14 4.5 L 146 4.5 Q 148.5 4.7 150.5 5.5 Q 154 7 154 14 L 153.9 11 Q 153.9 6.5 150.7 5 Q 148.7 4.2 146 4 L 14 4 Q 11.5 4.2 9.5 5 Q 6.1 6.5 6.1 11 Z">
+        <aapt:attr name="android:fillColor" xmlns:aapt="http://schemas.android.com/aapt">
+            <gradient
+                android:startY="4"
+                android:endY="14"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#00000000" />
+                <item android:offset="0.3" android:color="#18000000" />
+                <item android:offset="1.0" android:color="#00000000" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Top glass sheen -->
+    <path
+        android:pathData="M 12 11 Q 80 8 148 11 L 148 30 Q 80 34 12 30 Z">
+        <aapt:attr name="android:fillColor" xmlns:aapt="http://schemas.android.com/aapt">
+            <gradient
+                android:startY="8"
+                android:endY="34"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#2CFFFFFF" />
+                <item android:offset="1.0" android:color="#00FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+</vector>

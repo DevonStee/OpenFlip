@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Build-time source asset for setupChimeAudios task; intentionally not referenced as R.raw at runtime. -->
+    <issue id="UnusedResources">
+        <ignore path="src/main/res/raw/chime_sound.mp3" />
+    </issue>
+    <!-- Version drift is managed manually via Baseline in build.gradle.kts. -->
+    <issue id="GradleDependency" severity="ignore" />
+    <issue id="NewerVersionAvailable" severity="ignore" />
+    <!-- Known third-party limitation from Cloudy 0.2.4 on Kotlin 2.0.x track. -->
+    <issue id="Aligned16KB" severity="ignore" />
+    <!-- Intentional hot-path style in custom rendering code; avoid refactor churn for non-behavioral suggestions. -->
+    <issue id="UseKtx" severity="ignore" />
+    <!-- Layout structure is intentional in these legacy XMLs; keep stable behavior and references. -->
+    <issue id="MergeRootFrame" severity="ignore" />
+    <issue id="UseCompoundDrawables" severity="ignore" />
+    <!-- Project resource policy: primarily vector + nodpi assets, no per-density bitmap sets. -->
+    <issue id="IconMissingDensityFolder" severity="ignore" />
+</lint>

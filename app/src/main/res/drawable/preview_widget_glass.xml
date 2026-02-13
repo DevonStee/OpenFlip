@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Canvas: 320dp x 120dp fixed size -->
+    <item>
+        <shape android:shape="rectangle">
+            <size android:width="320dp" android:height="120dp" />
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+    
+    <!-- LEFT CARD (Left: 36dp) -->
+    <!-- Shadow -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:left="31dp"
+        android:top="5dp"
+        android:drawable="@drawable/shape_glass_card_shadow" />
+    
+    <!-- Top Half -->
+    <item
+        android:width="120dp"
+        android:height="59dp"
+        android:left="36dp"
+        android:top="0dp"
+        android:drawable="@drawable/shape_card_glass_top" />
+
+    <!-- Bottom Half -->
+    <item
+        android:width="120dp"
+        android:height="59dp"
+        android:left="36dp"
+        android:top="61dp"
+        android:drawable="@drawable/shape_card_glass_bottom" />
+
+    <!-- Digits 12 -->
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:left="46dp"
+        android:top="10dp"
+        android:drawable="@drawable/icon_preview_digit_12_light_24dp" />
+
+
+    <!-- RIGHT CARD (Left: 164dp) -->
+    <!-- Shadow -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:left="159dp"
+        android:top="5dp"
+        android:drawable="@drawable/shape_glass_card_shadow" />
+
+    <!-- Top Half -->
+    <item
+        android:width="120dp"
+        android:height="59dp"
+        android:left="164dp"
+        android:top="0dp"
+        android:drawable="@drawable/shape_card_glass_top" />
+
+    <!-- Bottom Half -->
+    <item
+        android:width="120dp"
+        android:height="59dp"
+        android:left="164dp"
+        android:top="61dp"
+        android:drawable="@drawable/shape_card_glass_bottom" />
+        
+    <!-- Digits 00 -->
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:left="174dp"
+        android:top="10dp"
+        android:drawable="@drawable/icon_preview_digit_00_light_24dp" />
+</layer-list>

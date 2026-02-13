@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Glass Widget Bottom Card: With 20% White Bottom Light Absorption Mask -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="144dp"
+    android:height="71dp"
+    android:viewportWidth="144"
+    android:viewportHeight="71">
+
+    <!-- 1. Base Glass Material -->
+    <path
+        android:pathData="M 0 0 L 144 0 L 144 43 C 144 63 136 71 116 71 L 28 71 C 8 71 0 63 0 43 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="0"
+                android:endY="71">
+                <item android:offset="0.0" android:color="#10F0F0F0" />
+                <item android:offset="1.0" android:color="#05FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 2. Surface Reflection -->
+    <path
+        android:pathData="M 0 0 L 144 0 L 144 43 C 144 63 136 71 116 71 L 28 71 C 8 71 0 63 0 43 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="144"
+                android:endY="71">
+                <item android:offset="0.0" android:color="#00FFFFFF" />
+                <item android:offset="0.6" android:color="#10FFFFFF" />
+                <item android:offset="1.0" android:color="#00FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+
+    <!-- 3. Adaptive Edge Definition -->
+    <path
+        android:pathData="M 0.5 0.5 L 143.5 0.5 L 143.5 43 C 143.5 63 136 70.5 116 70.5 L 28 70.5 C 8 70.5 0.5 63 0.5 43 Z"
+        android:strokeWidth="0.5"
+        android:strokeColor="#05000000" />
+
+    <!-- 4. Rim Light (Bottom Curve Highlight) - SOFTENED -->
+    <path
+        android:pathData="M 1 0.5 L 143 0.5 L 143 43 C 143 62 135 69.5 116 69.5 L 28 69.5 C 9 69.5 1 62 1 43 Z"
+        android:strokeWidth="1.5">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startY="0"
+                android:endY="71">
+                <item android:offset="0.0" android:color="#00FFFFFF" />
+                <item android:offset="0.6" android:color="#10FFFFFF" />
+                <item android:offset="1.0" android:color="#30FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+</vector>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solid Widget Card Shadow: Directional (Bottom-Right) & Full Rounded Corners -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="140dp"
+    android:height="140dp"
+    android:viewportWidth="140"
+    android:viewportHeight="140">
+
+    <!-- Layer 4: Outermost -> Ends at 138 (3dp visible) -->
+    <!-- Relaxed Bottom-Right Corner: Control points pushed out to (138,128) and (128,138) -->
+    <path
+        android:pathData="M 7 25 C 7 15 15 7 25 7 L 115 7 C 128 7 138 17 138 30 L 138 110 C 138 128 128 138 110 138 L 30 138 C 17 138 7 128 7 115 L 7 25 Z"
+        android:fillColor="#0A000000" />
+
+    <!-- Layer 3: Ends at 137 (2dp visible) -->
+    <path
+        android:pathData="M 7 25 C 7 15 15 7 25 7 L 115 7 C 127.5 7 137 16.5 137 29 L 137 111 C 137 127.5 127.5 137 111 137 L 29 137 C 16.5 137 7 127.5 7 115 L 7 25 Z"
+        android:fillColor="#14000000" />
+
+    <!-- Layer 2: Ends at 136 (1dp visible) -->
+    <path
+        android:pathData="M 7 25 C 7 15 15 7 25 7 L 115 7 C 127 7 136 16 136 29 L 136 111 C 136 127 127 136 111 136 L 29 136 C 16 136 7 127 7 115 L 7 25 Z"
+        android:fillColor="#26000000" />
+
+    <!-- Layer 1: Core Ends at 135.5 (0.5dp visible) -->
+    <path
+        android:pathData="M 7 25 C 7 15 15 7 25 7 L 115 7 C 126.5 7 135.5 16 135.5 29 L 135.5 111 C 135.5 126.5 126.5 135.5 111 135.5 L 29 135.5 C 16 135.5 7 126.5 7 115 L 7 25 Z"
+        android:fillColor="#40000000" />
+
+</vector>

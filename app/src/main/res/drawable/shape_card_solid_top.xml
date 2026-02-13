@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solid Widget Top Card: Matte carbon gray with integrated top-edge highlight -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="144dp"
+    android:height="71dp"
+    android:viewportWidth="144"
+    android:viewportHeight="71">
+
+    <!-- Main Fill: Deep carbon gray gradient (lit surface - brighter) -->
+    <path
+        android:pathData="M 0 28 C 0 8 8 0 28 0 L 116 0 C 136 0 144 8 144 28 L 144 71 L 0 71 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startY="0"
+                android:endY="71">
+                <item android:offset="0.0" android:color="#FF2A2A2A" />
+                <item android:offset="0.5" android:color="#FF252525" />
+                <item android:offset="1.0" android:color="#FF1F1F1F" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Top Edge Highlight: Horizontal gradient (dark at edges, bright in center) -->
+    <path
+        android:pathData="M 28 0.5 L 116 0.5"
+        android:strokeWidth="1">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startX="28"
+                android:endX="116"
+                android:startY="0"
+                android:endY="0">
+                <item android:offset="0.0" android:color="#18FFFFFF" />
+                <item android:offset="0.3" android:color="#40FFFFFF" />
+                <item android:offset="0.5" android:color="#50FFFFFF" />
+                <item android:offset="0.7" android:color="#40FFFFFF" />
+                <item android:offset="1.0" android:color="#18FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Side Strokes: Subtle vertical gradient -->
+    <path
+        android:pathData="M 0.5 28 C 0.5 8 8 0.5 28 0.5 M 116 0.5 C 136 0.5 143.5 8 143.5 28 L 143.5 70.5 L 0.5 70.5 L 0.5 28"
+        android:strokeWidth="1">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:type="linear"
+                android:startY="0"
+                android:endY="71">
+                <item android:offset="0.0" android:color="#20FFFFFF" />
+                <item android:offset="0.3" android:color="#10FFFFFF" />
+                <item android:offset="1.0" android:color="#08FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+</vector>

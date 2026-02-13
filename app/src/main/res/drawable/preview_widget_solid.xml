@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Canvas: 320dp x 120dp fixed size -->
+    <item>
+        <shape android:shape="rectangle">
+            <size android:width="320dp" android:height="120dp" />
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+    <!-- Content Width: 120 + 8 + 120 = 248dp -->
+    <!-- Start Left: (320 - 248) / 2 = 36dp -->
+
+    <!-- Left Card -->
+    <!-- Shadow -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:left="31dp"
+        android:top="5dp"
+        android:drawable="@drawable/shape_glass_card_shadow" />
+    <!-- Top Half -->
+    <item
+        android:width="120dp"
+        android:height="59dp"
+        android:left="36dp"
+        android:top="0dp"
+        android:drawable="@drawable/shape_card_solid_top" />
+    <!-- Bottom Half -->
+    <item
+        android:width="120dp"
+        android:height="59dp"
+        android:left="36dp"
+        android:top="61dp"
+        android:drawable="@drawable/shape_card_solid_bottom" />
+
+    <!-- Left Digits -->
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:left="46dp"
+        android:top="10dp"
+        android:drawable="@drawable/icon_preview_digit_12_light_24dp" />
+
+    <!-- Right Card (36 + 120 + 8 = 164dp) -->
+    <!-- Shadow -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:left="159dp"
+        android:top="5dp"
+        android:drawable="@drawable/shape_glass_card_shadow" />
+    <!-- Top Half -->
+    <item
+        android:width="120dp"
+        android:height="59dp"
+        android:left="164dp"
+        android:top="0dp"
+        android:drawable="@drawable/shape_card_solid_top" />
+    <!-- Bottom Half -->
+    <item
+        android:width="120dp"
+        android:height="59dp"
+        android:left="164dp"
+        android:top="61dp"
+        android:drawable="@drawable/shape_card_solid_bottom" />
+
+    <!-- Right Digits -->
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:left="174dp"
+        android:top="10dp"
+        android:drawable="@drawable/icon_preview_digit_00_light_24dp" />
+</layer-list>

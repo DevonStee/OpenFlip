@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Hollow circle (ring) for DARK theme - white color -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,54m-28,0a28,28 0,1,1 56,0a28,28 0,1,1 -56,0 M54,54m-20,0a20,20 0,1,0 40,0a20,20 0,1,0 -40,0"
+        android:fillType="evenOdd" />
+</vector>

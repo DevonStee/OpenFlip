@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bokehforu.openflip">
+
+    <application>
+        <receiver
+            android:name=".feature.chime.ChimeTestReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <action android:name="com.bokehforu.openflip.action.TEST_CHIME" />
+                <action android:name="com.bokehforu.openflip.action.SCHEDULE_NEXT" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

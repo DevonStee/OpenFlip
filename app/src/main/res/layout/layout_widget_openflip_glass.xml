@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/openflipWidgetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="4dp"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- HOUR CARD WRAPPER (Grouping layer for stability) -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        
+        <!-- Shadow Background Layer (Behind content) -->
+        <!-- Shadow: Shift Down (+6dp) and Right (+6dp) -->
+        <FrameLayout
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/shape_glass_card_shadow" />
+
+        <!-- Card Content Layer -->
+        <!-- Start content at top-left of container to reveal shadow at bottom-right -->
+        <LinearLayout
+            android:id="@+id/widgetHourCard"
+            android:layout_width="144dp"
+            android:layout_height="144dp"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="0dp"
+            android:orientation="vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <!-- Top Half -->
+            <FrameLayout
+                android:layout_width="144dp"
+                android:layout_height="71dp"
+                android:clipChildren="true"
+                android:clipToPadding="true"
+                android:background="@drawable/shape_card_glass_top">
+
+                <TextClock
+                    android:id="@+id/clockHourTop"
+                    android:layout_width="144dp"
+                    android:layout_height="144dp"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:format12Hour="h"
+                    android:format24Hour="HH"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.OpenFlip.ClockDigits"
+                    android:textColor="@color/widget_glass_text_color"
+                    android:textSize="90sp" />
+            </FrameLayout>
+
+            <!-- Grooved Divider (2dp height to match drawable) -->
+            <FrameLayout
+                android:layout_width="144dp"
+                android:layout_height="2dp"
+                android:background="@drawable/shape_glass_divider" />
+
+            <!-- Bottom Half -->
+            <FrameLayout
+                android:layout_width="144dp"
+                android:layout_height="71dp"
+                android:clipChildren="true"
+                android:clipToPadding="true"
+                android:background="@drawable/shape_card_glass_bottom">
+
+                <TextClock
+                    android:id="@+id/clockHourBottom"
+                    android:layout_width="144dp"
+                    android:layout_height="144dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:format12Hour="h"
+                    android:format24Hour="HH"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.OpenFlip.ClockDigits"
+                    android:textColor="@color/widget_glass_text_color"
+                    android:textSize="90sp" />
+                
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- MINUTE CARD WRAPPER (Grouping layer for stability) -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <!-- Shadow Background Layer (Behind content) -->
+        <!-- Shadow: Shift Down (+6dp) and Right (+6dp) -->
+        <FrameLayout
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/shape_glass_card_shadow" />
+
+        <!-- Card Content Layer -->
+        <!-- Content is 120dp size (Glass covers shadow) -->
+        <LinearLayout
+            android:id="@+id/widgetMinuteCard"
+            android:layout_width="144dp"
+            android:layout_height="144dp"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="0dp"
+            android:orientation="vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <!-- Top Half -->
+            <FrameLayout
+                android:layout_width="144dp"
+                android:layout_height="71dp"
+                android:clipChildren="true"
+                android:clipToPadding="true"
+                android:background="@drawable/shape_card_glass_top">
+
+                <TextClock
+                    android:id="@+id/clockMinuteTop"
+                    android:layout_width="144dp"
+                    android:layout_height="144dp"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:format12Hour="mm"
+                    android:format24Hour="mm"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.OpenFlip.ClockDigits"
+                    android:textColor="@color/widget_glass_text_color"
+                    android:textSize="90sp" />
+                
+            </FrameLayout>
+
+            <!-- Grooved Divider -->
+            <FrameLayout
+                android:layout_width="144dp"
+                android:layout_height="2dp"
+                android:background="@drawable/shape_glass_divider" />
+
+            <!-- Bottom Half -->
+            <FrameLayout
+                android:layout_width="144dp"
+                android:layout_height="71dp"
+                android:clipChildren="true"
+                android:clipToPadding="true"
+                android:background="@drawable/shape_card_glass_bottom">
+
+                <TextClock
+                    android:id="@+id/clockMinuteBottom"
+                    android:layout_width="144dp"
+                    android:layout_height="144dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:format12Hour="mm"
+                    android:format24Hour="mm"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.OpenFlip.ClockDigits"
+                    android:textColor="@color/widget_glass_text_color"
+                    android:textSize="90sp" />
+                
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

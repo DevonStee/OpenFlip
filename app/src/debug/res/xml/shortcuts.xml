@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="open_dark"
+        android:enabled="true"
+        android:icon="@drawable/icon_shortcut_dark_adaptive"
+        android:shortcutShortLabel="@string/shortcut_dark_theme"
+        android:shortcutLongLabel="@string/shortcut_dark_theme_long">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.bokehforu.openflip.debug"
+            android:targetClass="com.bokehforu.openflip.feature.clock.ui.FullscreenClockActivity">
+            <extra android:name="theme" android:value="dark" />
+        </intent>
+    </shortcut>
+    
+    <shortcut
+        android:shortcutId="open_light"
+        android:enabled="true"
+        android:icon="@drawable/icon_shortcut_light_adaptive"
+        android:shortcutShortLabel="@string/shortcut_light_theme"
+        android:shortcutLongLabel="@string/shortcut_light_theme_long">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.bokehforu.openflip.debug"
+            android:targetClass="com.bokehforu.openflip.feature.clock.ui.FullscreenClockActivity">
+            <extra android:name="theme" android:value="light" />
+        </intent>
+    </shortcut>
+    
+    <shortcut
+        android:shortcutId="open_settings"
+        android:enabled="true"
+        android:icon="@drawable/icon_shortcut_settings_adaptive"
+        android:shortcutShortLabel="@string/shortcut_settings"
+        android:shortcutLongLabel="@string/shortcut_settings_long">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.bokehforu.openflip.debug"
+            android:targetClass="com.bokehforu.openflip.feature.clock.ui.FullscreenClockActivity">
+            <extra android:name="open_settings" android:value="true" />
+        </intent>
+    </shortcut>
+    
+</shortcuts>

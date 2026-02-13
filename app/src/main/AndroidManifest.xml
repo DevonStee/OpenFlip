@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- WAKE_LOCK removed - using FLAG_KEEP_SCREEN_ON instead -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- Alarm permissions -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
+    <!-- Foreground service for chime playback -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+
+    <application
+        android:name=".OpenFlipApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/icon_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.OpenFlip"
+        tools:targetApi="31">
+        <activity
+            android:name=".feature.clock.ui.FullscreenClockActivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.OpenFlip.Fullscreen"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|smallestScreenSize|density|screenLayout|keyboardHidden|layoutDirection|locale|mnc|mcc"
+            tools:ignore="DiscouragedApi">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <receiver
+            android:name=".widget.WidgetClockSplitProvider"
+            android:exported="true"
+            android:label="@string/widgetSplitName">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/openflip_widget_split_information" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.WidgetClockClassicProvider"
+            android:exported="true"
+            android:label="@string/widgetClassicName">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/openflip_widget_classic_information" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.WidgetClockSolidProvider"
+            android:exported="true"
+            android:label="@string/widgetSolidName">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/openflip_widget_solid_information" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.WidgetClockGlassProvider"
+            android:exported="true"
+            android:label="@string/widgetGlassName">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/openflip_widget_glass_information" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.WidgetClockWhiteProvider"
+            android:exported="true"
+            android:label="@string/widgetWhiteName">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/openflip_widget_white_information" />
+        </receiver>
+
+        <!-- Dream/Screensaver Service -->
+        <service
+            android:name=".dream.ScreensaverClockService"
+            android:exported="true"
+            android:icon="@mipmap/icon_launcher"
+            android:label="@string/dream_name"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+            <meta-data
+                android:name="android.service.dream"
+                android:resource="@xml/dream_information" />
+        </service>
+        
+    </application>
+
+</manifest>
