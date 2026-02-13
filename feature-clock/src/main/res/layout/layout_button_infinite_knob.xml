@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/knobButtonContainer"
+    android:layout_width="64dp"
+    android:layout_height="64dp"
+    android:background="@android:color/transparent"
+    android:clickable="true"
+    android:focusable="true"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- Spine connectors -->
+    <View
+        android:id="@+id/spineTopKnob"
+        android:layout_width="0.5dp"
+        android:layout_height="@dimen/knob_padding"
+        android:layout_gravity="top|center_horizontal"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone" />
+
+    <!-- spineBottom visible in portrait (short vertical line below button) -->
+    <View
+        android:id="@+id/spineBottomKnob"
+        android:layout_width="0.5dp"
+        android:layout_height="@dimen/knob_padding"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone" />
+
+    <com.bokehforu.openflip.feature.clock.view.InfiniteKnobView
+        android:id="@+id/infiniteKnobView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</FrameLayout>

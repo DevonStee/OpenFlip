@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settingsButtonContainer"
+    android:layout_width="@dimen/settingsButtonSize"
+    android:layout_height="@dimen/settingsButtonSize"
+    android:alpha="0"
+    android:visibility="invisible"
+    tools:alpha="1"
+    tools:visibility="visible">
+
+    <!-- Spine connectors -->
+    <View
+        android:id="@+id/spineTopSettings"
+        android:layout_width="0.5dp"
+        android:layout_height="5dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone" />
+
+    <!-- spineBottom visible in portrait (short vertical line below button) -->
+    <View
+        android:id="@+id/spineBottomSettings"
+        android:layout_width="0.5dp"
+        android:layout_height="5dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone" />
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/composeSettingsButton"
+        android:layout_width="@dimen/settingsButtonSize"
+        android:layout_height="@dimen/settingsButtonSize"
+        android:layout_gravity="center" />
+
+</FrameLayout>

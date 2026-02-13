@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.bokehforu.openflip.feature.clock.view.FullscreenFlipClockView
+        android:id="@+id/flipClockView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Swipe-to-dim hint icon (shown during vertical swipe) -->
+    <ImageView
+        android:id="@+id/swipeHintIcon"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        android:contentDescription="@string/titleSwipeToDim"
+        android:importantForAccessibility="no"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Spine dividers - stop at button edges to avoid overlap with internal spines -->
+    <View
+        android:id="@+id/settingsDivider"
+        android:layout_width="0.5dp"
+        android:layout_height="0dp"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/settingsDivider1"
+        android:layout_width="0.5dp"
+        android:layout_height="0dp"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tuningLabel"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/lightLabel" />
+
+    <View
+        android:id="@+id/settingsDivider2"
+        android:layout_width="0.5dp"
+        android:layout_height="0dp"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/invertLabel"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/tuningLabel" />
+
+    <View
+        android:id="@+id/settingsDivider3"
+        android:layout_width="0.5dp"
+        android:layout_height="0dp"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/settingsButtonInclude"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/invertLabel" />
+
+    <View
+        android:id="@+id/settingsDivider3b"
+        android:layout_width="0.5dp"
+        android:layout_height="0dp"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/settingLabel"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/settingsButtonInclude" />
+
+    <View
+        android:id="@+id/settingsDivider4"
+        android:layout_width="0.5dp"
+        android:layout_height="0dp"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/settingLabel" />
+
+    <!-- Button and Label chain using ConstraintLayout -->
+    <include
+        android:id="@+id/stateToggleButtonInclude"
+        layout="@layout/layout_button_state_toggle"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/lightLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/lightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:letterSpacing="0.12"
+        android:paddingHorizontal="4sp"
+        android:text="@string/control_label_light"
+        android:textColor="?attr/settingsExplanationText"
+        android:textAppearance="?attr/textAppearanceLabelMicro"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/infiniteKnobButtonInclude"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/stateToggleButtonInclude"
+        tools:visibility="visible" />
+
+    <include
+        android:id="@+id/infiniteKnobButtonInclude"
+        layout="@layout/layout_button_infinite_knob"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tuningLabel"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/lightLabel" />
+
+    <TextView
+        android:id="@+id/tuningLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:letterSpacing="0.12"
+        android:paddingHorizontal="4sp"
+        android:text="@string/control_label_tuning"
+        android:textColor="?attr/settingsExplanationText"
+        android:textAppearance="?attr/textAppearanceLabelMicro"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/themeToggleButtonInclude"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/infiniteKnobButtonInclude"
+        tools:visibility="visible" />
+
+    <include
+        android:id="@+id/themeToggleButtonInclude"
+        layout="@layout/layout_button_theme_toggle"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/invertLabel"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/tuningLabel" />
+
+    <TextView
+        android:id="@+id/invertLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:letterSpacing="0.12"
+        android:paddingHorizontal="4sp"
+        android:text="@string/control_label_invert"
+        android:textColor="?attr/settingsExplanationText"
+        android:textAppearance="?attr/textAppearanceLabelMicro"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/settingsButtonInclude"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/themeToggleButtonInclude"
+        tools:visibility="visible" />
+
+    <include
+        android:id="@+id/settingsButtonInclude"
+        layout="@layout/layout_button_settings"
+        android:layout_width="@dimen/settingsButtonSize"
+        android:layout_height="@dimen/settingsButtonSize"
+        app:layout_constraintBottom_toTopOf="@+id/settingLabel"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/invertLabel" />
+
+    <TextView
+        android:id="@+id/settingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:letterSpacing="0.12"
+        android:paddingHorizontal="4sp"
+        android:text="@string/control_label_options"
+        android:textColor="?attr/settingsExplanationText"
+        android:textAppearance="?attr/textAppearanceLabelMicro"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintStart_toStartOf="@+id/stateToggleButtonInclude"
+        app:layout_constraintTop_toBottomOf="@+id/settingsButtonInclude"
+        tools:visibility="visible" />
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/composeSettingsSheetHost"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Dummy views to maintain compatibility with portrait layout IDs -->
+    <!-- Dummy views removed to fix missing constraints lint error -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

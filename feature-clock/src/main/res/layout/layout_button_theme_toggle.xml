@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/themeToggleButtonContainer"
+    android:layout_width="64dp"
+    android:layout_height="64dp"
+    android:background="@android:color/transparent">
+
+    <!-- Spine connectors -->
+    <View
+        android:id="@+id/spineTopTheme"
+        android:layout_width="0.5dp"
+        android:layout_height="@dimen/knob_padding"
+        android:layout_gravity="top|center_horizontal"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone" />
+
+    <!-- spineBottom visible in portrait (short vertical line below button) -->
+    <View
+        android:id="@+id/spineBottomTheme"
+        android:layout_width="0.5dp"
+        android:layout_height="@dimen/knob_padding"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="?attr/settingsExplanationText"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/themeToggleButtonInner"
+        android:layout_width="@dimen/control_inner_size"
+        android:layout_height="@dimen/control_inner_size"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_settings_circle">
+
+        <ImageView
+            android:id="@+id/themeToggleIcon"
+            android:layout_width="@dimen/settingsIconSize"
+            android:layout_height="@dimen/settingsIconSize"
+            android:layout_gravity="center"
+            android:contentDescription="@string/titleThemeToggle"
+            android:src="@drawable/icon_theme_toggle_24dp"
+            app:tint="?attr/settingsControlForeground" />
+    </FrameLayout>
+</FrameLayout>
