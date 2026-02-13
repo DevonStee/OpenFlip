@@ -1,0 +1,8 @@
+<resources>
+    <!-- Chime Notification -->
+    <string name="chime_notification_channel_name">Hourly Chime</string>
+    <string name="chime_notification_channel_description">Notifications for hourly chime playback</string>
+    <string name="chime_notification_title">OpenFlip Chime</string>
+    <string name="chime_notification_text">%d o\'clock chime</string>
+    <string name="chime_notification_test_text">Test chime</string>
+</resources>
