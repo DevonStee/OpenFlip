@@ -1,0 +1,387 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <!-- Base application theme. -->
+    
+    <!-- Theme-Specific Attribute Values -->
+    
+    <!-- Light Theme Overrides (Applied to Theme.OpenFlip.Light which inherits Base) -->
+    <!-- Ideally we should have explicit Light/Dark themes. Theme.OpenFlip seems to rely on DayNight -->
+    
+    <!-- We need to ensure values-night/themes.xml exists or handle night qualification -->
+    <!-- Assuming this is values/themes.xml (Day/Default) -->
+    
+    <!-- Extending Theme.OpenFlip to add our custom attributes for Light Mode -->
+    <style name="Theme.OpenFlip" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- ... existing items ... -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/iconLauncherBackground</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Background is controlled programmatically via WindowConfigurator -->
+        <item name="android:windowDisablePreview">false</item>
+        <!-- Default to dark theme values (app default is dark) -->
+        <item name="settingsControlBackground">@color/button_background_settings_dark</item>
+        <item name="settingsControlForeground">@color/overlay_text_color</item>
+        <item name="settingsExplanationText">@color/settings_text_secondary_dark</item>
+        <item name="switchStyle">@style/Widget.OpenFlip.Switch</item>
+        <item name="materialSwitchStyle">@style/Widget.OpenFlip.Switch</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="materialAlertDialogTheme">@style/Theme.OpenFlip.Dialog</item>
+        <item name="themeBackgroundColor">@color/app_background_dark</item>
+
+        <!-- App Surface & Settings Colors (Default = Dark) -->
+        <item name="appBackgroundColor">@color/app_background_dark</item>
+        <item name="dreamBackgroundColor">@color/black</item>
+        <item name="settingsPrimaryTextColor">@color/settings_text_primary_dark</item>
+        <item name="settingsSecondaryTextColor">@color/settings_text_secondary_dark</item>
+        <item name="settingsIconColor">@color/settings_icon_dark</item>
+        <item name="settingsSectionColor">@color/settings_section_dark</item>
+        <item name="settingsSurfaceColor">@color/settings_background_dark</item>
+        <item name="actionPrimaryColor">@color/action_red</item>
+        <item name="actionOnPrimaryColor">@color/on_action_red</item>
+        <item name="actionPrimaryRippleColor">@color/ripple_color_white</item>
+        <item name="settingsControlDefaultColor">@color/control_default_dark</item>
+        <item name="settingsControlSelectedColor">@color/control_selected_dark</item>
+        <item name="settingsControlPressedColor">@color/control_pressed_dark</item>
+        <item name="lightBulbRaysColor">@color/light_bulb_rays_dark</item>
+        <item name="knobBaseColor">@color/color_knob_base_dark</item>
+        <item name="knobShadowColor">@color/knob_shadow_dark</item>
+        <item name="knobBevelLightColor">@color/knob_bevel_light</item>
+        <item name="knobBevelShadowColor">@color/knob_bevel_shadow</item>
+        <item name="knobBorderColor">@color/knob_border_dark</item>
+        <item name="knobIndicatorActiveColor">@color/knob_indicator_active</item>
+        <item name="knobIndicatorShadowColor">@color/knob_indicator_shadow</item>
+        <item name="knobPressedOverlayColor">@color/knob_pressed_overlay</item>
+        <item name="knobIndicatorRedBrightColor">@color/knob_indicator_red_bright</item>
+        <item name="knobIndicatorRedDeepColor">@color/knob_indicator_red_deep</item>
+        <item name="knobIndicatorGreenBrightColor">@color/knob_indicator_green_bright</item>
+        <item name="knobIndicatorGreenDeepColor">@color/knob_indicator_green_deep</item>
+        <item name="knobIndicatorHighlightColor">@color/knob_indicator_highlight</item>
+        <item name="stateToggleOffColor">@color/state_toggle_off_dark</item>
+        <item name="stateToggleRimLightColor">@color/rim_light_color</item>
+        <item name="stateTogglePressedOverlayColor">@color/pressed_overlay_color</item>
+        <item name="stateToggleCountdownTextColor">@color/countdown_text_color</item>
+        <item name="glassCoverCoreCenterColor">@color/glass_cover_core_center</item>
+        <item name="glassCoverCoreEdgeColor">@color/glass_cover_core_edge</item>
+        <item name="glassCoverHaloColor">@color/glass_cover_halo</item>
+        
+        <!-- Custom Attributes: Dark Mode Defaults (app default is dark) -->
+        <item name="cardBackgroundColor">@color/card_background_dark</item>
+        <item name="cardTextColor">@color/card_text_dark</item>
+        <item name="cardShadowColor">@color/card_shadow_fill_dark</item>
+        <item name="cardShadowEdgeColor">@color/black</item>
+
+        <item name="knobGlowColor">@color/knob_glow_dark</item>
+        <item name="knob_indicatorColor">@color/knob_indicator_dark</item>
+
+        <item name="timerTrackColor">@color/timer_track_dark</item>
+        <item name="timerProgressColor">@color/action_red</item>
+
+        <item name="knobTickColor">@color/knob_tick_normal</item>
+        <item name="knobTickActiveColor">@color/knob_tick_active</item>
+        <item name="knobTickHighlightColor">@color/knob_tick_highlight</item>
+
+        <item name="cardRimHighlightColor">@color/card_highlight_top_dark</item>
+        <item name="cardCutHighlightColor">@color/card_highlight_cut_rim_light</item>
+        <item name="cardCutShadowColor">@color/card_shadow_cut_dark</item>
+        <item name="cardNoiseColor">@color/card_noise_dark</item>
+
+        <!-- Material3 Typography System -->
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.OpenFlip.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.OpenFlip.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.OpenFlip.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.OpenFlip.TitleMedium</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.OpenFlip.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.OpenFlip.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.OpenFlip.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.OpenFlip.TitleMedium</item> <!-- Fallback -->
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.OpenFlip.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.OpenFlip.LabelSmall</item>
+        <item name="textAppearanceLabelMicro">@style/TextAppearance.OpenFlip.LabelMicro</item>
+        <item name="openFlipUiFontFamily">sans-serif-medium</item>
+        <item name="openFlipClockFontFamily">@font/openflip_font</item>
+        <item name="radioButtonStyle">@style/Widget.OpenFlip.RadioButton</item>
+
+        <!-- Explicit Surface Text Colors to avoid system pure-black -->
+        <item name="colorOnSurface">@color/settings_text_primary_dark</item>
+        <item name="colorOnSurfaceVariant">@color/settings_text_secondary_dark</item>
+    </style>
+
+    <!-- Global Dialog Theme Parents (using full themes instead of overlays for stronger overrides) -->
+    <style name="Theme.OpenFlip.Dialog" parent="Theme.Material3.DayNight.Dialog.Alert">
+        <item name="elevation">0dp</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.OpenFlip.MediumComponent</item>
+        <item name="colorSurfaceVariant">@android:color/transparent</item>
+        <item name="settingsControlForeground">?attr/colorOnSurface</item>
+        
+        <!-- Material3 Typography System -->
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.OpenFlip.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.OpenFlip.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.OpenFlip.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.OpenFlip.TitleMedium</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.OpenFlip.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.OpenFlip.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.OpenFlip.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.OpenFlip.TitleMedium</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.OpenFlip.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.OpenFlip.LabelSmall</item>
+        <item name="textAppearanceLabelMicro">@style/TextAppearance.OpenFlip.LabelMicro</item>
+        <item name="openFlipUiFontFamily">sans-serif-medium</item>
+        <item name="openFlipClockFontFamily">@font/openflip_font</item>
+        <!-- Smooth dialog animations -->
+        <item name="android:windowEnterAnimation">@anim/dialog_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_fade_out</item>
+    </style>
+
+    <style name="Theme.OpenFlip.Dialog.Light" parent="Theme.OpenFlip.Dialog">
+        <item name="android:background">@color/settings_background_light</item>
+        <item name="colorSurface">@color/settings_background_light</item>
+        <item name="colorOnSurface">@color/settings_text_primary_light</item>
+        <item name="colorOnSurfaceVariant">@color/settings_text_primary_light</item>
+        
+        <item name="settingsControlBackground">@color/button_background_settings_light</item>
+        <item name="settingsControlForeground">@color/settings_text_primary_light</item>
+        
+        <item name="android:textColorPrimary">@color/settings_text_primary_light</item>
+        <item name="android:textColorSecondary">@color/settings_text_secondary_light</item>
+        <item name="colorPrimary">@color/settings_text_primary_light</item>
+        <item name="android:colorControlHighlight">@color/ripple_color_black</item>
+        <item name="colorControlHighlight">@color/ripple_color_black</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.OpenFlip.Dialog.Light</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Widget.OpenFlip.Dialog.Title</item>
+        <item name="settingsPrimaryTextColor">@color/settings_text_primary_light</item>
+        <item name="settingsSecondaryTextColor">@color/settings_text_secondary_light</item>
+        <item name="settingsIconColor">@color/settings_icon_light</item>
+        <item name="settingsSectionColor">@color/settings_section_light</item>
+        <item name="settingsSurfaceColor">@color/settings_background_light</item>
+        <item name="settingsControlDefaultColor">@color/control_default_light</item>
+        <item name="settingsControlSelectedColor">@color/control_selected_light</item>
+        <item name="settingsControlPressedColor">@color/control_pressed_light</item>
+        <item name="actionPrimaryColor">@color/action_red</item>
+        <item name="actionOnPrimaryColor">@color/on_action_red</item>
+        <item name="actionPrimaryRippleColor">@color/ripple_color_black</item>
+    </style>
+
+    <style name="Theme.OpenFlip.Dialog.Dark" parent="Theme.OpenFlip.Dialog">
+        <item name="android:background">@color/settings_background_dark</item>
+        <item name="colorSurface">@color/settings_background_dark</item>
+        <item name="colorOnSurface">@color/settings_text_primary_dark</item>
+        <item name="colorOnSurfaceVariant">@color/settings_text_primary_dark</item>
+        
+        <item name="settingsControlBackground">@color/button_background_settings_dark</item>
+        <item name="settingsControlForeground">@color/overlay_text_color</item>
+        
+        <item name="android:textColorPrimary">@color/settings_text_primary_dark</item>
+        <item name="android:textColorSecondary">@color/settings_text_secondary_dark</item>
+        <item name="colorPrimary">@color/settings_text_primary_dark</item>
+        <item name="android:colorControlHighlight">@color/ripple_color_white</item>
+        <item name="colorControlHighlight">@color/ripple_color_white</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.OpenFlip.Dialog.Dark</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Widget.OpenFlip.Dialog.Title</item>
+        <item name="settingsPrimaryTextColor">@color/settings_text_primary_dark</item>
+        <item name="settingsSecondaryTextColor">@color/settings_text_secondary_dark</item>
+        <item name="settingsIconColor">@color/settings_icon_dark</item>
+        <item name="settingsSectionColor">@color/settings_section_dark</item>
+        <item name="settingsSurfaceColor">@color/settings_background_dark</item>
+        <item name="settingsControlDefaultColor">@color/control_default_dark</item>
+        <item name="settingsControlSelectedColor">@color/control_selected_dark</item>
+        <item name="settingsControlPressedColor">@color/control_pressed_dark</item>
+        <item name="actionPrimaryColor">@color/action_red</item>
+        <item name="actionOnPrimaryColor">@color/on_action_red</item>
+        <item name="actionPrimaryRippleColor">@color/ripple_color_white</item>
+    </style>
+
+    <style name="ShapeAppearance.OpenFlip.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
+    
+    <style name="Widget.OpenFlip.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="thumbTint">@color/selector_switch_thumb</item>
+        <item name="trackTint">@color/selector_switch_track</item>
+        <!-- Standard ripple -->
+        <item name="android:colorControlHighlight">@color/button_background_interactive_dark</item>
+    </style>
+
+    <style name="Theme.OpenFlip.Fullscreen" parent="Theme.OpenFlip">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.OpenFlip.Dialog.Light" parent="">
+        <item name="colorSurface">@color/settings_background_light</item>
+        <item name="colorOnSurface">@color/settings_text_primary_light</item>
+        <item name="settingsControlBackground">@color/button_background_settings_light</item>
+        <item name="settingsControlForeground">@color/settings_text_primary_light</item>
+        <item name="android:colorControlHighlight">@color/ripple_color_black</item>
+        <item name="colorControlHighlight">@color/ripple_color_black</item>
+    </style>
+
+    <style name="ThemeOverlay.OpenFlip.Dialog.Dark" parent="">
+        <item name="colorSurface">@color/settings_background_dark</item>
+        <item name="colorOnSurface">@color/settings_text_primary_dark</item>
+        <item name="settingsControlBackground">@color/button_background_settings_dark</item>
+        <item name="settingsControlForeground">@color/overlay_text_color</item>
+        <item name="android:colorControlHighlight">@color/ripple_color_white</item>
+        <item name="colorControlHighlight">@color/ripple_color_white</item>
+    </style>
+
+    <!-- Explicit Light Theme for manual switching -->
+    <style name="Theme.OpenFlip.Light" parent="Theme.OpenFlip">
+        <item name="cardBackgroundColor">@color/card_background_light</item>
+        <item name="cardTextColor">@color/card_text_light</item>
+        <item name="cardShadowColor">@color/card_shadow_fill_light</item>
+        <item name="cardShadowEdgeColor">@color/shadow_light</item>
+        <item name="knobGlowColor">@color/knob_glow_light</item>
+        <item name="knob_indicatorColor">@color/knob_indicator_light</item>
+        <item name="knobTickColor">@color/knob_tick_light</item>
+        <item name="knobTickActiveColor">@color/knob_tick_active_light</item>
+        <item name="knobTickHighlightColor">@color/knob_tick_highlight</item>
+        
+        <item name="timerTrackColor">@color/timer_track_light</item>
+        <item name="timerProgressColor">@color/timer_progress_light</item>
+        
+        <item name="cardRimHighlightColor">@color/card_highlight_top_light</item>
+        <item name="cardCutHighlightColor">@color/card_highlight_cut_light</item>
+        <item name="cardCutShadowColor">@color/card_shadow_cut_light</item>
+        <item name="cardNoiseColor">@color/card_noise_light</item>
+        
+        <!-- Standard Colors -->
+        <item name="colorPrimary">@color/settings_text_primary_light</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/settings_text_primary_light</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="settingsControlBackground">@color/button_background_settings_light</item>
+        <item name="settingsControlForeground">@color/settings_text_primary_light</item>
+        <item name="settingsExplanationText">@color/settings_text_secondary_light</item>
+        <item name="themeBackgroundColor">@color/settings_background_light</item>
+
+        <item name="appBackgroundColor">@color/settings_background_light</item>
+        <item name="dreamBackgroundColor">@color/black</item>
+        <item name="settingsPrimaryTextColor">@color/settings_text_primary_light</item>
+        <item name="settingsSecondaryTextColor">@color/settings_text_secondary_light</item>
+        <item name="settingsIconColor">@color/settings_icon_light</item>
+        <item name="settingsSectionColor">@color/settings_section_light</item>
+        <item name="settingsSurfaceColor">@color/settings_background_light</item>
+        <item name="actionPrimaryColor">@color/action_red</item>
+        <item name="actionOnPrimaryColor">@color/on_action_red</item>
+        <item name="actionPrimaryRippleColor">@color/ripple_color_black</item>
+        <item name="settingsControlDefaultColor">@color/control_default_light</item>
+        <item name="settingsControlSelectedColor">@color/control_selected_light</item>
+        <item name="settingsControlPressedColor">@color/control_pressed_light</item>
+        <item name="lightBulbRaysColor">@color/light_bulb_rays_light</item>
+        <item name="knobBaseColor">@color/color_knob_base_light</item>
+        <item name="knobShadowColor">@color/knob_shadow_light</item>
+        <item name="knobBevelLightColor">@color/knob_bevel_light</item>
+        <item name="knobBevelShadowColor">@color/knob_bevel_shadow</item>
+        <item name="knobBorderColor">@android:color/transparent</item>
+        <item name="knobIndicatorActiveColor">@color/knob_indicator_active</item>
+        <item name="knobIndicatorShadowColor">@color/knob_indicator_shadow</item>
+        <item name="knobPressedOverlayColor">@color/knob_pressed_overlay</item>
+        <item name="knobIndicatorRedBrightColor">@color/knob_indicator_red_bright</item>
+        <item name="knobIndicatorRedDeepColor">@color/knob_indicator_red_deep</item>
+        <item name="knobIndicatorGreenBrightColor">@color/knob_indicator_green_bright</item>
+        <item name="knobIndicatorGreenDeepColor">@color/knob_indicator_green_deep</item>
+        <item name="knobIndicatorHighlightColor">@color/knob_indicator_highlight</item>
+        <item name="stateToggleOffColor">@color/state_toggle_off_light</item>
+        <item name="stateToggleRimLightColor">@color/rim_light_color</item>
+        <item name="stateTogglePressedOverlayColor">@color/pressed_overlay_color</item>
+        <item name="stateToggleCountdownTextColor">@color/countdown_text_color</item>
+        <item name="glassCoverCoreCenterColor">@color/glass_cover_core_center</item>
+        <item name="glassCoverCoreEdgeColor">@color/glass_cover_core_edge</item>
+        <item name="glassCoverHaloColor">@color/glass_cover_halo</item>
+        
+        <item name="colorOnSurface">@color/settings_text_primary_light</item>
+        <item name="colorOnSurfaceVariant">@color/settings_text_secondary_light</item>
+    </style>
+
+    <!-- Explicit Dark Theme for manual switching -->
+    <style name="Theme.OpenFlip.Dark" parent="Theme.OpenFlip">
+        <item name="cardBackgroundColor">@color/card_background_dark</item>
+        <item name="cardTextColor">@color/card_text_dark</item>
+        <item name="cardShadowColor">@color/card_shadow_fill_dark</item>
+        <item name="cardShadowEdgeColor">@color/black</item>
+        <item name="knobGlowColor">@color/knob_glow_dark</item>
+        <item name="knob_indicatorColor">@color/knob_indicator_dark</item>
+        <item name="knobTickColor">@color/knob_tick_normal</item>
+        <item name="knobTickActiveColor">@color/knob_tick_active</item>
+        <item name="knobTickHighlightColor">@color/knob_tick_highlight</item>
+        
+        <item name="timerTrackColor">@color/timer_track_dark</item>
+        <item name="timerProgressColor">@color/action_red</item>
+        
+        <item name="cardRimHighlightColor">@color/card_highlight_top_dark</item>
+        <item name="cardCutHighlightColor">@color/card_highlight_cut_rim_light</item>
+        <item name="cardCutShadowColor">@color/card_shadow_cut_dark</item>
+        <item name="cardNoiseColor">@color/card_noise_dark</item>
+        
+        <!-- Standard Colors -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="settingsControlBackground">@color/button_background_settings_dark</item>
+        <item name="settingsControlForeground">@color/overlay_text_color</item>
+        <item name="settingsExplanationText">@color/settings_text_secondary_dark</item>
+        <item name="themeBackgroundColor">@color/app_background_dark</item>
+
+        <item name="appBackgroundColor">@color/app_background_dark</item>
+        <item name="dreamBackgroundColor">@color/black</item>
+        <item name="settingsPrimaryTextColor">@color/settings_text_primary_dark</item>
+        <item name="settingsSecondaryTextColor">@color/settings_text_secondary_dark</item>
+        <item name="settingsIconColor">@color/settings_icon_dark</item>
+        <item name="settingsSectionColor">@color/settings_section_dark</item>
+        <item name="settingsSurfaceColor">@color/settings_background_dark</item>
+        <item name="actionPrimaryColor">@color/action_red</item>
+        <item name="actionOnPrimaryColor">@color/on_action_red</item>
+        <item name="actionPrimaryRippleColor">@color/ripple_color_white</item>
+        <item name="settingsControlDefaultColor">@color/control_default_dark</item>
+        <item name="settingsControlSelectedColor">@color/control_selected_dark</item>
+        <item name="settingsControlPressedColor">@color/control_pressed_dark</item>
+        <item name="lightBulbRaysColor">@color/light_bulb_rays_dark</item>
+        <item name="knobBaseColor">@color/color_knob_base_dark</item>
+        <item name="knobShadowColor">@color/knob_shadow_dark</item>
+        <item name="knobBevelLightColor">@color/knob_bevel_light</item>
+        <item name="knobBevelShadowColor">@color/knob_bevel_shadow</item>
+        <item name="knobBorderColor">@color/knob_border_dark</item>
+        <item name="knobIndicatorActiveColor">@color/knob_indicator_active</item>
+        <item name="knobIndicatorShadowColor">@color/knob_indicator_shadow</item>
+        <item name="knobPressedOverlayColor">@color/knob_pressed_overlay</item>
+        <item name="knobIndicatorRedBrightColor">@color/knob_indicator_red_bright</item>
+        <item name="knobIndicatorRedDeepColor">@color/knob_indicator_red_deep</item>
+        <item name="knobIndicatorGreenBrightColor">@color/knob_indicator_green_bright</item>
+        <item name="knobIndicatorGreenDeepColor">@color/knob_indicator_green_deep</item>
+        <item name="knobIndicatorHighlightColor">@color/knob_indicator_highlight</item>
+        <item name="stateToggleOffColor">@color/state_toggle_off_dark</item>
+        <item name="stateToggleRimLightColor">@color/rim_light_color</item>
+        <item name="stateTogglePressedOverlayColor">@color/pressed_overlay_color</item>
+        <item name="stateToggleCountdownTextColor">@color/countdown_text_color</item>
+        <item name="glassCoverCoreCenterColor">@color/glass_cover_core_center</item>
+        <item name="glassCoverCoreEdgeColor">@color/glass_cover_core_edge</item>
+        <item name="glassCoverHaloColor">@color/glass_cover_halo</item>
+    </style>
+
+    <style name="Widget.OpenFlip.Dialog.Title" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="Widget.OpenFlip.RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>

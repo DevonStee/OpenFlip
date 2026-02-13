@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Night overrides for switch off state -->
+    <color name="switch_track_off">#333333</color> <!-- matches button_background_settings_dark -->
+    <color name="switch_thumb_off">#323230</color> <!-- matches control_default_dark -->
+</resources>

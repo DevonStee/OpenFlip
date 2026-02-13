@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="radioThemeLight" type="id" />
+    <item name="radioThemeDark" type="id" />
+    
+    <!-- Time Format Radio IDs -->
+    <item name="radio12H" type="id" />
+    <item name="radio24H00" type="id" />
+    <item name="radio24H0" type="id" />
+    
+    <!-- Orientation Radio IDs -->
+    <item name="radioAuto" type="id" />
+    <item name="radioPortrait" type="id" />
+    <item name="radioLandscapeLeft" type="id" />
+    <item name="radioLandscapeRight" type="id" />
+    
+    <!-- Wake Lock Radio IDs -->
+    <item name="radioWakeAlways" type="id" />
+    <item name="radioWakeCharging" type="id" />
+    <item name="radioWakeSystem" type="id" />
+</resources>

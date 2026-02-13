@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- FullscreenFlipClockView Constants -->
+    <integer name="flip_clock_min_scale">20</integer>
+    <integer name="flip_clock_max_scale">110</integer>
+    
+    <integer name="flip_clock_flip_duration_ms">600</integer>
+    <integer name="flip_clock_fall_duration_ms">400</integer>
+    <integer name="flip_clock_bounce_duration_ms">150</integer>
+    
+    <integer name="entrance_delay_ms">200</integer>
+    <integer name="entrance_hour_duration_ms">300</integer>
+    <integer name="entrance_minute_duration_ms">400</integer>
+    <integer name="entrance_minute_start_delay_ms">100</integer>
+
+    <!-- InfiniteKnobView Constants -->
+    <integer name="knob_tick_count">90</integer>
+    <integer name="knob_vibration_threshold_degrees">8</integer>
+    
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background for circle controls (gear, seconds disc, back/close buttons) -->
+    <attr name="settingsControlBackground" format="color" />
+    <!-- Foreground for icons/text inside those controls -->
+    <attr name="settingsControlForeground" format="color" />
+    <!-- Secondary/Explanation text color for settings -->
+    <attr name="settingsExplanationText" format="color" />
+    <!-- Actual background color for theme-aware masking -->
+    <attr name="themeBackgroundColor" format="color" />
+
+    <!-- App Surface Colors -->
+    <attr name="appBackgroundColor" format="color" />
+    <attr name="dreamBackgroundColor" format="color" />
+    <attr name="settingsSurfaceColor" format="color" />
+
+    <!-- Settings Text & Icon Colors -->
+    <attr name="settingsPrimaryTextColor" format="color" />
+    <attr name="settingsSecondaryTextColor" format="color" />
+    <attr name="settingsIconColor" format="color" />
+    <attr name="settingsSectionColor" format="color" />
+
+    <!-- Actions -->
+    <attr name="actionPrimaryColor" format="color" />
+    <attr name="actionOnPrimaryColor" format="color" />
+    <attr name="actionPrimaryRippleColor" format="color" />
+
+    <!-- Settings Control States -->
+    <attr name="settingsControlDefaultColor" format="color" />
+    <attr name="settingsControlSelectedColor" format="color" />
+    <attr name="settingsControlPressedColor" format="color" />
+
+    <!-- Light Toggle -->
+    <attr name="lightBulbRaysColor" format="color" />
+    
+    <!-- Flip Clock Card Colors -->
+    <attr name="cardBackgroundColor" format="color|reference" />
+    <attr name="cardTextColor" format="color|reference" />
+    <attr name="cardShadowColor" format="color|reference" />
+    <attr name="cardShadowEdgeColor" format="color|reference" />
+    <attr name="cardRimHighlightColor" format="color|reference" />
+    <attr name="cardCutHighlightColor" format="color|reference" />
+    <attr name="cardCutShadowColor" format="color|reference" />
+    <attr name="cardNoiseColor" format="color|reference" />
+    
+    <!-- Knob Colors -->
+    <attr name="knobGlowColor" format="color|reference" />
+    <attr name="knob_indicatorColor" format="color|reference" />
+    <attr name="knobTickColor" format="color|reference" />
+    <attr name="knobTickActiveColor" format="color|reference" />
+    <attr name="knobTickHighlightColor" format="color|reference" />
+    <attr name="knobBaseColor" format="color|reference" />
+    <attr name="knobShadowColor" format="color|reference" />
+    <attr name="knobBevelLightColor" format="color|reference" />
+    <attr name="knobBevelShadowColor" format="color|reference" />
+    <attr name="knobBorderColor" format="color|reference" />
+    <attr name="knobIndicatorActiveColor" format="color|reference" />
+    <attr name="knobIndicatorShadowColor" format="color|reference" />
+    <attr name="knobPressedOverlayColor" format="color|reference" />
+    <attr name="knobIndicatorRedBrightColor" format="color|reference" />
+    <attr name="knobIndicatorRedDeepColor" format="color|reference" />
+    <attr name="knobIndicatorGreenBrightColor" format="color|reference" />
+    <attr name="knobIndicatorGreenDeepColor" format="color|reference" />
+    <attr name="knobIndicatorHighlightColor" format="color|reference" />
+    
+    <!-- Timer Colors -->
+    <attr name="timerTrackColor" format="color|reference" />
+    <attr name="timerProgressColor" format="color|reference" />
+
+    <!-- State Toggle / Glass Cover -->
+    <attr name="stateToggleOffColor" format="color|reference" />
+    <attr name="stateToggleRimLightColor" format="color|reference" />
+    <attr name="stateTogglePressedOverlayColor" format="color|reference" />
+    <attr name="stateToggleCountdownTextColor" format="color|reference" />
+    <attr name="glassCoverCoreCenterColor" format="color|reference" />
+    <attr name="glassCoverCoreEdgeColor" format="color|reference" />
+    <attr name="glassCoverHaloColor" format="color|reference" />
+    
+    <!-- Custom Typography Attributes -->
+    <attr name="textAppearanceLabelMicro" format="reference" />
+    <attr name="openFlipUiFontFamily" format="reference|string" />
+    <attr name="openFlipClockFontFamily" format="reference|string" />
+    
+    <!-- Settings Components Attributes (removed: unused SettingsItem styleable) -->
+</resources>

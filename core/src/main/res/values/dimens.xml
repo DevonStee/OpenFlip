@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Clock Layout Ratios (as fractions/floats in code, but some can be dimens) -->
+    
+
+    
+    <!-- Shapes -->
+    <dimen name="settingsButtonSize">64dp</dimen>
+    <dimen name="settingsIconSize">32dp</dimen>
+    <dimen name="control_inner_size">56.5dp</dimen>
+    
+    <!-- Settings Layout -->
+    <dimen name="settingsItemHeight">64dp</dimen>
+    <dimen name="settingsItemPaddingHorz">16dp</dimen>
+    <dimen name="settingsItemIconSize">32dp</dimen>
+    <dimen name="settingsSectionPaddingVert">16dp</dimen>
+    <dimen name="settingsElementMarginEnd">16dp</dimen>
+    <dimen name="settingsHeaderHeight">64dp</dimen>
+    <dimen name="settingsHeaderMargin">0dp</dimen>
+    <dimen name="settingsActionButtonSize">56dp</dimen>
+    <dimen name="dialogCloseButtonSize">32dp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="spacingSmall">8dp</dimen>
+    <dimen name="spacingMlarge">20dp</dimen>
+    
+    <!-- Protection -->
+    <dimen name="oledShiftRange">4dp</dimen>
+
+    <!-- UI Shapes -->
+    <dimen name="capsuleCornerRadius">100dp</dimen>
+    <!-- Infinite Knob View -->
+    <dimen name="knob_shadow_offset_y">2dp</dimen>
+    <dimen name="knob_shadow_radius">3.5dp</dimen>
+    <dimen name="knob_padding">3.75dp</dimen>
+    <dimen name="knob_bevel_stroke">1dp</dimen>
+    <dimen name="knob_tick_stroke">1dp</dimen>
+    <dimen name="knob_indicator_stroke">2.5dp</dimen>
+    
+    <!-- Status Indicator Dot -->
+    <dimen name="status_dot_size">3.75dp</dimen>
+</resources>

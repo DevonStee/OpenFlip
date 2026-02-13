@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Material3 Typography Root -->
+    
+    <!-- Headline Medium: Dialog Titles (22sp) -->
+    <style name="TextAppearance.OpenFlip.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.15</item>
+    </style>
+
+    <!-- Headline Small: Settings Sheet Title (20sp) -->
+    <style name="TextAppearance.OpenFlip.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <!-- Title Large: About/Information Headline (18sp) -->
+    <style name="TextAppearance.OpenFlip.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Body Large: Numerical Options / Values (16sp) -->
+    <style name="TextAppearance.OpenFlip.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Title Medium: Settings Row Labels (14sp) -->
+    <style name="TextAppearance.OpenFlip.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Body Medium: Explanation / Description (12sp) -->
+    <style name="TextAppearance.OpenFlip.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Label Medium: Secondary Info / Secondary Labels (11sp) -->
+    <style name="TextAppearance.OpenFlip.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Label Small: Captions / Small Secondary (10sp) -->
+    <style name="TextAppearance.OpenFlip.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Body Small: Micro Hints / Extra Small Info (9sp) -->
+    <style name="TextAppearance.OpenFlip.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">?attr/settingsExplanationText</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Label Extra Small: Bottom Navigation Labels (7sp) -->
+    <style name="TextAppearance.OpenFlip.LabelMicro" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">7sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:fontFamily">?attr/openFlipUiFontFamily</item>
+
+    </style>
+
+    <!-- Clock/Display Font Variants -->
+    <style name="TextAppearance.OpenFlip.TitleMedium.Clock" parent="TextAppearance.OpenFlip.TitleMedium">
+        <item name="android:fontFamily">?attr/openFlipClockFontFamily</item>
+    </style>
+
+    <style name="TextAppearance.OpenFlip.ClockDigits" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">?attr/openFlipClockFontFamily</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="app_background_dark">#FF000000</color>
+    <color name="card_background_dark">#FF1F1F1F</color>
+    <color name="card_text_dark">#FFE6E6E6</color>
+    <color name="settings_background_dark">#FF1C1C1C</color>
+    <color name="settings_text_primary_dark">#FFE6E6E6</color>
+    <color name="settings_text_secondary_dark">#FF9B9B9B</color>
+    <color name="settings_section_dark">#FFD0D0D0</color>
+    <color name="settings_icon_dark">#FFB8B8B8</color>
+
+    <!-- Light Theme Colors -->
+    <color name="card_background_light">#FFE8E8E0</color>
+    <color name="card_text_light">#FF1A1A1A</color>
+    <color name="settings_background_light">#FFF5F5F0</color>
+    <color name="settings_text_primary_light">#FF505050</color>
+    <color name="settings_text_secondary_light">#FF676968</color>
+    <color name="settings_section_light">#FF505050</color>
+    <color name="settings_icon_light">#FF505050</color>
+    
+    <!-- Card Lighting & Texture: Dark Mode -->
+    <color name="card_highlight_top_dark">#373737</color>
+    <color name="card_shadow_cut_dark">#38000000</color>
+    <color name="card_noise_dark">#15FFFFFF</color>
+    <color name="card_highlight_cut_rim_light">#18FFFFFF</color>
+
+    <!-- Card Lighting & Texture: Light Mode (Inverted) -->
+    <color name="card_highlight_top_light">#CCCDC9</color>
+    <color name="card_highlight_cut_light">#18000000</color>  <!-- Dark seam line for light theme (inverted from dark theme) -->
+    <color name="card_shadow_cut_light">#D4D5D0</color>
+    <color name="card_noise_light">#10000000</color>
+
+    <!-- Shadow Colors -->
+    <color name="shadow_light">#AAAAAA</color>
+    <color name="card_shadow_fill_dark">#FF000000</color>
+    <color name="card_shadow_fill_light">#FF888888</color>
+
+    <!-- Interactive Elements (Settings Button Background) -->
+    <color name="button_background_interactive_dark">#0DFFFFFF</color>
+    <color name="ripple_color_white">#26FFFFFF</color> <!-- 15% White for visible ripple on dark -->
+    <color name="ripple_color_black">#1A000000</color> <!-- 10% Black for visible ripple on light -->
+
+    <!-- Settings Button Refinement -->
+    <color name="button_background_settings_dark">#FF333333</color>
+    <color name="button_background_settings_light">#E8E7DE</color>
+
+    <!-- Controls (Radio Buttons) -->
+    <color name="control_default_dark">#323230</color>
+    <color name="control_default_light">#D8D8D0</color>
+    <color name="control_selected_dark">#5A5A57</color>
+    <color name="control_selected_light">#A0A098</color>
+    <color name="control_pressed_dark">#4A4A47</color>
+    <color name="control_pressed_light">#C0C0B8</color>
+
+    <!-- Switch Colors -->
+    <color name="braun_green">#FF2E6A42</color>
+    <color name="switch_track_on">@color/braun_green</color>
+    <color name="switch_thumb_on">@color/white</color>
+    <color name="switch_track_off">#E8E7DE</color> <!-- matches button_background_settings_light -->
+    <color name="switch_thumb_off">#D8D8D0</color> <!-- matches control_default_light -->
+
+    <!-- Overlay / Main Activity -->
+    <color name="overlay_text_color">#FFFFFFFF</color>
+
+    <!-- Action Colors -->
+    <color name="action_red">#FFFF3B30</color>
+    <color name="on_action_red">#FFFFFFFF</color>
+
+
+     <!-- Shortcut Adaptive Icon Backgrounds -->
+     <color name="shortcut_background_dark">#000000</color>
+     <color name="shortcut_background_light">#000000</color>
+     <color name="shortcut_background_settings">#000000</color>
+
+     <!-- Base Button Colors for Custom Views -->
+     <color name="color_knob_base_light">#B8B8B8</color>
+     <color name="color_knob_base_dark">#383838</color>
+
+
+
+    <!-- Glass Cover Button -->
+    <!-- Light Bulb Rays Tint -->
+    <color name="light_bulb_rays_light">#676766</color>
+    <color name="light_bulb_rays_dark">#A4A4A4</color>
+
+    <color name="glass_cover_halo">#99FFCC00</color>
+
+    <color name="glass_cover_core_center">#FFFFFF</color>
+    <color name="glass_cover_core_edge">#FFE4B5</color>
+
+    <!-- Knob View Details -->
+    <color name="knob_tick_normal">#666666</color>
+    <color name="knob_tick_light">#999999</color>
+    <color name="knob_tick_active">#555555</color>
+    <color name="knob_tick_active_light">#808080</color>
+    <color name="knob_tick_highlight">#00000000</color>
+
+    <color name="knob_indicator_normal">#EA4C10</color>
+    <color name="knob_indicator_active">#FF32CD32</color>
+
+    <color name="knob_shadow_light">#40000000</color>
+    <color name="knob_shadow_dark">#20000000</color>
+
+    <color name="knob_bevel_light">#60FFFFFF</color>
+    <color name="knob_bevel_shadow">#20000000</color>
+    <color name="knob_border_dark">#555555</color>
+
+    <color name="knob_glow_light">#80FFFFFF</color> <!-- Placeholder for attribute mapping -->
+    <color name="knob_glow_dark">#20FFFFFF</color>
+
+    <color name="knob_indicator_light">@color/knob_indicator_normal</color>
+    <color name="knob_indicator_dark">@color/knob_indicator_normal</color>
+
+    <!-- Timer Colors -->
+    <color name="timer_track_light">#20000000</color>
+    <color name="timer_track_dark">#20FFFFFF</color>
+    <color name="timer_progress_light">#FFFF3B30</color>
+
+
+
+    <!-- [Added] Knob Indicator Shader Colors -->
+    <color name="knob_indicator_shadow">#33000000</color>
+    <color name="knob_pressed_overlay">#18000000</color>
+    <color name="knob_indicator_red_bright">#FF1744</color>
+    <color name="knob_indicator_red_deep">#D32F2F</color>
+    <color name="knob_indicator_green_bright">#1AFF91</color>
+    <color name="knob_indicator_green_deep">#4ABA4E</color>
+    <color name="knob_indicator_highlight">#80FFFFFF</color>
+
+    <!-- [Added] StateToggleGlowView Colors -->
+    <color name="rim_light_color">#80FFFFFF</color>
+    <color name="pressed_overlay_color">#10000000</color>
+    <color name="countdown_text_color">#FFCC00</color>
+    <color name="state_toggle_off_dark">#3C3C3C</color>
+    <color name="state_toggle_off_light">#F8F8F8</color>
+
+    <!-- Widget Colors -->
+    <color name="widget_text_color">#F8F8F8</color>
+    <color name="widget_background_dark_gray">#1A1A1A</color>
+
+    <!-- White Widget Colors -->
+    <color name="widget_white_text">#333333</color>
+    <color name="widget_white_divider">#D0D0D0</color>
+
+    <!-- Glass Widget Colors -->
+    <color name="widget_glass_text_color">#99FFFFFF</color>
+
+    <!-- Widget Common Colors -->
+    <color name="widget_text_secondary">#F2FFFFFF</color>
+</resources>

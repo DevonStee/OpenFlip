@@ -1,0 +1,197 @@
+<resources>
+    <string name="app_name">OpenFlip</string>
+    
+    <!-- Time Formatting -->
+    <string name="format12H">h</string>
+    <string name="format24HZero">HH</string>
+    <string name="format24HNoZero">H</string>
+    <string name="formatAmPm">a</string>
+    
+    <!-- Display Values -->
+    
+    <!-- Settings Titles -->
+    <string name="titleSettings">Settings</string>
+    <string name="titleTimeFormat">Time Format</string>
+    <string name="titleScreenOrientation">Orientation</string>
+    <string name="titleVersion">Version</string>
+    <string name="titleAbout">About</string>
+    <string name="titleKeepScreenOn">Keep Screen On</string>
+    <string name="titleShowSeconds">Show Seconds</string>
+    <string name="titleShowFlaps">Show Flaps</string>
+    <string name="titleSwipeToDim">Vertical Swipe to Dim</string>
+    <string name="titleLightMode">Light Mode</string>
+    <string name="titlePinchToReduce">Pinch to Scale</string>
+    <string name="settings_15s_timed_bulb_off">Auto-Off Bulb</string>
+    <string name="titleOledProtection">OLED Screen Protection</string>
+    <string name="titleThemeToggle">Toggle theme</string>
+    
+    <!-- Settings Sections -->
+    <string name="labelQuitApp">Close Application</string>
+    <string name="sectionTimeDisplay">TIME DISPLAY</string>
+    <string name="sectionAppearance">APPEARANCE</string>
+    <string name="sectionScreenWake">SCREEN WAKE</string>
+    <string name="sectionFeedback">INTERACTION FEEDBACK</string>
+    <string name="sectionInformation">INFORMATION</string>
+    
+    <!-- Settings Options -->
+    <string name="option12HAmpm">1–12 AM/PM</string>
+    <string name="option0023">00–23</string>
+    <string name="option023">0–23</string>
+    <string name="optionAutomatic">Automatic</string>
+    <string name="optionPortrait">Portrait</string>
+    <string name="optionLandscapeLeft">Landscape Left</string>
+    <string name="optionLandscapeRight">Landscape Right</string>
+    <string name="optionAlways">Always</string>
+    <string name="optionWhileCharging">While Charging</string>
+    <string name="optionSystemDefault">System Default</string>
+    <string name="optionSleep15Min">15 Minutes</string>
+    <string name="optionSleep30Min">30 Minutes</string>
+    <string name="optionSleep1Hour">1 Hour</string>
+    <string name="optionSleep2Hours">2 Hours</string>
+    <string name="optionSleep3Hours">3 Hours</string>
+    <string name="optionSleepCustom">Custom</string>
+    <string name="actionStopTimer">Stop Timer</string>
+    <string name="actionStartTimer">Start</string>
+    <string name="titleSelectDuration">SELECT MINUTES</string>
+    <string name="descriptionSleepTimerHint">The app will close automatically when the timer ends. Your screen will turn off shortly after based on your system sleep settings.</string>
+    <string name="hintCustomDurationAction">SELECT MINUTES</string>
+    <string name="actionCancel">Cancel</string>
+    <string name="actionOK">OK</string>
+
+    
+    <string name="descriptionShowSeconds">The seconds display replaces the icon of the settings button.</string>
+    <string name="descriptionOledProtection">Pixel shifting protects OLED displays. Disabled by default due to subtle image shifting.</string>
+    
+    <string name="labelResetApp">Reset App</string>
+    <string name="labelOriginalAppIos">A Tribute To</string>
+    <string name="labelContactMe">Contact Me</string>
+    <string name="labelVersionValue">v0.6.0-beta</string>
+    <string name="descriptionAutomaticOrientation">“Automatic” follows the Portrait Orientation Lock setting in Quick Settings.</string>
+    <string name="descriptionInspiredBy">This is an Android flipclock app inspired by Yuji Adachi’s work on iOS. But it\'s NOT the official Fliqlo app. I make it for my daily use and for fun. Anyone can use it for free only on Android platform.</string>
+    
+<string name="titleV057">v0.5.7-beta Complete UI Redesign &amp; Jetpack Compose Migration</string>
+<string name="descriptionV057">[New] Complete UI redesign with modern Material Design 3 principles, bringing a more refined Braun-inspired aesthetic throughout the app.\n\n[New] Full Jetpack Compose implementation for settings interface, replacing legacy XML layouts with modern declarative UI components.\n\n[New] Redesigned settings button entry points with Compose-based components for consistent visual language.\n\n[Improved] Enhanced clock interface with more realistic and skeuomorphic glass window effect for seconds display.\n\n[Improved] Refined typography system with updated font designs and optimized text rendering effects.\n\n[Improved] Comprehensive UI refresh across all settings pages, maintaining visual consistency and improved usability.</string>
+
+<!-- v0.6.0 -->
+<string name="titleV060">v0.6.0-beta Battery Optimization &amp; UI Polish</string>
+<string name="descriptionV060_details">[New] Added lifecycle-aware animation pause/resume for significant battery savings during idle state.\n\n\n[New] Smart background handling: All flip animations, light effects, and knob inertial scrolling automatically stop when app is backgrounded.\n\n\n[Improved] Settings menu now properly handles orientation changes without UI clipping issues.\n\n\n[Improved] Feedback section renamed to "Interaction Feedback" with clearer labels (Tactile Haptics, Mechanical Sound).\n\n\n[Improved] Custom switch colors: Light Mode uses Braun off-white, Auto-Off Bulb and OLED Protection use Braun green when enabled.\n\n\n[Refactor] Renamed BraunGreen to ToggleFeatureEnabledGreen for better semantic naming.\n\n\n[Fixed] Settings bottom sheet layout now recalculates correctly on device rotation.\n\n\n[Fixed] Various lifecycle cleanup improvements to prevent memory leaks.</string>
+
+<!-- v0.5.8 -->
+<string name="titleV058">v0.5.8-beta Glass Effects &amp; Refactor</string>
+<string name="descriptionV058_details">[New] Exposed glassy Compose APIs (Modifier.glassyBackdrop, GlassySurface) so theme code can reuse consistent blur/colorization behaviors.\n\n\n[Improved] Toned down the seconds glass magnification defaults and consolidated parameters into GlassParams for theme-aware configuration (light/dark variants).\n\n\n[Improved] Centralized typography usage via FontProvider: UI and view rendering now share the same Typeface sources to prevent mismatched metrics.\n\n\n[Refactor] Reworked Compose settings/button modules to use reusable components (SettingsButtons.kt) and moved glass UI logic into ui/effect and ui/compose packages for clearer separation.\n\n\n[Fixed] Resolved an Activity context retention leak in haptic initialization by using applicationContext when obtaining the Vibrator (prevents ViewModel -> Vibrator -> Activity leaks).\n\n\n[Fixed] Normalized switch styling to a neutral monochrome scheme while preserving legacy Reset/Quit action colors to avoid accidental style regressions.\n\n\n[Notes] Some glass effects rely on platform RenderEffect APIs; fallbacks are applied on older OS versions. Verify visually on devices with API S+ and on Tiramisu if available.</string>
+
+    <string name="titleV055">v0.5.5-beta Animation &amp; Sensitivity Tuning</string>
+    <string name="descriptionV055">[New] Expanded Control Panel: Added dedicated buttons for Theme Toggle, Light Effect, and Manual Time Adjustment.\n\n[New] Implemented GestureRouter and SystemIntegrationController for robust touch and window management.\n\n[New] Refactored InfiniteKnobView with 2.0x sensitivity and cleaner interaction logic.\n\n[New] Engineered decoupled LightToggleController and ThemeToggleController for granular state management.\n\n[Improved] Enhanced Wake Lock logic with granular control (Always/Charging/System).\n\n[Improved] Refined gear animations (1.8s curve) and removed redundant rotations.\n\n[Improved] Optimized UIStateController to remove Activity dependencies.\n\n[Fixed] Resolved hardware layer leakage in animation extensions.</string>
+
+    <string name="titleV05">v0.5.0 Project Rebranding and Code Optimization</string>
+    <string name="descriptionV15">[Improved] Standardized widget naming and resource structures (OpenFlipWidgetX).\n\n[Improved] Optimized SoundManager by replacing getIdentifier with direct R.raw references.\n\n[Improved] Streamlined codebase by removing obsolete pre-API 26 version checks.\n\n[Improved] Updated core dependencies to latest stable versions for enhanced reliability.\n\n[Fixed] Corrected invalid backup domain in extraction rules to ensure data safety.</string>
+    
+    <string name="titleV04">v0.4.0 Code Quality and Reliability</string>
+    <string name="descriptionV11">[Improved] Extracted 12 magic numbers to named constants for maintainability.\n\n[Improved] Renamed abbreviated variables to descriptive names (hourOffsetX, cardWidth, etc.).\n\n[Improved] Enabled immediate effect for OLED toggle changes.\n\n[Improved] Decoupled SettingsBottomSheet via SettingsProvider and OledProtectionController interfaces.\n\n[Improved] Implemented ID-based classification for theme coloring.\n\n[Fixed] Applied Locale.US to Latin-only font to prevent non-Latin digit rendering issues.\n\n[Fixed] Removed 4 unused imports and dead code (highlightPaint, PowerManager, etc.).\n\n[Fixed] Corrected \'Glass widget\' documentation comment (was incorrectly labeled \'Solid\').\n\n[Fixed] Eliminated MainActivity hard cast, enabling SettingsBottomSheet compatibility with any host activity.</string>
+    
+    <string name="titleV031">v0.3.1 Stability and Code Cleanup</string>
+    <string name="descriptionV101">[Fixed] Eliminated double listener triggering in settings switches.\n\n[Fixed] Corrected isScaleEnabled default value mismatch.\n\n[Fixed] Added lifecycle-safe entrance animation cleanup.\n\n[Improved] Removed unused resetSettings() dead code.\n\n[Improved] Enhanced animation memory safety on view detach.</string>
+    
+    <string name="titleV030">v0.3.0 Widget and Visual Refinement</string>
+    <string name="descriptionV10">[New] Implemented home screen widget with TextClock-based live updates.\n\n[New] Added 3D beveled border effect with metallic gradient highlights.\n\n[Improved] Refined settings ripple effects (removed particle/sparkle artifacts).\n\n[Improved] Switched widget to system default font for better compatibility.\n\n[Improved] Optimized project structure (removed 12 unused drawable resources).\n\n[Fixed] Eliminated black-to-white selection color issues in dark theme.</string>
+    
+    <string name="titleV022">v0.2.2 Sound Feedback and Icon Polish</string>
+    <string name="descriptionV08">[New] Added optional Sound Feedback toggle for flip animations.\n\n[New] Converted PNG icons to scalable vector drawables.\n\n[Improved] Reorganized Feedback section (Haptic + Sound).\n\n[Improved] Enhanced icon consistency across settings.</string>
+    
+    <string name="titleV021">v0.2.1 Gesture and Visibility Polish</string>
+    <string name="descriptionV07">[New] Refined settings button visibility (Seconds permanent, Gear on-tap).\n\n[Improved] Implemented gear icon self-rotation animation.\n\n[Improved] Synced 3D flip for seconds disc and background in tandem.\n\n[Improved] Enabled global drag-to-dismiss from top handle on all settings pages.\n\n[Fixed] Corrected settings button content strictly bound to \'Show Seconds\' toggle.</string>
+    
+    <string name="titleV020">v0.2.0 Interaction Standardization</string>
+    <string name="descriptionV06">[New] Standardized all interactive rows to uniform 56dp capsule height.\n\n[Improved] Adjusted explanation text indentation for a flush visual rhythm.\n\n[Improved] Implemented theme-aware zero-particle capsule overlays.\n\n[Improved] Enhanced full-row click logic for all toggle-based settings.</string>
+    
+    <string name="titleV013">v0.1.3 Visual Purity and Alignment</string>
+    <string name="descriptionV05">[New] Redesigned About page with high-quality colorful 3D mascot.\n\n[Improved] Switched to string-level ink boundary measurement for absolute centering.\n\n[Improved] Accelerated UI transitions to 200ms for a snappier experience.\n\n[Fixed] Corrected vertical bias to achieve perfect digit centering.\n\n[Fixed] Eliminated edge artifacts and \'white lines\' in Dark Mode.\n\n[Fixed] Resolved automatic screen rotation failures.</string>
+    
+    <string name="titleV012">v0.1.2 UI Polish and Defaults</string>
+    <string name="descriptionV04">[New] Added clickable app icon attribution.\n\n[Improved] Standardized icon styling across Settings.\n\n[Improved] Refined default configuration (12h format, System Default wake).\n\n[Fixed] Resolved touch event conflicts in settings sub-pages.\n\n[Fixed] Corrected Light Mode color resource resolution.</string>
+    
+    <string name="titleV011">v0.1.1 Performance and Power</string>
+    <string name="descriptionV03">[New] Implemented granular Wake Lock control (Always/Charging/System).\n\n[Improved] Optimized onDraw to minimize object allocation and reduce GC pauses.\n\n[Improved] Refactored hardcoded colors into semantic colors.xml resources.</string>
+    
+    <string name="titleV010">v0.1.0 Initial Release</string>
+    <string name="descriptionV02">[New] Implemented smooth in-place rotation transitions.\n\n[Fixed] Aligned AM/PM indicator to digit Cap Height.\n\n[Fixed] Centered digits using absolute pixel bounds.</string>
+    
+
+    <!-- Email / Contact -->
+    <string name="emailSubjectBug">Bug Report</string>
+    <string name="emailBodyDeviceInformation">Device Information:</string>
+    <string name="emailBodyTime">Time:</string>
+    <string name="emailBodyTimezone">Timezone:</string>
+    <string name="emailBodyDevice">Device:</string>
+    <string name="emailBodyAndroid">Android:</string>
+    <string name="emailBodyBugDescription">Bug Description:</string>
+    <string name="emailBodyPlaceholder">(Please describe the issue here)</string>
+    <string name="errorNoScreensaverSettings">Unable to open screensaver settings on this device</string>
+    <string name="support_email">yanjiaqiid@outlook.com</string>
+    <string name="optionSleepNotSet">Off</string>
+    
+    <!-- Widget Descriptions -->
+    <string name="widgetSplitName">OpenFlip Split Widget</string>
+    <string name="widgetSplitDescription">Split-card with transparent gap</string>
+    <string name="widgetClassicDescription">Classic single-card design</string>
+    <string name="widgetClassicName">OpenFlip Classic Widget</string>
+    <string name="widgetGlassName">OpenFlip Glass Widget</string>
+    <string name="widgetGlassDescription">Split-card with translucent glass effect</string>
+    <string name="widgetSolidName">OpenFlip Solid Widget</string>
+    <string name="widgetSolidDescription">Split-card with solid gray gap</string>
+
+    <!-- White Widget -->
+    <string name="widgetWhiteName">OpenFlip White Widget</string>
+    <string name="widgetWhiteDescription">Flip clock with white glass aesthetic.</string>
+    
+    <!-- Feedback Section -->
+    <string name="labelHapticFeedback">Tactile Haptics</string>
+    <string name="labelSoundFeedback">Mechanical Sound</string>
+    <string name="labelHourlyChime">Hourly Chime</string>
+    <string name="control_label_light">light</string>
+    <string name="control_label_tuning">tuning</string>
+    <string name="control_label_invert">invert</string>
+    <string name="control_label_options">options</string>
+    <string name="hourly_chime_permission_title">Exact alarm permission required</string>
+    <string name="hourly_chime_permission_message">Hourly Chime needs the exact alarm permission to ring on time in the background. Please enable it in system settings.</string>
+    <string name="errorHourlyChimeToggleFailed">Unable to update hourly chime setting.</string>
+    <string name="action_go_settings">Go to Settings</string>
+    <string name="action_permission_cancel">Cancel</string>
+    <string name="title_test_chime">Test Chime</string>
+    <string name="errorSleepTimerInvalidDuration">Sleep timer duration must be between 1 and 300 minutes.</string>
+    <string name="errorSleepTimerStartFailed">Unable to start sleep timer.</string>
+
+    <!-- Accessibility -->
+    <string name="accessibilityBack">Back</string>
+    <string name="accessibilityClose">Close</string>
+    <string name="accessibility_current_time_template">Current time %1$s</string>
+
+    <string name="actionBuyMeACoffeeShort">Buy me a coffee</string>
+
+    <!-- About Section Content -->
+    <string name="aboutAndroidRobotCredit">* The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.</string>
+    <string name="aboutTributeTitle">This is a tribute project and is NOT the official Fliqlo app. Thanks for the beautiful design.</string>
+    <string name="titleAcknowledgements">Acknowledgements</string>
+    <string name="titleOpenSource">Open Source Libraries</string>
+    <string name="aboutIconSoundCredits"><b>App Icon</b>\nthiings.co\n\n<b>Sound Effect</b>\nPixabay (Pixabay Content License)</string>
+    <string name="aboutOpenSourceCredits"><b>Cloudy</b>\ncom.github.skydoves:cloudy\nApache License 2.0\n\n<b>LeakCanary</b>\ncom.squareup.leakcanary:leakcanary-android\nApache License 2.0\n\n<b>AndroidX / Material Design</b>\nApache License 2.0</string>
+    <string name="aboutDeveloperSupport">If you find this app useful, please consider supporting me below.</string>
+    <string name="aboutV057Update">In this update, I rebuilt the settings menu using Jetpack Compose to make it more reliable and consistent. I also refreshed the visual design with a cleaner lookup and refined the clock animations to be smoother learning from previous versions.</string>
+    <string name="aboutEnjoySilence">Enjoy the silence.</string>
+    <string name="aboutEvolutionStory">Since the first release, I\'ve added a few features like widgets and a sleep timer because I found them useful for my own daily use.\n\nI also took the opportunity to update the code to better match modern Android standards. I tried to improve the animations and the settings interface to make the app feel a bit smoother. It has been a continuous learning process for me.\n\nMy goal has always been to keep the app simple and focused, even as I added these new capabilities. I hope the balance feels right.</string>
+    <string name="aboutMainStory">I created this app simply because I wanted a clean and focused flip clock for myself.\n\nThere are many clock apps available, but I often found them too complex or cluttered for my taste. This project started as a personal attempt to recreate the classic flip clock aesthetic I\'ve always admired, purely for the joy of it.\n\nI tried to stay faithful to the details of the original design, paying attention to things like the digit alignment and the feel of the flip animation. I kept the features minimal on purpose, focusing just on displaying time clearly and quietly.\n\nThis is my first Android app, and it has been a huge learning experience. I relied heavily on documentation, open-source examples, and AI tools to figure things out. I\'m grateful to proper attribution and the community for all the resources that made this possible.\n\nI hope you find it useful for your own desk or nightstand.</string>
+     <string name="urlFliqloIos">https://fliqlo.com/</string>
+    <!-- App Shortcuts -->
+    <string name="shortcut_dark_theme">Dark Theme</string>
+    <string name="shortcut_dark_theme_long">Open with Dark Theme</string>
+    <string name="shortcut_light_theme">Light Theme</string>
+    <string name="shortcut_light_theme_long">Open with Light Theme</string>
+    <string name="shortcut_settings">Settings</string>
+    <string name="shortcut_settings_long">Open Settings Menu</string>
+
+    <!-- Dream/Screensaver -->
+    <string name="dream_name">OpenFlip</string>
+    <string name="labelScreensaverMode">Screensaver Mode</string>
+    <string name="titleSleepTimer">Sleep Timer</string>
+    <string name="descriptionScreensaverMode">Takes you to the system screensaver settings provided by the operating system. This option may not be available on some customized Android ROM.</string>
+</resources>
