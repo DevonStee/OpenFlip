@@ -4,6 +4,11 @@
 [![Android Release](https://img.shields.io/github/actions/workflow/status/DevonStee/OpenFlip/release.yml?style=for-the-badge&logo=github&label=Release)](https://github.com/DevonStee/OpenFlip/actions/workflows/release.yml)
 [![Download APK](https://img.shields.io/badge/Download-Latest_APK-green?style=for-the-badge&logo=android)](https://github.com/DevonStee/OpenFlip/releases/latest/download/app-release.apk)
 
+[![Latest Release](https://img.shields.io/github/v/release/DevonStee/OpenFlip?style=flat-square&label=Latest)](https://github.com/DevonStee/OpenFlip/releases/latest)
+[![API](https://img.shields.io/badge/API-26%2B-brightgreen?style=flat-square&logo=android)](https://developer.android.com/about/versions/oreo)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 [中文文档 (Simplified Chinese)](README.zh-CN.md)
 
 OpenFlip is a Braun-inspired flip clock for Android, focusing on mechanical animation fidelity, visual precision, and maintainable architecture.

@@ -4,6 +4,11 @@
 [![Android Release](https://img.shields.io/github/actions/workflow/status/DevonStee/OpenFlip/release.yml?style=for-the-badge&logo=github&label=Release)](https://github.com/DevonStee/OpenFlip/actions/workflows/release.yml)
 [![下载 APK](https://img.shields.io/badge/下载-最新_APK-green?style=for-the-badge&logo=android)](https://github.com/DevonStee/OpenFlip/releases/latest/download/app-release.apk)
 
+[![Latest Release](https://img.shields.io/github/v/release/DevonStee/OpenFlip?style=flat-square&label=Latest)](https://github.com/DevonStee/OpenFlip/releases/latest)
+[![API](https://img.shields.io/badge/API-26%2B-brightgreen?style=flat-square&logo=android)](https://developer.android.com/about/versions/oreo)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 [English Version](README.md)
 
 OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注于机械翻页质感、视觉精度和可维护架构。
