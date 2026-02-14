@@ -56,7 +56,7 @@ Captured from a real connected Android device via ADB.
 
 <img src="docs/images/openflip-light-on-in-dark-theme.png" width="316" alt="OpenFlip light effect in dark theme">
 
-### Settings Sheet (Compose)
+### Settings Sheet
 
 <img src="docs/images/openflip-settings-sheet.png" width="316" alt="OpenFlip settings sheet">
 

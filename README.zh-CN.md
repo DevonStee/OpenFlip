@@ -56,7 +56,7 @@ OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注�
 
 <img src="docs/images/openflip-light-on-in-dark-theme.png" width="316" alt="OpenFlip 深色主题下的 Light 效果">
 
-### 设置页（Compose）
+### Settings Sheet
 
 <img src="docs/images/openflip-settings-sheet.png" width="316" alt="OpenFlip 设置页">
 
