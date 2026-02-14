@@ -47,6 +47,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -59,6 +60,7 @@ import com.bokehforu.openflip.feature.settings.ui.compose.AboutPage
 import com.bokehforu.openflip.feature.settings.ui.compose.VersionPage
 import com.bokehforu.openflip.feature.settings.viewmodel.SettingsViewModel
 import com.bokehforu.openflip.core.settings.SettingsSleepTimerState
+import com.bokehforu.openflip.core.ui.TestTags
 
 private enum class SettingsPage {
     MAIN,
@@ -128,6 +130,7 @@ fun SettingsComposeSheet(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(sheetHeight)
+                .testTag(TestTags.SETTINGS_SHEET)
         ) {
             SettingsSheetHeader(
                 page = page,
@@ -502,7 +505,8 @@ private fun SettingsSheetHeader(
                 SheetHeaderIconButton(
                     iconRes = R.drawable.icon_navigation_back_24dp,
                     contentDescription = stringResource(R.string.titleSettings),
-                    onClick = onBack
+                    onClick = onBack,
+                    testTag = TestTags.SETTINGS_HEADER_BACK
                 )
             }
         }
@@ -516,7 +520,8 @@ private fun SettingsSheetHeader(
             SheetHeaderIconButton(
                 iconRes = R.drawable.icon_navigation_close_24dp,
                 contentDescription = stringResource(R.string.titleSettings),
-                onClick = onClose
+                onClick = onClose,
+                testTag = TestTags.SETTINGS_HEADER_CLOSE
             )
         }
     }
@@ -527,9 +532,11 @@ private fun SheetHeaderIconButton(
     iconRes: Int,
     contentDescription: String,
     onClick: () -> Unit,
+    testTag: String? = null,
 ) {
+    val tagModifier = if (testTag != null) Modifier.testTag(testTag) else Modifier
     Surface(
-        modifier = Modifier
+        modifier = tagModifier
 
             .size(56.dp),
         shape = CircleShape,

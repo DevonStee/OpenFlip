@@ -25,6 +25,7 @@ import com.bokehforu.openflip.feature.settings.ui.compose.SettingsDivider
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsNavigationItem
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsSwitchItem
 import com.bokehforu.openflip.feature.settings.ui.theme.DangerRed
+import com.bokehforu.openflip.core.ui.TestTags
 import com.bokehforu.openflip.feature.settings.ui.theme.ToggleFeatureEnabledGreen
 import com.bokehforu.openflip.feature.settings.viewmodel.SettingsViewModel
 import com.bokehforu.openflip.core.settings.SettingsSleepTimerState
@@ -50,7 +51,8 @@ internal fun SettingsScreenWakeSection(
         iconRes = R.drawable.icon_settings_wakelock_24dp,
         title = stringResource(R.string.titleKeepScreenOn),
         valueText = wakeValueLabel,
-        onClick = onNavigateWakeLock
+        onClick = onNavigateWakeLock,
+        testTag = TestTags.NAV_KEEP_SCREEN_ON
     )
     SettingsDivider()
     val oledProtect by settingsViewModel.isOledProtectionEnabled.collectAsState()
@@ -62,7 +64,8 @@ internal fun SettingsScreenWakeSection(
         description = stringResource(R.string.descriptionOledProtection),
         isDarkTheme = isDark,
         checkedTrackColor = ToggleFeatureEnabledGreen,
-        checkedThumbColor = Color.White
+        checkedThumbColor = Color.White,
+        testTag = TestTags.SWITCH_OLED_PROTECTION
     )
 }
 
@@ -75,7 +78,8 @@ internal fun SettingsScreensaverSection(
         title = stringResource(R.string.labelScreensaverMode),
         valueText = null,
         onClick = onOpenScreensaverSettings,
-        description = stringResource(R.string.descriptionScreensaverMode)
+        description = stringResource(R.string.descriptionScreensaverMode),
+        testTag = TestTags.NAV_SCREENSAVER
     )
 }
 
@@ -98,7 +102,8 @@ internal fun SettingsSleepTimerSection(
         title = stringResource(R.string.titleSleepTimer),
         valueText = timerVal,
         onClick = onOpenSleepTimerPage,
-        valueTextColor = if (isTimerActive) DangerRed else null
+        valueTextColor = if (isTimerActive) DangerRed else null,
+        testTag = TestTags.NAV_SLEEP_TIMER
     )
 }
 
@@ -120,7 +125,8 @@ internal fun SettingsFeedbackSection(
         title = stringResource(R.string.labelHapticFeedback),
         checked = haptic,
         onCheckedChange = onToggleHaptic,
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.SWITCH_HAPTIC
     )
     SettingsDivider()
     val sound by settingsViewModel.isSoundEnabled.collectAsState()
@@ -129,7 +135,8 @@ internal fun SettingsFeedbackSection(
         title = stringResource(R.string.labelSoundFeedback),
         checked = sound,
         onCheckedChange = onToggleSound,
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.SWITCH_SOUND
     )
     SettingsDivider()
     val hourlyChime by settingsViewModel.isHourlyChimeEnabled.collectAsState()
@@ -201,7 +208,8 @@ internal fun SettingsFeedbackSection(
                 ).show()
             }
         },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.SWITCH_HOURLY_CHIME
     )
 
     if (hourlyChime) {
@@ -213,7 +221,8 @@ internal fun SettingsFeedbackSection(
             iconHeight = 30.dp,
             iconOffsetY = 1.dp,
             minHeight = 64.dp,
-            onClick = onTestChime
+            onClick = onTestChime,
+            testTag = TestTags.ACTION_TEST_CHIME
         )
     }
 }
@@ -228,7 +237,8 @@ internal fun SettingsResetSection(
         backgroundColor = ToggleFeatureEnabledGreen,
         contentColor = Color.White,
         iconSize = 32.dp,
-        onClick = onReset
+        onClick = onReset,
+        testTag = TestTags.ACTION_RESET
     )
 }
 
@@ -241,7 +251,8 @@ internal fun SettingsQuitSection(
         title = stringResource(R.string.labelQuitApp),
         backgroundColor = DangerRed,
         contentColor = Color.White,
-        onClick = onQuit
+        onClick = onQuit,
+        testTag = TestTags.ACTION_QUIT
     )
 }
 
@@ -256,27 +267,31 @@ internal fun SettingsInformationSection(
         iconRes = R.drawable.icon_settings_information_24dp,
         title = stringResource(R.string.titleVersion),
         valueText = stringResource(R.string.labelVersionValue),
-        onClick = onNavigateVersion
+        onClick = onNavigateVersion,
+        testTag = TestTags.NAV_VERSION
     )
     SettingsDivider()
     SettingsNavigationItem(
         iconRes = R.drawable.icon_settings_about_24dp,
         title = stringResource(R.string.titleAbout),
         valueText = null,
-        onClick = onNavigateAbout
+        onClick = onNavigateAbout,
+        testTag = TestTags.NAV_ABOUT
     )
     SettingsDivider()
     SettingsNavigationItem(
         iconRes = R.drawable.icon_external_website_24dp,
         title = stringResource(R.string.labelOriginalAppIos),
         valueText = null,
-        onClick = onOpenOriginalApp
+        onClick = onOpenOriginalApp,
+        testTag = TestTags.NAV_ORIGINAL_APP
     )
     SettingsDivider()
     SettingsNavigationItem(
         iconRes = R.drawable.icon_external_bug_report_24dp,
         title = stringResource(R.string.labelContactMe),
         valueText = null,
-        onClick = onContact
+        onClick = onContact,
+        testTag = TestTags.NAV_CONTACT
     )
 }

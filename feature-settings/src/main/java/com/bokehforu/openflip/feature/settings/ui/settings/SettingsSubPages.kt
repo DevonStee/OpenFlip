@@ -17,6 +17,7 @@ import com.bokehforu.openflip.feature.settings.ui.compose.SettingsRadioItem
 import com.bokehforu.openflip.feature.settings.ui.theme.DangerRed
 import com.bokehforu.openflip.feature.settings.viewmodel.SettingsViewModel
 import com.bokehforu.openflip.core.settings.SettingsSleepTimerState
+import com.bokehforu.openflip.core.ui.TestTags
 
 @Composable
 internal fun SettingsTimeFormatPage(
@@ -29,21 +30,24 @@ internal fun SettingsTimeFormatPage(
         title = stringResource(R.string.option12HAmpm),
         isSelected = selectedMode == 0,
         onClick = { onSetMode(0) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_12H
     )
     SettingsDivider()
     SettingsRadioItem(
         title = stringResource(R.string.option0023),
         isSelected = selectedMode == 1,
         onClick = { onSetMode(1) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_24H_00
     )
     SettingsDivider()
     SettingsRadioItem(
         title = stringResource(R.string.option023),
         isSelected = selectedMode == 2,
         onClick = { onSetMode(2) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_24H_0
     )
 }
 
@@ -58,28 +62,32 @@ internal fun SettingsOrientationPage(
         title = stringResource(R.string.optionAutomatic),
         isSelected = selectedMode == 0,
         onClick = { onSetMode(0) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_ORIENT_AUTO
     )
     SettingsDivider()
     SettingsRadioItem(
         title = stringResource(R.string.optionPortrait),
         isSelected = selectedMode == 1,
         onClick = { onSetMode(1) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_ORIENT_PORTRAIT
     )
     SettingsDivider()
     SettingsRadioItem(
         title = stringResource(R.string.optionLandscapeLeft),
         isSelected = selectedMode == 2,
         onClick = { onSetMode(2) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_ORIENT_LAND_LEFT
     )
     SettingsDivider()
     SettingsRadioItem(
         title = stringResource(R.string.optionLandscapeRight),
         isSelected = selectedMode == 3,
         onClick = { onSetMode(3) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_ORIENT_LAND_RIGHT
     )
     SettingsDivider()
     Text(
@@ -102,21 +110,24 @@ internal fun SettingsWakeLockPage(
         title = stringResource(R.string.optionAlways),
         isSelected = selectedMode == 0,
         onClick = { onSetMode(0) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_WAKE_ALWAYS
     )
     SettingsDivider()
     SettingsRadioItem(
         title = stringResource(R.string.optionWhileCharging),
         isSelected = selectedMode == 1,
         onClick = { onSetMode(1) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_WAKE_CHARGING
     )
     SettingsDivider()
     SettingsRadioItem(
         title = stringResource(R.string.optionSystemDefault),
         isSelected = selectedMode == 2,
         onClick = { onSetMode(2) },
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.RADIO_WAKE_SYSTEM
     )
 }
 
@@ -140,31 +151,36 @@ internal fun SettingsSleepTimerPage(
     SettingsActionItem(
         iconRes = R.drawable.icon_sleep_15_min,
         title = stringResource(R.string.optionSleep15Min),
-        onClick = { onStartSleepTimer(15); onNavigateBack() }
+        onClick = { onStartSleepTimer(15); onNavigateBack() },
+        testTag = TestTags.ACTION_SLEEP_15
     )
     SettingsDivider()
     SettingsActionItem(
         iconRes = R.drawable.icon_sleep_30_min,
         title = stringResource(R.string.optionSleep30Min),
-        onClick = { onStartSleepTimer(30); onNavigateBack() }
+        onClick = { onStartSleepTimer(30); onNavigateBack() },
+        testTag = TestTags.ACTION_SLEEP_30
     )
     SettingsDivider()
     SettingsActionItem(
         iconRes = R.drawable.icon_sleep_1_hour,
         title = stringResource(R.string.optionSleep1Hour),
-        onClick = { onStartSleepTimer(60); onNavigateBack() }
+        onClick = { onStartSleepTimer(60); onNavigateBack() },
+        testTag = TestTags.ACTION_SLEEP_60
     )
     SettingsDivider()
     SettingsActionItem(
         iconRes = R.drawable.icon_sleep_2_hours,
         title = stringResource(R.string.optionSleep2Hours),
-        onClick = { onStartSleepTimer(120); onNavigateBack() }
+        onClick = { onStartSleepTimer(120); onNavigateBack() },
+        testTag = TestTags.ACTION_SLEEP_120
     )
     SettingsDivider()
     SettingsActionItem(
         iconRes = R.drawable.icon_sleep_3_hours,
         title = stringResource(R.string.optionSleep3Hours),
-        onClick = { onStartSleepTimer(180); onNavigateBack() }
+        onClick = { onStartSleepTimer(180); onNavigateBack() },
+        testTag = TestTags.ACTION_SLEEP_180
     )
     SettingsDivider()
     SettingsActionItem(
@@ -173,7 +189,8 @@ internal fun SettingsSleepTimerPage(
         onClick = {
             onNavigateBack()
             onOpenCustomTimerDialog()
-        }
+        },
+        testTag = TestTags.ACTION_SLEEP_CUSTOM
     )
 
     if (isTimerActive) {
@@ -186,7 +203,8 @@ internal fun SettingsSleepTimerPage(
             onClick = {
                 onStopSleepTimer()
                 onNavigateBack()
-            }
+            },
+            testTag = TestTags.ACTION_STOP_TIMER
         )
     }
 }

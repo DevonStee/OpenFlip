@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -50,7 +51,8 @@ fun SettingsSwitchItem(
     onCheckedChange: (Boolean) -> Unit,
     isDarkTheme: Boolean,
     checkedTrackColor: Color? = null,
-    checkedThumbColor: Color? = null
+    checkedThumbColor: Color? = null,
+    testTag: String? = null
 ) {
     val switchColors = SwitchDefaults.colors(
         checkedThumbColor = checkedThumbColor ?: if (isDarkTheme) SwitchCheckedThumbDark else SwitchCheckedThumbLight,
@@ -61,8 +63,9 @@ fun SettingsSwitchItem(
         uncheckedBorderColor = if (isDarkTheme) SwitchUncheckedBorderDark else SwitchUncheckedBorderLight
     )
 
+    val tagModifier = if (testTag != null) Modifier.testTag(testTag) else Modifier
     Row(
-        modifier = Modifier
+        modifier = tagModifier
             .fillMaxWidth()
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
@@ -135,10 +138,13 @@ fun SettingsNavigationItem(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     description: String? = null,
-    valueTextColor: Color? = null
+    valueTextColor: Color? = null,
+    testTag: String? = null
 ) {
+    val tagModifier = if (testTag != null) Modifier.testTag(testTag) else Modifier
     Row(
-        modifier = modifier
+        modifier = tagModifier
+            .then(modifier)
             .fillMaxWidth()
             .heightIn(min = 56.dp)
             .clickable(
@@ -216,10 +222,13 @@ fun SettingsActionItem(
     iconSize: androidx.compose.ui.unit.Dp = 28.dp,
     iconHeight: androidx.compose.ui.unit.Dp? = null,
     iconOffsetY: androidx.compose.ui.unit.Dp = 0.dp,
-    minHeight: androidx.compose.ui.unit.Dp = 56.dp
+    minHeight: androidx.compose.ui.unit.Dp = 56.dp,
+    testTag: String? = null
 ) {
+    val tagModifier = if (testTag != null) Modifier.testTag(testTag) else Modifier
     Row(
-        modifier = modifier
+        modifier = tagModifier
+            .then(modifier)
             .fillMaxWidth()
             .heightIn(min = minHeight)
             .background(backgroundColor)
@@ -278,7 +287,8 @@ fun SettingsRadioItem(
     isSelected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    isDarkTheme: Boolean
+    isDarkTheme: Boolean,
+    testTag: String? = null
 ) {
     val backgroundColor = if (isSelected) {
         if (isDarkTheme) RadioSelectedDark else RadioSelectedLight
@@ -286,8 +296,10 @@ fun SettingsRadioItem(
         Color.Transparent
     }
 
+    val tagModifier = if (testTag != null) Modifier.testTag(testTag) else Modifier
     Row(
-        modifier = modifier
+        modifier = tagModifier
+            .then(modifier)
             .fillMaxWidth()
             .heightIn(min = 56.dp)
             .background(backgroundColor)

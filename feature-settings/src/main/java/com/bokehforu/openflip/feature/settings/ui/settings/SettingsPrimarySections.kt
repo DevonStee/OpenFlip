@@ -12,6 +12,7 @@ import com.bokehforu.openflip.feature.settings.ui.compose.SettingsSwitchItem
 import com.bokehforu.openflip.feature.settings.ui.theme.LightSurface
 import com.bokehforu.openflip.feature.settings.ui.theme.ToggleFeatureEnabledGreen
 import com.bokehforu.openflip.feature.settings.viewmodel.SettingsViewModel
+import com.bokehforu.openflip.core.ui.TestTags
 
 @Composable
 internal fun SettingsTimeDisplaySection(
@@ -35,7 +36,8 @@ internal fun SettingsTimeDisplaySection(
         },
         title = stringResource(R.string.titleTimeFormat),
         valueText = timeValueLabel,
-        onClick = onNavigateTimeFormat
+        onClick = onNavigateTimeFormat,
+        testTag = TestTags.NAV_TIME_FORMAT
     )
     SettingsDivider()
     val showSeconds by settingsViewModel.showSeconds.collectAsState()
@@ -45,7 +47,8 @@ internal fun SettingsTimeDisplaySection(
         checked = showSeconds,
         onCheckedChange = onToggleShowSeconds,
         description = stringResource(R.string.descriptionShowSeconds),
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.SWITCH_SHOW_SECONDS
     )
 }
 
@@ -66,7 +69,8 @@ internal fun SettingsAppearanceSection(
         title = stringResource(R.string.titleShowFlaps),
         checked = showFlaps,
         onCheckedChange = onToggleShowFlaps,
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.SWITCH_SHOW_FLAPS
     )
     SettingsDivider()
     val swipeToDim by settingsViewModel.isSwipeToDimEnabled.collectAsState()
@@ -75,7 +79,8 @@ internal fun SettingsAppearanceSection(
         title = stringResource(R.string.titleSwipeToDim),
         checked = swipeToDim,
         onCheckedChange = onToggleSwipeToDim,
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.SWITCH_SWIPE_TO_DIM
     )
     SettingsDivider()
     val lightMode = !isDark
@@ -86,7 +91,8 @@ internal fun SettingsAppearanceSection(
         onCheckedChange = onToggleLightMode,
         isDarkTheme = isDark,
         checkedTrackColor = LightSurface,
-        checkedThumbColor = Color.White
+        checkedThumbColor = Color.White,
+        testTag = TestTags.SWITCH_LIGHT_MODE
     )
     SettingsDivider()
     val orientValue by settingsViewModel.orientationSelection.collectAsState()
@@ -101,7 +107,8 @@ internal fun SettingsAppearanceSection(
         iconRes = R.drawable.icon_settings_orientation_24dp,
         title = stringResource(R.string.titleScreenOrientation),
         valueText = orientValueLabel,
-        onClick = onNavigateOrientation
+        onClick = onNavigateOrientation,
+        testTag = TestTags.NAV_ORIENTATION
     )
     SettingsDivider()
     val pinchScale by settingsViewModel.isScaleEnabled.collectAsState()
@@ -110,7 +117,8 @@ internal fun SettingsAppearanceSection(
         title = stringResource(R.string.titlePinchToReduce),
         checked = pinchScale,
         onCheckedChange = onToggleScale,
-        isDarkTheme = isDark
+        isDarkTheme = isDark,
+        testTag = TestTags.SWITCH_PINCH_SCALE
     )
     SettingsDivider()
     val bulbOff by settingsViewModel.isTimedBulbOffEnabled.collectAsState()
@@ -121,6 +129,7 @@ internal fun SettingsAppearanceSection(
         onCheckedChange = onToggleTimedBulbOff,
         isDarkTheme = isDark,
         checkedTrackColor = ToggleFeatureEnabledGreen,
-        checkedThumbColor = Color.White
+        checkedThumbColor = Color.White,
+        testTag = TestTags.SWITCH_TIMED_BULB_OFF
     )
 }

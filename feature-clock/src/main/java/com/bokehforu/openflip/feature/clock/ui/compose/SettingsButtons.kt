@@ -22,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Color
@@ -40,6 +41,7 @@ import com.bokehforu.openflip.feature.clock.ui.theme.OpenFlipClockFontFamily
 import com.bokehforu.openflip.core.util.resolveThemeColor
 import kotlinx.coroutines.flow.SharedFlow
 import com.bokehforu.openflip.core.R as CoreR
+import com.bokehforu.openflip.core.ui.TestTags
 
 /**
  * Main options button that shows either seconds display or gear icon.
@@ -107,6 +109,7 @@ fun MainOptionsButton(
     Box(
         modifier = Modifier
             .size(64.dp)
+            .testTag(TestTags.MAIN_OPTIONS_BUTTON)
             .graphicsLayer { scaleX = scale; scaleY = scale }
             .clickable(
                 interactionSource = interactionSource,
@@ -136,7 +139,7 @@ fun MainOptionsButton(
         } else {
             Icon(
                 painter = painterResource(id = R.drawable.icon_options_24dp),
-                contentDescription = null,
+                contentDescription = "Open Settings",
                 tint = contentColor.copy(alpha = 0.85f),
                 modifier = Modifier
                     .size(32.dp)
