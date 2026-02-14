@@ -1,6 +1,7 @@
 # OpenFlip（Android）
 
 [![Android CI](https://img.shields.io/github/actions/workflow/status/DevonStee/OpenFlip/android.yml?style=for-the-badge&logo=github&label=CI)](https://github.com/DevonStee/OpenFlip/actions/workflows/android.yml)
+[![Android Release](https://img.shields.io/github/actions/workflow/status/DevonStee/OpenFlip/release.yml?style=for-the-badge&logo=github&label=CD)](https://github.com/DevonStee/OpenFlip/actions/workflows/release.yml)
 [![下载 APK](https://img.shields.io/badge/下载-最新_APK-green?style=for-the-badge&logo=android)](https://github.com/DevonStee/OpenFlip/releases/latest/download/app-release.apk)
 
 [![Latest Release](https://img.shields.io/github/v/release/DevonStee/OpenFlip?style=flat-square&label=Latest)](https://github.com/DevonStee/OpenFlip/releases/latest)
