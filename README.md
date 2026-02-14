@@ -1,5 +1,7 @@
 # OpenFlip (Android)
 
+[![Android CI](https://github.com/YOUR_USERNAME/fliqlo_android/actions/workflows/android.yml/badge.svg)](https://github.com/YOUR_USERNAME/fliqlo_android/actions/workflows/android.yml)
+
 [中文文档 (Simplified Chinese)](README.zh-CN.md)
 
 OpenFlip is a Braun-inspired flip clock for Android, focusing on mechanical animation fidelity, visual precision, and maintainable architecture.

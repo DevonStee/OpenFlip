@@ -147,40 +147,40 @@ fun SettingsComposeSheet(
                         val enterTransition = if (isGoingBack) {
                             slideInHorizontally(
                                 animationSpec = tween(
-                                    durationMillis = 420,
+                                    durationMillis = 240,
                                     easing = LinearOutSlowInEasing
                                 ),
                                 initialOffsetX = { -it }
                             ) + fadeIn(
                                 animationSpec = tween(
-                                    durationMillis = 320,
-                                    delayMillis = 40,
+                                    durationMillis = 180,
+                                    delayMillis = 20,
                                     easing = LinearOutSlowInEasing
                                 )
                             ) + scaleIn(
                                 initialScale = 0.98f,
                                 animationSpec = tween(
-                                    durationMillis = 420,
+                                    durationMillis = 240,
                                     easing = LinearOutSlowInEasing
                                 )
                             )
                         } else {
                             slideInHorizontally(
                                 animationSpec = tween(
-                                    durationMillis = 420,
+                                    durationMillis = 240,
                                     easing = LinearOutSlowInEasing
                                 ),
                                 initialOffsetX = { it }
                             ) + fadeIn(
                                 animationSpec = tween(
-                                    durationMillis = 320,
-                                    delayMillis = 40,
+                                    durationMillis = 180,
+                                    delayMillis = 20,
                                     easing = LinearOutSlowInEasing
                                 )
                             ) + scaleIn(
                                 initialScale = 0.98f,
                                 animationSpec = tween(
-                                    durationMillis = 420,
+                                    durationMillis = 240,
                                     easing = LinearOutSlowInEasing
                                 )
                             )
@@ -188,38 +188,38 @@ fun SettingsComposeSheet(
                         val exitTransition = if (isGoingBack) {
                             slideOutHorizontally(
                                 animationSpec = tween(
-                                    durationMillis = 360,
+                                    durationMillis = 200,
                                     easing = FastOutSlowInEasing
                                 ),
                                 targetOffsetX = { it / 3 }
                             ) + fadeOut(
                                 animationSpec = tween(
-                                    durationMillis = 200,
+                                    durationMillis = 120,
                                     easing = FastOutSlowInEasing
                                 )
                             ) + scaleOut(
                                 targetScale = 0.985f,
                                 animationSpec = tween(
-                                    durationMillis = 300,
+                                    durationMillis = 160,
                                     easing = FastOutSlowInEasing
                                 )
                             )
                         } else {
                             slideOutHorizontally(
                                 animationSpec = tween(
-                                    durationMillis = 360,
+                                    durationMillis = 200,
                                     easing = FastOutSlowInEasing
                                 ),
                                 targetOffsetX = { -it / 3 }
                             ) + fadeOut(
                                 animationSpec = tween(
-                                    durationMillis = 200,
+                                    durationMillis = 120,
                                     easing = FastOutSlowInEasing
                                 )
                             ) + scaleOut(
                                 targetScale = 0.985f,
                                 animationSpec = tween(
-                                    durationMillis = 300,
+                                    durationMillis = 160,
                                     easing = FastOutSlowInEasing
                                 )
                             )
@@ -493,7 +493,7 @@ private fun SettingsSheetHeader(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 4.dp),
+            .padding(horizontal = 8.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -530,7 +530,7 @@ private fun SheetHeaderIconButton(
 ) {
     Surface(
         modifier = Modifier
-            .padding(horizontal = 4.dp)
+
             .size(56.dp),
         shape = CircleShape,
         color = MaterialTheme.colorScheme.surfaceContainer

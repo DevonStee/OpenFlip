@@ -64,7 +64,11 @@ fun SettingsSwitchItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onCheckedChange(!checked) }
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = ripple(),
+                onClick = { onCheckedChange(!checked) }
+            )
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = if (description.isNullOrEmpty()) Alignment.CenterVertically else Alignment.Top
     ) {

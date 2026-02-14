@@ -38,11 +38,9 @@ object FontProvider {
     }
 
     private fun loadClockTypeface(context: Context): Typeface {
-        val res = context.resources
-        val pkg = context.packageName
-        val fontId = res.getIdentifier("openflip_font", "font", pkg)
+        val fontId = com.bokehforu.openflip.core.R.font.openflip_font
         if (fontId != 0) {
-            runCatching { return res.getFont(fontId) }
+            runCatching { return context.resources.getFont(fontId) }
         }
         return Typeface.create("sans-serif", Typeface.NORMAL)
     }

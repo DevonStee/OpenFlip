@@ -16,7 +16,7 @@ val moduleDependencyRules = mapOf(
     ":core" to emptySet(),
     ":domain" to setOf(":core"),
     ":data" to setOf(":core", ":domain"),
-    ":feature-clock" to setOf(":core", ":data", ":domain"),
+    ":feature-clock" to setOf(":core", ":data", ":domain", ":feature-settings"),
     ":feature-chime" to setOf(":core", ":data", ":domain", ":feature-clock"),
     ":feature-settings" to setOf(":core", ":data", ":domain"),
     ":app" to setOf(":core", ":data", ":domain", ":feature-clock", ":feature-chime", ":feature-settings")

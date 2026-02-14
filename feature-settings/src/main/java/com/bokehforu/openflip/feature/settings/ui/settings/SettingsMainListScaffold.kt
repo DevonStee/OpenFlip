@@ -34,11 +34,9 @@ internal fun SettingsMainListScaffold(
 
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = horizontalPadding)
-            .nestedScroll(rememberNestedScrollInteropConnection()),
+            .fillMaxSize(),
         userScrollEnabled = true,
-        contentPadding = PaddingValues(bottom = 24.dp)
+        contentPadding = PaddingValues(start = horizontalPadding, end = horizontalPadding, bottom = 24.dp)
     ) {
         item(key = "section_time_header") {
             SettingsSectionHeader(

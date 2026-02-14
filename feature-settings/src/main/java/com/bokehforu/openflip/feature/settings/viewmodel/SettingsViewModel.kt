@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject
 
 @HiltViewModel
@@ -89,58 +90,72 @@ class SettingsViewModel @Inject constructor(
                 isHourlyChimeEnabled = settings.isHourlyChimeEnabled
             )
         }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), currentUiState())
 
     val timeFormatSelection = uiState
         .map { it.timeFormatMode }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.getTimeFormatMode())
 
     val orientationSelection = uiState
         .map { it.orientationMode }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.getOrientationMode())
 
     val wakeLockSelection = uiState
         .map { it.wakeLockMode }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.getWakeLockMode())
 
     val isDarkTheme = uiState
         .map { it.isDarkTheme }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.isDarkTheme())
 
     val showSeconds = uiState
         .map { it.showSeconds }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.showSeconds())
 
     val showFlaps = uiState
         .map { it.showFlaps }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.showFlaps())
 
     val isHapticEnabled = uiState
         .map { it.isHapticEnabled }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.isHapticEnabled())
 
     val isSoundEnabled = uiState
         .map { it.isSoundEnabled }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.isSoundEnabled())
 
     val isSwipeToDimEnabled = uiState
         .map { it.isSwipeToDimEnabled }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.isSwipeToDimEnabled())
 
     val isScaleEnabled = uiState
         .map { it.isScaleEnabled }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.isScaleEnabled())
 
     val isTimedBulbOffEnabled = uiState
         .map { it.isTimedBulbOffEnabled }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.isTimedBulbOffEnabled())
 
     val isOledProtectionEnabled = uiState
         .map { it.isOledProtectionEnabled }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.isOledProtectionEnabled())
 
     val isHourlyChimeEnabled = uiState
         .map { it.isHourlyChimeEnabled }
+        .distinctUntilChanged()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), settingsRepository.isHourlyChimeEnabled())
 
     fun dispatch(action: SettingsUiAction) {

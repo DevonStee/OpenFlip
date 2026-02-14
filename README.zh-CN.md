@@ -1,5 +1,7 @@
 # OpenFlip（Android）
 
+[![Android CI](https://github.com/YOUR_USERNAME/fliqlo_android/actions/workflows/android.yml/badge.svg)](https://github.com/YOUR_USERNAME/fliqlo_android/actions/workflows/android.yml)
+
 [English Version](README.md)
 
 OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注于机械翻页质感、视觉精度和可维护架构。
