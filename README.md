@@ -1,359 +1,326 @@
-# OpenFlip Android: Technical Documentation & specification
+# OpenFlip (Android)
 
-OpenFlip for Android is a high-performance, minimalist reconstruction of the classic mechanical flip clock. This project prioritizes **physical authenticity**, **visual precision**, and **architectural scalability**, providing a premium time-keeping experience for both full-screen use and home screen integration.
+[中文文档 (Simplified Chinese)](README.zh-CN.md)
 
----
+OpenFlip is a Braun-inspired flip clock for Android, focusing on mechanical animation fidelity, visual precision, and maintainable architecture.
 
-## 1. High-Fidelity Rendering Architecture
+Key features:
+- **Custom rendering engine**: Physics-based flip animations using `Canvas` + 3D transforms
+- **Pixel-perfect layout**: Precise text positioning and light-overlay compensation across all screen densities
+- **Modular architecture**: Hilt DI + multi-module layering for performance and extensibility
 
-The visual engine is the heart of OpenFlip. It bypasses conventional high-level layout constraints to achieve low-latency, 60fps animations through a custom-built graphics pipeline.
+## Highlights
 
-### 1.1 The Mathematics of a Flip
+- Realistic card-flip animation with custom `Canvas` + 3D transform pipeline.
+- Minimalist full-screen clock UI with tactile controls.
+- **Zero-drain background behavior**: Stops all rendering and activity when not visible.
+- **Polished Settings Sheet**: 72% initial height, smooth gestures, and seamless transitions.
+- Hybrid UI stack:
+  - Jetpack Compose for settings screens.
+  - Custom Views for high-performance clock rendering.
+- OLED burn-in protection with subtle pixel shifting.
+- Light overlay effect with translation compensation (no edge gaps during burn-in shift).
+- Hilt-based dependency injection with compile-time graph validation.
 
-The animation is not a simple sprite swap. It is a mathematical model of a folding card:
+## Table of Contents
 
-- **Perspective Projection**: Utilizes `android.graphics.Camera` for 3D rotation around the X-axis. A fixed perspective depth is applied to simulate the observer's distance from the mechanical flap.
-- **Dual-Pane Clipping**: Each digit is rendered in two halves (upper and lower). The "flip" involves rotating the top half of the *next* digit 180 degrees down while simultaneously rotating the bottom half of the *current* digit out of view.
-- **Pivot Point Calibration**: The rotation pivot is placed precisely at the horizontal centerline of the clock card to ensure geometric continuity during the transition.
-- **Shadow Mapping**: Real-time calculation of "crease shadows" where the intensity of the center shadow varies proportionally to the flap angle, enhancing the 3D effect.
+- [Screenshots](#screenshots)
+- [Project Structure](#project-structure)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+- [Build and Development Commands](#build-and-development-commands)
+- [Architecture](#architecture)
+- [Dependency Injection (Hilt)](#dependency-injection-hilt)
+- [Key Runtime Components](#key-runtime-components)
+- [Testing and Verification](#testing-and-verification)
+- [Performance Notes](#performance-notes)
+- [Recent Maintenance (2026-02)](#recent-maintenance-2026-02)
+- [Contributing](#contributing)
+- [License](#license)
 
-### 1.2 Optical Centering Algorithm (Ink-Logic)
+## Screenshots
 
-Standard bounding-box centering often feels "wrong" because characters have different visual weights. OpenFlip implements a per-character ink-center calculation:
+Captured from a real connected Android device via ADB.
 
-- **Algorithm**: `Paint.getTextBounds()` is called to retrieve the exact pixel-occupied rectangle.
-- **Offset Calculation**: Instead of baseline centering, we calculate `(textBounds.left + textBounds.right) / 2` to find the horizontal "ink center" and align it with the card's geometric center.
-- **Result**: "1" and "8" appear perfectly balanced, even if their glyph widths differ by 300%.
+### Fullscreen Clock
 
----
+![OpenFlip fullscreen clock](docs/images/openflip-clock-dark.png)
 
-## 2. Resource & Memory Stewardship
+### Light Effect Enabled
 
-### 2.1 Zero-Allocation Drawing Loop
+![OpenFlip light effect enabled](docs/images/openflip-light-on.png)
 
-In accordance with high-performance Android graphics standards, the `onDraw` method of `FullscreenFlipClockView` and its sub-renderers contains **zero object allocations**:
+### Dark Theme + Light Effect
 
-- **Pre-cached Objects**: All `RectF`, `Paint`, `Matrix`, and `Path` objects are calculated once during initialization or layout changes.
-- **No GC Pressure**: This ensures that even during high-frequency updates (seconds display), there are zero Garbage Collection stutters, maintaining a consistent 16.6ms frame time.
+![OpenFlip light effect in dark theme](docs/images/openflip-light-on-in-dark-theme.png)
 
-### 2.2 Battery & Power management
+### Settings Sheet (Compose)
 
-- **Dynamic Framerate**: When the seconds display is disabled, the drawing loop remains completely idle until the next minute update.
-- **Wakelock Scalability**:
-  - **System Default**: Standard system screen timeout logic.
-  - **Interactive Keep-Alive**: Uses `FLAG_KEEP_SCREEN_ON` only when the app is in the foreground and active.
-  - **Selective Throttling**: Reduces rendering updates when battery level is below 15% (planned).
+![OpenFlip settings sheet](docs/images/openflip-settings-sheet.png)
 
----
+### Sleep Timer Dialog
 
-## 3. Flip Card Rendering System
+![OpenFlip sleep timer dialog](docs/images/openflip-sleep-timer-dialog.png)
 
-The flip card rendering is architected using a multi-layer separation of concerns pattern, enabling independent testing and modification of each aspect.
+### Seconds Display Enabled
 
-### 3.1 Component Architecture
+![OpenFlip seconds display enabled](docs/images/openflip-show-seconds.png)
 
-```mermaid
-graph TB
-    subgraph PublicAPI [Public API]
-        FlipCardComponent["FlipCardComponent<br/>(Facade)"]
-    end
-    
-    subgraph Internal [Internal Components]
-        FlipCardState["FlipCardState<br/>(Data)"]
-        FlipCardGeometry["FlipCardGeometry<br/>(Calculations)"]
-        FlipCardRenderer["FlipCardRenderer<br/>(Canvas Drawing)"]
-        FlipCardConfig["FlipCardConfig<br/>(Constants)"]
-    end
-    
-    subgraph View [View Layer]
-        FullscreenFlipClockView
-        FlipClockThemeApplier
-        LightOverlayRenderer
-    end
-    
-    FullscreenFlipClockView --> FlipCardComponent
-    FlipCardComponent --> FlipCardState
-    FlipCardComponent --> FlipCardGeometry
-    FlipCardComponent --> FlipCardRenderer
-    FlipCardGeometry --> FlipCardConfig
-    FlipCardRenderer --> FlipCardConfig
-    FullscreenFlipClockView --> FlipClockThemeApplier
-    FullscreenFlipClockView --> LightOverlayRenderer
+### Dark Theme Light Bulb Toggle (GIF)
+
+![OpenFlip dark theme light bulb toggle](docs/images/openflip-dark-light-toggle.gif)
+
+### Seconds Ticking (GIF)
+
+![OpenFlip seconds ticking](docs/images/openflip-seconds-ticking.gif)
+
+### Knob Rotation Interaction
+
+![OpenFlip knob rotation interaction](docs/images/openflip-knob-fast-flip.png)
+
+### Vertical Dim Demo (GIF)
+
+![OpenFlip vertical dim demo](docs/images/openflip-vertical-dim.gif)
+
+### Knob Rotation 2000° (GIF)
+
+![OpenFlip knob rotation 2000 demo](docs/images/openflip-knob-2000deg.gif)
+
+## Project Structure
+
+```text
+OpenFlip/
+├── app/                 # Android app entry, DI modules, resources
+├── core/                # Shared contracts/models/utilities
+├── data/                # Repository implementations and persistence
+├── domain/              # Use cases and repository interfaces
+├── feature-clock/       # Clock runtime, custom view engine, activity/controllers
+├── feature-settings/    # Settings UI (Compose), settings ViewModel/controllers
+├── feature-chime/       # Hourly chime feature
+└── docs/                # Architecture notes, ADRs, regression baseline
 ```
 
-### 3.2 Component Responsibilities
+## Tech Stack
 
-| Component | Location | Responsibility |
-| :--- | :--- | :--- |
-| **`FlipCardComponent`** | `view/card/` | Public facade exposing `currentValue`, `nextValue`, `flipDegree`, `amPmText` |
-| **`FlipCardState`** | `view/card/` | Immutable data holder for flip animation state |
-| **`FlipCardGeometry`** | `view/card/` | Size/shape calculations, pivot points, clip regions |
-| **`FlipCardRenderer`** | `view/card/` | Canvas drawing operations, 3D transforms, shadow rendering |
-| **`FlipCardConfig`** | `view/card/` | Animation constants (duration, easing, shadow intensity) |
+- Language: Kotlin
+- UI:
+  - Jetpack Compose (settings and modern UI components)
+  - Custom Views (clock rendering, interactive 3D controls)
+- Architecture: MVVM + reactive `StateFlow` + Hilt DI
+- Major dependencies:
+  - Hilt `2.55`
+  - Material Components / Material 3
+  - Cloudy (liquid-glass blur effects)
 
-### 3.3 Custom Views
+## Quick Start
 
-| View | Location | Purpose |
-| :--- | :--- | :--- |
-| **`FullscreenFlipClockView`** | `view/` | Main clock view, orchestrates hour/minute `FlipCardComponent` instances |
-| **`InfiniteKnobView`** | `ui/view/` | Rotatable knob for time travel feature |
-| **`StateToggleGlowView`** | `ui/view/` | Light toggle button with animated glow effect |
-| **`CircularTimerView`** | `ui/view/` | Circular progress indicator for sleep timer |
+### Requirements
 
-### 3.4 Design Benefits
+- JDK 17+
+- Android Studio Ladybug or newer
+- Android SDK configured locally
 
-- **Testability**: `FlipCardGeometry` can be unit tested without Android dependencies
-- **Reusability**: `FlipCardRenderer` can be reused for different card sizes
-- **Maintainability**: Changes to animation timing only affect `FlipCardConfig`
-- **Performance**: Pre-calculated geometry avoids runtime allocations
+### Clone and Run
 
----
-
-## 4. Structural Design: Feature-Module Collaborator Pattern
-
-`FullscreenClockActivity` remains intentionally thin and delegates behavior to focused collaborators across feature modules.
-
-### 4.1 Runtime Package Structure (Current)
-
-```
-:feature-clock (com.bokehforu.openflip.feature.clock)
-├── controller/              # Core feature logic orchestration
-│   ├── SettingsCoordinator
-│   ├── SystemIntegrationController
-│   ├── TimeManagementController
-│   ├── TimeTravelController
-│   └── UIStateController
-├── manager/                 # Feature runtime managers
-│   ├── AppLifecycleMonitor
-│   ├── DisplayBurnInProtectionManager
-│   ├── LightEffectManager
-│   ├── TimeProvider
-│   └── TimeSecondsTicker
-├── ui/
-│   ├── FullscreenClockActivity
-│   ├── WindowConfigurator
-│   ├── helper/              # GestureRouter, WaterfallAnimationHelper, SystemBarStyleHelper
-│   ├── controller/          # Knob/Light/Theme/SleepWake/Factory/StateCollector
-│   ├── compose/             # MainOptionsButton and visual Compose primitives
-│   ├── dialog/              # SleepTimerDialogManager
-│   ├── theme/
-│   └── transition/
-├── view/                    # FullscreenFlipClockView and card rendering internals
-└── viewmodel/               # FullscreenClockViewModel
-
-:feature-settings (com.bokehforu.openflip.feature.settings)
-├── ui/settings/             # SettingsComposeSheet, main list scaffold, subpages
-├── ui/compose/              # Reusable settings list items/pages
-├── ui/theme/
-├── viewmodel/               # SettingsViewModel
-└── controller/              # HourlyChimeSettingsController
+```bash
+# Replace with your actual repository URL
+git clone https://github.com/<your-username>/fliqlo_android.git
+cd fliqlo_android
+./gradlew installDebug
 ```
 
-### 4.2 High-Level Collaboration
+If dependencies or DI setup changed, run a clean build once:
 
-```mermaid
-graph TB
-    Activity[FullscreenClockActivity]
-    Factory[FullscreenClockControllersFactory]
-    ClockCtrl[feature-clock controllers]
-    SettingsUI[SettingsComposeSheet]
-    SettingsVM[SettingsViewModel]
-    Repo[SettingsRepository]
-    Store[AppSettingsManager(SettingsStore)]
-
-    Activity --> Factory
-    Factory --> ClockCtrl
-    Activity --> SettingsUI
-    SettingsUI --> SettingsVM
-    SettingsVM --> Repo
-    ClockCtrl --> Repo
-    Repo --> Store
+```bash
+./gradlew clean build
 ```
 
-### 4.3 Core Controllers (`feature-clock/controller/`)
+## Build and Development Commands
 
-| Controller | Responsibility |
-| :--- | :--- |
-| **`SettingsCoordinator`** | Collects `settingsFlow`, applies setting diffs to clock UI/controllers |
-| **`SystemIntegrationController`** | OLED protection, wake lock handling, sleep timer dialog integration |
-| **`TimeManagementController`** | Time updates, minute/seconds flow handling, format-aware rendering |
-| **`TimeTravelController`** | Virtual time offset and knob-driven time travel |
-| **`UIStateController`** | Interaction-state visibility and divider/spine presentation logic |
+```bash
+# Install debug APK to connected device/emulator
+./gradlew installDebug
 
-### 4.4 UI Controllers (`feature-clock/ui/controller/`)
+# Run unit tests
+./gradlew test
 
-| Controller | Responsibility |
-| :--- | :--- |
-| **`KnobInteractionController`** | Knob input and time-travel interaction bridge |
-| **`LightToggleController`** | Light state toggle + countdown interaction |
-| **`ThemeToggleController`** | Theme change requests and transition coordination |
-| **`SleepWakeController`** | Sleep timer wake behavior and burn-in manager lifecycle coupling |
-| **`ShortcutIntentHandler`** | App shortcut actions (theme/seconds/settings) |
-| **`FullscreenClockStateCollector`** | Lifecycle-aware UI state collection and render callbacks |
-| **`FullscreenClockControllersFactory`** | Centralized creation/cleanup for controller graph |
+# Static analysis
+./gradlew lint
 
-### 4.5 Settings UI Composition (`feature-settings/ui/settings/`)
-
-| Component | Responsibility |
-| :--- | :--- |
-| **`SettingsComposeSheet`** | Bottom-sheet host, page routing, host callback wiring |
-| **`SettingsMainListScaffold`** | Main settings list sections and spacing/layout |
-| **`SettingsSubPages`** | Time format, orientation, wake lock, sleep timer pages |
-| **`SettingsPrimarySections` / `SettingsSecondarySections`** | Main-page item groups and toggle/navigation actions |
-| **`SettingsSectionHeader`** | Section title typography + spacing tokenization |
-
-### 4.6 Interface Segregation (`core/settings`)
-
-`FullscreenClockActivity` exposes focused contracts used by settings/clock controllers:
-
-| Interface | Purpose |
-| :--- | :--- |
-| **`OledProtectionController`** | Toggle OLED burn-in protection |
-| **`SleepTimerDialogProvider`** | Open standard/custom sleep timer dialogs |
-| **`ThemeTransitionProvider`** | Request theme transitions |
-| **`SettingsHostController`** | Sleep timer state + settings click/interacting callbacks |
-
-This keeps dependencies capability-based and avoids broad Activity coupling.
-
----
-
-## 5. AppWidget Infrastructure
-
-OpenFlip provides 5 distinct widget types, each utilizing a specialized `RemoteViews` adapter architecture:
-
-1. **Classic**: High-contrast black/white mechanical aesthetic.
-2. **Glass**: Utilizes `RenderEffect` compatible styles for a frosted glass look (requires API 31+ fallback for older versions).
-3. **Minimal**: Borderless, whitespace-optimized rendering.
-4. **Solid**: Dense, block-based UI for maximum legibility at small scales.
-5. **Split**: Separated hour/minute blocks for flexible home screen layouts.
-
-**Technical Constraint**: Due to `RemoteViews` anti-aliasing in `Canvas` rendering, some widget styles may show a 1px artifact in the center gap. This is a known OS-level limitation with no stable workaround.
-
----
-
-## 6. Settings Architecture
-
-Settings now follow a fully reactive flow: Compose UI -> ViewModel -> Repository -> Store, with clock-side observers applying changes.
-
-### 6.1 Core Components
-
-```mermaid
-graph TB
-    subgraph Settings_UI [feature-settings]
-        Sheet[SettingsComposeSheet]
-        VM[SettingsViewModel]
-    end
-
-    subgraph Clock_Feature [feature-clock]
-        Activity[FullscreenClockActivity]
-        Coordinator[SettingsCoordinator]
-    end
-
-    subgraph Data [data/core/domain]
-        Repo[SettingsRepository]
-        Store[SettingsStore / AppSettingsManager]
-        Prefs[(SharedPreferences)]
-    end
-
-    Sheet --> VM
-    VM --> Repo
-    Activity --> Coordinator
-    Coordinator --> Repo
-    Repo --> Store --> Prefs
-    Repo --> Coordinator
+# Validate full compile graph (including Hilt)
+./gradlew build
 ```
 
-| Component | Responsibility |
-| :--- | :--- |
-| **`SettingsComposeSheet`** | User-facing settings pages and actions (main + subpages) |
-| **`SettingsViewModel`** | Dispatches settings updates via domain use cases and exposes UI StateFlows |
-| **`SettingsRepository`** | Domain-facing read/write abstraction for settings |
-| **`AppSettingsManager`** | `SettingsStore` implementation backed by `SharedPreferences` + `settingsFlow` |
-| **`SettingsCoordinator`** | Applies settings diffs to `FullscreenFlipClockView`, wake lock, theme, UI visibility |
+## Architecture
 
-### 6.2 Reset-to-Defaults Flow
+OpenFlip uses modular clean boundaries with feature-focused runtime orchestration.
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant Sheet as SettingsComposeSheet
-    participant VM as SettingsViewModel
-    participant Repo as SettingsRepository
-    participant Store as AppSettingsManager
-    participant Coord as SettingsCoordinator
+### Modules
 
-    User->>Sheet: Tap "Reset App"
-    Sheet->>VM: resetToDefaults()
-    VM->>Repo: resetToDefaults()
-    Repo->>Store: resetToDefaults()
-    Store-->>Repo: settingsFlow emits defaults
-    Repo-->>Coord: defaults snapshot
-    Coord->>Coord: onSettingsReset()
-    Coord->>Coord: apply theme/orientation/wakelock/visibility baseline
+- `:app`: Android entry points, DI composition, resources.
+- `:core`: Common contracts, models, shared utilities.
+- `:domain`: Use cases and repository contracts.
+- `:data`: Repository implementations and `AppSettingsManager` persistence.
+- `:feature-clock`: Fullscreen clock runtime, rendering, interaction controllers.
+- `:feature-settings`: Settings UI and settings state flow.
+- `:feature-chime`: Hourly chime behavior.
+
+### Data/State Direction
+
+`UI -> ViewModel -> Repository -> SettingsStore(AppSettingsManager)`
+
+Clock runtime (`feature-clock`) observes settings flow and applies UI/runtime diffs reactively.
+
+### Architecture References
+
+- Baseline: `docs/architecture-baseline.md`
+- ADRs: `docs/adr/`
+
+## Dependency Injection (Hilt)
+
+Hilt replaced manual wiring for compile-time safety and cleaner lifecycle scoping.
+
+### DI Layout
+
+```text
+app/src/main/java/com/bokehforu/openflip/
+├── OpenFlipApplication.kt          # @HiltAndroidApp
+└── di/module/
+    ├── CoreModule.kt               # Context, CoroutineScope, time utilities
+    ├── ManagerModule.kt            # Manager/interface bindings
+    └── ControllerModule.kt         # Activity-scoped bindings
 ```
 
-### 6.3 Reactive Application Pattern
+### Commonly Injected Types
 
-Clock-side settings application is flow-driven rather than listener-interface-driven:
+- `AppSettingsManager` (`@Singleton`)
+- `HapticFeedbackManager` (`@Singleton`)
+- `FeedbackSoundManager` (`@Singleton`)
+- `TimeProvider` (`@Singleton`)
+- `FullscreenClockViewModel` (`@HiltViewModel`)
+- `SettingsViewModel` (`@HiltViewModel`)
+- `LightToggleController` (AssistedInject + Factory)
 
-```kotlin
-settingsRepository.settingsFlow.collect { settings ->
-    applyDiff(previous, settings)
-}
+## Key Runtime Components
+
+### Clock and Rendering
+
+- `feature-clock/src/main/java/com/bokehforu/openflip/feature/clock/view/FullscreenFlipClockView.kt`
+  - Main custom view for card flip rendering.
+- `feature-clock/src/main/java/com/bokehforu/openflip/feature/clock/view/renderer/LightOverlayRenderer.kt`
+  - Light overlay rendering with full-coverage compensation.
+- `feature-clock/src/main/java/com/bokehforu/openflip/feature/clock/manager/DisplayBurnInProtectionManager.kt`
+  - OLED shift manager with custom shift applier callback.
+
+### Activity and Controllers
+
+- `feature-clock/src/main/java/com/bokehforu/openflip/feature/clock/ui/FullscreenClockActivity.kt`
+- `feature-clock/src/main/java/com/bokehforu/openflip/feature/clock/ui/controller/LightToggleController.kt`
+
+### Settings and Persistence
+
+- `feature-settings/src/main/java/com/bokehforu/openflip/feature/settings/viewmodel/SettingsViewModel.kt`
+- `data/src/main/java/com/bokehforu/openflip/data/settings/AppSettingsManager.kt`
+
+## Testing and Verification
+
+### Automated Checks
+
+- Unit tests: `app/src/test`
+- Build-time DI graph verification: `./gradlew build`
+- Custom Gradle verification tasks (run automatically during `check`):
+  - `checkModuleBoundaries` — Enforces allowed module dependency graph.
+  - `checkSharedPreferencesIsolation` — Ensures `SharedPreferences` usage is confined to `:data`.
+  - `checkResourceOwnershipBoundaries` — Detects duplicate resource paths between `:app` and `:feature-settings`.
+  - `checkResourceSymbolBoundaries` — Detects duplicate resource symbols across modules.
+  - `checkAppResourceReferenceBoundaries` — Prevents `:app` from referencing `:feature-settings`-owned resources.
+  - `checkNoFeatureSettingsRUsageInApp` — Blocks direct `:feature-settings` R imports in `:app`.
+- Recommended local gate before PR:
+
+```bash
+./gradlew test lint build
 ```
 
-This keeps settings propagation deterministic across configuration changes and module boundaries.
+### Manual Verification Checklist
 
----
+- Verify flip animations across portrait/landscape.
+- Verify dark/light theme transitions in settings.
+- Verify OLED protection subtle shifts while keeping visual continuity.
+- Verify light overlay with OLED protection enabled (no edge gaps).
+- Verify haptic feedback on all buttons.
+- Verify only the Light button triggers sound effect.
 
-## 7. Data Persistence & State Schema
+## Performance Notes
 
-Settings are managed via a reactive `AppSettingsManager` wrapper around `SharedPreferences`.
+- Clock rendering path is optimized for smooth 60fps behavior.
+- Avoid allocations inside `onDraw` hot paths.
+- Cache expensive text/theme/noise rendering resources where possible.
+- Keep Compose and custom rendering concerns separated to minimize regressions.
 
-### 7.1 Settings Matrix (11 Core Keys)
+## Recent Maintenance (2026-02)
 
-| Key | Type | Objective |
-| :--- | :--- | :--- |
-| `time_format_mode` | Int | 0 = 12h, 1 = 24h format. |
-| `is_show_seconds` | Bool | Toggles high-frequency flip animation. |
-| `is_show_flaps` | Bool | Toggles the visual card border visibility. |
-| `is_swipe_to_dim` | Bool | Enables dynamic brightness adjustment via gestures. |
-| `is_haptic_enabled` | Bool | Triggers feedback via `HapticFeedbackManager`. |
-| `is_sound_enabled` | Bool | Plays mechanical flip audio samples. |
-| `is_dark_theme` | Bool | Master switch for UI theming. |
-| `orientation_mode` | Int | Lock/Unlock rotation behavior. |
-| `oled_protection` | Bool | Activates the `DisplayBurnInProtectionManager`. |
+- Settings Sheet refinement:
+  - Default 72% height with smooth expansion to fullscreen.
+  - Improved gesture handling (drag-to-dismiss, scroll synchronization).
+- Power optimization:
+  - Zero background activity when screen off or app hidden.
+- App Shortcuts:
+  - Fixed shortcuts for Dark/Light mode and Settings.
+- Documentation:
+  - Added Chinese (Simplified) README (`README.zh-CN.md`).
+- Replaced `app/src/main/res/raw/flip_sound.mp3`.
+- Rebalanced audio levels (flip softer, chime slightly louder).
+- Cached theme background color in `FullscreenFlipClockView`.
+- Accessibility updates:
+  - Clock announces current time.
+  - Light button announces on/off and is clickable.
+- Text rendering optimization:
+  - Added LRU cache for ink-center calculations (digits + AM/PM).
+- Flip renderer optimization:
+  - Noise shader caching in `FlipCardRenderer` to reduce GC during theme changes.
+- Gesture safety update:
+  - Brightness dim only on single-finger scroll.
+  - Multi-finger pinch no longer triggers dim.
+- Light overlay rendering:
+  - Removed PorterDuff `ADD` to avoid GPU-to-software fallback.
+- Bug Fixes:
+  - Resolved Sleep Timer crash.
+  - Fixed Invert button sound feedback.
 
----
+## Contributing
 
-## 8. Development Workflow
+### Branching
 
-### 8.1 Coding Standards
+- Use feature branches from `main`.
+- Keep each PR scoped to one behavior or refactor goal.
 
-- **Naming Protocol**: Drawables must follow `[type]_[usage]_[description]_[size]dp.xml`.
-- **Style Enforcement**: All colors must be semantic (e.g., `bg_primary` instead of `black`).
-- **Null Safety**: Strict enforcement of Kotlin null-safety, especially in `RemoteViews` adapters where context may be volatile.
+### PR Checklist
 
-### 8.2 Verification Command Suite
+- Keep module boundaries intact (`docs/architecture-baseline.md`).
+- Include tests or rationale for test gaps.
+- Run local quality gates:
 
-- **Full Build**: `./gradlew assembleRelease`
-- **Lint Check**: `./gradlew lint`
-- **UI Audit**: Use the custom `/deploy` workflow to capture automated multi-orientation screenshots.
+```bash
+./gradlew test lint build installDebug
+```
 
----
+- Update docs when changing architecture, behavior, or user-facing settings.
 
-## 9. Roadmap & Historical Decisions
+### Commit Guidance
 
-### Why no AOD (Always-On Display)?
+- Follow [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `refactor:`, `docs:`, `chore:`, etc.).
+- Prefer small, reviewable, atomic commits.
+- Use clear commit subjects describing behavioral impact.
 
-AOD was deliberately excluded due to the lack of a standardized Android API. Vendor-specific implementations (Samsung AOD, MIUI Screen Saver) introduce high fragmentation that compromises project stability.
+## License
 
-### Upcoming Milestones
+This project's code and design resources are provided under the following terms:
 
-- **Support for custom .ttf fonts** for clock digits.
-- **Material You Dynamic Color** integration for themed widgets.
-- **TalkBack/Accessibility** specialized rendering descriptions.
+- **License Grant**: Completely free for personal learning, educational research, and non-profit open-source communities. You are free to access, modify, and distribute the source code.
+- **Commercial Restrictions**: Any form of commercial exploitation is **strictly prohibited**. This includes but is not limited to:
+  - Publishing or selling this project or its derivatives on any app store.
+  - Integrating ads, in-app purchases, or other profit-making plugins.
+  - Using this project as part of paid courses, commercial outsourcing, or paid software.
+- **Share Alike**: Any modified versions or derivative works must inherit this agreement and remains open-source under the same non-commercial restrictions.
 
----
-
-*This project is developed using an Agentic AI workflow. For internal architecture notes, refer to `.agent/AGENTS.md`.*
+For more details, see [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

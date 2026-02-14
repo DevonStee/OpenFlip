@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.dagger.hilt.android")
-    id("org.jetbrains.kotlin.kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -47,7 +47,7 @@ dependencies {
 
     implementation("com.github.skydoves:cloudy:0.2.4")
     implementation("com.google.dagger:hilt-android:2.55")
-    kapt("com.google.dagger:hilt-compiler:2.55")
+    ksp("com.google.dagger:hilt-compiler:2.55")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 }

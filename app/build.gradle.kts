@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.dagger.hilt.android")
-    id("org.jetbrains.kotlin.kapt")
+    id("com.google.devtools.ksp")
 }
 
 object Baseline {
@@ -112,7 +112,7 @@ dependencies {
     
     // Hilt - Dependency Injection
     implementation("com.google.dagger:hilt-android:${Baseline.hilt}")
-    kapt("com.google.dagger:hilt-compiler:${Baseline.hilt}")
+    ksp("com.google.dagger:hilt-compiler:${Baseline.hilt}")
 
     // Memory leak detection (debug only)
     debugImplementation("com.squareup.leakcanary:leakcanary-android:${Baseline.leakCanary}")
@@ -128,7 +128,7 @@ dependencies {
     
     // Hilt Testing
     testImplementation("com.google.dagger:hilt-android-testing:${Baseline.hilt}")
-    kaptTest("com.google.dagger:hilt-compiler:${Baseline.hilt}")
+    kspTest("com.google.dagger:hilt-compiler:${Baseline.hilt}")
     
     // Android Instrumented Test dependencies
     androidTestImplementation("androidx.test.ext:junit:${Baseline.androidxJunitExt}")

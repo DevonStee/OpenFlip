@@ -1,6 +1,20 @@
 package com.bokehforu.openflip.feature.settings.ui.settings
 
 import android.content.Intent
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -125,214 +139,319 @@ fun SettingsComposeSheet(
             )
 
             Box(modifier = Modifier.weight(1f)) {
-                when (page) {
-            SettingsPage.MAIN -> {
-                SettingsMainListScaffold(
-                    isSheetExpanded = true,
-                    onExpandSheet = {},
-                    onDismissSheet = {
-                        onSetInteracting(false)
-                        onDismiss()
-                    },
-                    sectionTimeDisplay = {
-                        SettingsCardGroup {
-                            SettingsTimeDisplaySection(
-                                settingsViewModel = settingsViewModel,
-                                isDark = isDark,
-                                onNavigateTimeFormat = {
-                                    onPerformClickFeedback()
-                                    page = SettingsPage.TIME_FORMAT
-                                },
-                                onToggleShowSeconds = {
-                                    onPerformClickFeedback()
-                                    settingsViewModel.setShowSeconds(it)
-                                }
+                AnimatedContent(
+                    targetState = page,
+                    label = "settings_page_transition",
+                    transitionSpec = {
+                        val isGoingBack = targetState == SettingsPage.MAIN
+                        val enterTransition = if (isGoingBack) {
+                            slideInHorizontally(
+                                animationSpec = tween(
+                                    durationMillis = 420,
+                                    easing = LinearOutSlowInEasing
+                                ),
+                                initialOffsetX = { -it }
+                            ) + fadeIn(
+                                animationSpec = tween(
+                                    durationMillis = 320,
+                                    delayMillis = 40,
+                                    easing = LinearOutSlowInEasing
+                                )
+                            ) + scaleIn(
+                                initialScale = 0.98f,
+                                animationSpec = tween(
+                                    durationMillis = 420,
+                                    easing = LinearOutSlowInEasing
+                                )
+                            )
+                        } else {
+                            slideInHorizontally(
+                                animationSpec = tween(
+                                    durationMillis = 420,
+                                    easing = LinearOutSlowInEasing
+                                ),
+                                initialOffsetX = { it }
+                            ) + fadeIn(
+                                animationSpec = tween(
+                                    durationMillis = 320,
+                                    delayMillis = 40,
+                                    easing = LinearOutSlowInEasing
+                                )
+                            ) + scaleIn(
+                                initialScale = 0.98f,
+                                animationSpec = tween(
+                                    durationMillis = 420,
+                                    easing = LinearOutSlowInEasing
+                                )
                             )
                         }
-                    },
-                    sectionAppearance = {
-                        SettingsCardGroup {
-                            SettingsAppearanceSection(
-                                settingsViewModel = settingsViewModel,
-                                isDark = isDark,
-                                onToggleShowFlaps = {
-                                    onPerformClickFeedback()
-                                    settingsViewModel.setShowFlaps(it)
-                                },
-                                onToggleSwipeToDim = {
-                                    onPerformClickFeedback()
-                                    settingsViewModel.setSwipeToDimEnabled(it)
-                                },
-                                onToggleLightMode = { isLightModeEnabled ->
-                                    onPerformClickFeedback()
-                                    onApplyThemeTransition(!isLightModeEnabled)
-                                },
-                                onNavigateOrientation = {
-                                    onPerformClickFeedback()
-                                    page = SettingsPage.ORIENTATION
-                                },
-                                onToggleScale = {
-                                    onPerformClickFeedback()
-                                    settingsViewModel.setScaleEnabled(it)
-                                },
-                                onToggleTimedBulbOff = {
-                                    onPerformClickFeedback()
-                                    settingsViewModel.setTimedBulbOffEnabled(it)
-                                }
+                        val exitTransition = if (isGoingBack) {
+                            slideOutHorizontally(
+                                animationSpec = tween(
+                                    durationMillis = 360,
+                                    easing = FastOutSlowInEasing
+                                ),
+                                targetOffsetX = { it / 3 }
+                            ) + fadeOut(
+                                animationSpec = tween(
+                                    durationMillis = 200,
+                                    easing = FastOutSlowInEasing
+                                )
+                            ) + scaleOut(
+                                targetScale = 0.985f,
+                                animationSpec = tween(
+                                    durationMillis = 300,
+                                    easing = FastOutSlowInEasing
+                                )
+                            )
+                        } else {
+                            slideOutHorizontally(
+                                animationSpec = tween(
+                                    durationMillis = 360,
+                                    easing = FastOutSlowInEasing
+                                ),
+                                targetOffsetX = { -it / 3 }
+                            ) + fadeOut(
+                                animationSpec = tween(
+                                    durationMillis = 200,
+                                    easing = FastOutSlowInEasing
+                                )
+                            ) + scaleOut(
+                                targetScale = 0.985f,
+                                animationSpec = tween(
+                                    durationMillis = 300,
+                                    easing = FastOutSlowInEasing
+                                )
                             )
                         }
-                    },
-                    sectionScreenWake = {
-                        SettingsCardGroup {
-                            SettingsScreenWakeSection(
-                                settingsViewModel = settingsViewModel,
-                                isDark = isDark,
-                                onNavigateWakeLock = {
-                                    onPerformClickFeedback()
-                                    page = SettingsPage.WAKE_LOCK
-                                },
-                                onToggleOledProtection = {
-                                    onPerformClickFeedback()
-                                    settingsViewModel.setOledProtectionEnabled(it)
-                                    onSetOledProtection(it)
-                                }
-                            )
-                        }
-                    },
-                    sectionScreensaver = {
-                        SettingsCardGroup {
-                            SettingsScreensaverSection(onOpenScreensaverSettings = {
-                                onPerformClickFeedback()
-                                onOpenScreensaverSettings()
-                            })
-                        }
-                    },
-                    sectionSleepTimer = {
-                        SettingsCardGroup {
-                            SettingsSleepTimerSection(
-                                timerState = sleepTimerState,
-                                onOpenSleepTimerPage = {
-                                    onPerformClickFeedback()
-                                    page = SettingsPage.SLEEP_TIMER
-                                }
-                            )
-                        }
-                    },
-                    sectionFeedback = {
-                        SettingsCardGroup {
-                            SettingsFeedbackSection(
-                                settingsViewModel = settingsViewModel,
-                                isDark = isDark,
-                                packageNameProvider = packageNameProvider,
-                                onToggleHaptic = {
-                                    onPerformClickFeedback()
-                                    settingsViewModel.setHapticEnabled(it)
-                                },
-                                onToggleSound = {
-                                    onPerformClickFeedback()
-                                    settingsViewModel.setSoundEnabled(it)
-                                },
-                                onToggleHourlyChime = { enabled ->
-                                    onPerformClickFeedback()
-                                    onToggleHourlyChime(enabled)
-                                },
-                                onOpenAlarmPermissionSettings = onOpenAlarmPermissionSettings,
-                                onTestChime = {
-                                    onPerformClickFeedback()
-                                    onTestChime()
-                                }
-                            )
-                        }
-                    },
-                    sectionReset = {
-                        SettingsCardGroup {
-                            SettingsResetSection(onReset = {
-                                onPerformClickFeedback()
-                                onResetToDefaults()
-                            })
-                        }
-                    },
-                    sectionQuit = {
-                        SettingsCardGroup {
-                            SettingsQuitSection(onQuit = {
-                                onPerformClickFeedback()
-                                onQuitApp()
-                            })
-                        }
-                    },
-                    sectionInformation = {
-                        SettingsCardGroup {
-                            SettingsInformationSection(
-                                onNavigateVersion = {
-                                    onPerformClickFeedback()
-                                    page = SettingsPage.VERSION
-                                },
-                                onNavigateAbout = {
-                                    onPerformClickFeedback()
-                                    page = SettingsPage.ABOUT
-                                },
-                                onOpenOriginalApp = onOpenOriginalApp,
-                                onContact = onContact
-                            )
-                        }
+                        enterTransition.togetherWith(exitTransition)
                     }
+                ) { targetPage ->
+                    when (targetPage) {
+                        SettingsPage.MAIN -> {
+                            SettingsMainListScaffold(
+                                isSheetExpanded = true,
+                                onExpandSheet = {},
+                                onDismissSheet = {
+                                    onSetInteracting(false)
+                                    onDismiss()
+                                },
+                                sectionTimeDisplay = {
+                                    SettingsCardGroup {
+                                        SettingsTimeDisplaySection(
+                                            settingsViewModel = settingsViewModel,
+                                            isDark = isDark,
+                                            onNavigateTimeFormat = {
+                                                onPerformClickFeedback()
+                                                page = SettingsPage.TIME_FORMAT
+                                            },
+                                            onToggleShowSeconds = {
+                                                onPerformClickFeedback()
+                                                settingsViewModel.setShowSeconds(it)
+                                            }
+                                        )
+                                    }
+                                },
+                                sectionAppearance = {
+                                    SettingsCardGroup {
+                                        SettingsAppearanceSection(
+                                            settingsViewModel = settingsViewModel,
+                                            isDark = isDark,
+                                            onToggleShowFlaps = {
+                                                onPerformClickFeedback()
+                                                settingsViewModel.setShowFlaps(it)
+                                            },
+                                            onToggleSwipeToDim = {
+                                                onPerformClickFeedback()
+                                                settingsViewModel.setSwipeToDimEnabled(it)
+                                            },
+                                            onToggleLightMode = { isLightModeEnabled ->
+                                                onPerformClickFeedback()
+                                                onApplyThemeTransition(!isLightModeEnabled)
+                                            },
+                                            onNavigateOrientation = {
+                                                onPerformClickFeedback()
+                                                page = SettingsPage.ORIENTATION
+                                            },
+                                            onToggleScale = {
+                                                onPerformClickFeedback()
+                                                settingsViewModel.setScaleEnabled(it)
+                                            },
+                                            onToggleTimedBulbOff = {
+                                                onPerformClickFeedback()
+                                                settingsViewModel.setTimedBulbOffEnabled(it)
+                                            }
+                                        )
+                                    }
+                                },
+                                sectionScreenWake = {
+                                    SettingsCardGroup {
+                                        SettingsScreenWakeSection(
+                                            settingsViewModel = settingsViewModel,
+                                            isDark = isDark,
+                                            onNavigateWakeLock = {
+                                                onPerformClickFeedback()
+                                                page = SettingsPage.WAKE_LOCK
+                                            },
+                                            onToggleOledProtection = {
+                                                onPerformClickFeedback()
+                                                settingsViewModel.setOledProtectionEnabled(it)
+                                                onSetOledProtection(it)
+                                            }
+                                        )
+                                    }
+                                },
+                                sectionScreensaver = {
+                                    SettingsCardGroup {
+                                        SettingsScreensaverSection(onOpenScreensaverSettings = {
+                                            onPerformClickFeedback()
+                                            onOpenScreensaverSettings()
+                                        })
+                                    }
+                                },
+                                sectionSleepTimer = {
+                                    SettingsCardGroup {
+                                        SettingsSleepTimerSection(
+                                            timerState = sleepTimerState,
+                                            onOpenSleepTimerPage = {
+                                                onPerformClickFeedback()
+                                                page = SettingsPage.SLEEP_TIMER
+                                            }
+                                        )
+                                    }
+                                },
+                                sectionFeedback = {
+                                    SettingsCardGroup {
+                                        SettingsFeedbackSection(
+                                            settingsViewModel = settingsViewModel,
+                                            isDark = isDark,
+                                            packageNameProvider = packageNameProvider,
+                                            onToggleHaptic = {
+                                                onPerformClickFeedback()
+                                                settingsViewModel.setHapticEnabled(it)
+                                            },
+                                            onToggleSound = {
+                                                onPerformClickFeedback()
+                                                settingsViewModel.setSoundEnabled(it)
+                                            },
+                                            onToggleHourlyChime = { enabled ->
+                                                onPerformClickFeedback()
+                                                onToggleHourlyChime(enabled)
+                                            },
+                                            onOpenAlarmPermissionSettings = onOpenAlarmPermissionSettings,
+                                            onTestChime = {
+                                                onPerformClickFeedback()
+                                                onTestChime()
+                                            }
+                                        )
+                                    }
+                                },
+                                sectionReset = {
+                                    SettingsCardGroup {
+                                        SettingsResetSection(onReset = {
+                                            onPerformClickFeedback()
+                                            onResetToDefaults()
+                                        })
+                                    }
+                                },
+                                sectionQuit = {
+                                    SettingsCardGroup {
+                                        SettingsQuitSection(onQuit = {
+                                            onPerformClickFeedback()
+                                            onQuitApp()
+                                        })
+                                    }
+                                },
+                                sectionInformation = {
+                                    SettingsCardGroup {
+                                        SettingsInformationSection(
+                                            onNavigateVersion = {
+                                                onPerformClickFeedback()
+                                                page = SettingsPage.VERSION
+                                            },
+                                            onNavigateAbout = {
+                                                onPerformClickFeedback()
+                                                page = SettingsPage.ABOUT
+                                            },
+                                            onOpenOriginalApp = onOpenOriginalApp,
+                                            onContact = onContact
+                                        )
+                                    }
+                                }
+                            )
+                        }
+
+                        SettingsPage.TIME_FORMAT -> {
+                            SettingsSubpageScaffold {
+                                SettingsTimeFormatPage(
+                                    settingsViewModel = settingsViewModel,
+                                    isDark = isDark,
+                                    onSetMode = {
+                                        onPerformClickFeedback()
+                                        settingsViewModel.setTimeFormatMode(it)
+                                    }
+                                )
+                            }
+                        }
+
+                        SettingsPage.ORIENTATION -> {
+                            SettingsSubpageScaffold {
+                                SettingsOrientationPage(
+                                    settingsViewModel = settingsViewModel,
+                                    isDark = isDark,
+                                    onSetMode = {
+                                        onPerformClickFeedback()
+                                        settingsViewModel.setOrientationMode(it)
+                                    }
+                                )
+                            }
+                        }
+
+                        SettingsPage.WAKE_LOCK -> {
+                            SettingsSubpageScaffold {
+                                SettingsWakeLockPage(
+                                    settingsViewModel = settingsViewModel,
+                                    isDark = isDark,
+                                    onSetMode = {
+                                        onPerformClickFeedback()
+                                        settingsViewModel.setWakeLockMode(it)
+                                    }
+                                )
+                            }
+                        }
+
+                        SettingsPage.SLEEP_TIMER -> {
+                            SettingsSubpageScaffold {
+                                SettingsSleepTimerPage(
+                                    timerState = sleepTimerState,
+                                    onStartSleepTimer = onStartSleepTimer,
+                                    onStopSleepTimer = onStopSleepTimer,
+                                    onNavigateBack = { page = SettingsPage.MAIN },
+                                    onOpenCustomTimerDialog = onOpenCustomSleepTimerDialog
+                                )
+                            }
+                        }
+
+                        SettingsPage.VERSION -> VersionPage(isDarkTheme = isDark)
+                        SettingsPage.ABOUT -> AboutPage(isDarkTheme = isDark)
+                    }
+                }
+                
+                // Gradient overlay for smooth header transition
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(10.dp)
+                        .align(Alignment.TopCenter)
+                        .background(
+                            brush = androidx.compose.ui.graphics.Brush.verticalGradient(
+                                colors = listOf(
+                                    MaterialTheme.colorScheme.surface,
+                                    androidx.compose.ui.graphics.Color.Transparent
+                                )
+                            )
+                        )
                 )
-            }
-
-            SettingsPage.TIME_FORMAT -> {
-                SettingsSubpageScaffold {
-                    SettingsTimeFormatPage(
-                        settingsViewModel = settingsViewModel,
-                        isDark = isDark,
-                        onSetMode = {
-                            onPerformClickFeedback()
-                            settingsViewModel.setTimeFormatMode(it)
-                        }
-                    )
-                }
-            }
-
-            SettingsPage.ORIENTATION -> {
-                SettingsSubpageScaffold {
-                    SettingsOrientationPage(
-                        settingsViewModel = settingsViewModel,
-                        isDark = isDark,
-                        onSetMode = {
-                            onPerformClickFeedback()
-                            settingsViewModel.setOrientationMode(it)
-                        }
-                    )
-                }
-            }
-
-            SettingsPage.WAKE_LOCK -> {
-                SettingsSubpageScaffold {
-                    SettingsWakeLockPage(
-                        settingsViewModel = settingsViewModel,
-                        isDark = isDark,
-                        onSetMode = {
-                            onPerformClickFeedback()
-                            settingsViewModel.setWakeLockMode(it)
-                        }
-                    )
-                }
-            }
-
-            SettingsPage.SLEEP_TIMER -> {
-                SettingsSubpageScaffold {
-                    SettingsSleepTimerPage(
-                        timerState = sleepTimerState,
-                        onStartSleepTimer = onStartSleepTimer,
-                        onStopSleepTimer = onStopSleepTimer,
-                        onNavigateBack = { page = SettingsPage.MAIN },
-                        onOpenCustomTimerDialog = onOpenCustomSleepTimerDialog
-                    )
-                }
-            }
-
-            SettingsPage.VERSION -> VersionPage(isDarkTheme = isDark)
-            SettingsPage.ABOUT -> AboutPage(isDarkTheme = isDark)
-                }
             }
         }
     }
