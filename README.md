@@ -70,23 +70,23 @@ Captured from a real connected Android device via ADB.
 
 ### Dark Theme Light Bulb Toggle (GIF)
 
-![OpenFlip dark theme light bulb toggle](docs/images/openflip-dark-light-toggle.gif)
+<img src="docs/images/openflip-dark-light-toggle.gif" width="316" alt="OpenFlip dark theme light bulb toggle">
 
 ### Seconds Ticking (GIF)
 
-![OpenFlip seconds ticking](docs/images/openflip-seconds-ticking.gif)
+<img src="docs/images/openflip-seconds-ticking.gif" width="316" alt="OpenFlip seconds ticking">
 
 ### Knob Rotation Interaction
 
-![OpenFlip knob rotation interaction](docs/images/openflip-knob-fast-flip.png)
+<img src="docs/images/openflip-knob-fast-flip.png" width="316" alt="OpenFlip knob rotation interaction">
 
 ### Vertical Dim Demo (GIF)
 
-![OpenFlip vertical dim demo](docs/images/openflip-vertical-dim.gif)
+<img src="docs/images/openflip-vertical-dim.gif" width="316" alt="OpenFlip vertical dim demo">
 
 ### Knob Rotation 2000° (GIF)
 
-![OpenFlip knob rotation 2000 demo](docs/images/openflip-knob-2000deg.gif)
+<img src="docs/images/openflip-knob-2000deg.gif" width="316" alt="OpenFlip knob rotation 2000 demo">
 
 ## Project Structure
 

@@ -70,23 +70,23 @@ OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注�
 
 ### 深色主题 Light Bulb 点亮（GIF）
 
-![OpenFlip 深色主题 Light Bulb 点亮](docs/images/openflip-dark-light-toggle.gif)
+<img src="docs/images/openflip-dark-light-toggle.gif" width="316" alt="OpenFlip 深色主题 Light Bulb 点亮">
 
 ### 秒数跳动（GIF）
 
-![OpenFlip 秒数跳动](docs/images/openflip-seconds-ticking.gif)
+<img src="docs/images/openflip-seconds-ticking.gif" width="316" alt="OpenFlip 秒数跳动">
 
 ### Knob 旋钮调时交互
 
-![OpenFlip Knob 旋钮调时交互](docs/images/openflip-knob-fast-flip.png)
+<img src="docs/images/openflip-knob-fast-flip.png" width="316" alt="OpenFlip Knob 旋钮调时交互">
 
 ### Vertical Dim 演示（GIF）
 
-![OpenFlip Vertical Dim 演示](docs/images/openflip-vertical-dim.gif)
+<img src="docs/images/openflip-vertical-dim.gif" width="316" alt="OpenFlip Vertical Dim 演示">
 
 ### Knob 旋转 2000°（GIF）
 
-![OpenFlip Knob 旋转 2000 度演示](docs/images/openflip-knob-2000deg.gif)
+<img src="docs/images/openflip-knob-2000deg.gif" width="316" alt="OpenFlip Knob 旋转 2000 度演示">
 
 ## 项目结构
 
