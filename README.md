@@ -24,13 +24,11 @@ Key features:
 ## Highlights
 
 - Realistic card-flip animation with custom `Canvas` + 3D transform pipeline — each flip simulates paper weight, shadow, and perspective.
-- Minimalist full-screen clock UI with tactile controls and haptic feedback on every interaction.
 - **Simulated bulb light**: Warm light overlay recreates the glow of a real desk lamp illuminating the clock face. Toggle on/off with satisfying haptic feedback.
 - **Rotary knob time control**: Drag the knob to fast-flip through digits at variable speed, simulating a mechanical adjustment dial with momentum.
 - **Hourly chime**: Plays a configurable chime sound on the hour. Volume and enable/disable are adjustable from Settings.
 - **Sleep timer**: Set a countdown to automatically close the app — perfect for bedside use without draining battery overnight.
 - **Zero-drain background behavior**: Stops all rendering and activity when not visible.
-- **Polished Settings Sheet**: 72% initial height, smooth gestures, and seamless transitions.
 - Hybrid UI stack:
   - Jetpack Compose for settings screens.
   - Custom Views for high-performance clock rendering.
@@ -276,7 +274,6 @@ app/src/main/java/com/bokehforu/openflip/
 ## Recent Maintenance (2026-02)
 
 - Settings Sheet refinement:
-  - Default 72% height with smooth expansion to fullscreen.
   - Improved gesture handling (drag-to-dismiss, scroll synchronization).
 - Power optimization:
   - Zero background activity when screen off or app hidden.
