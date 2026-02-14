@@ -50,23 +50,23 @@ Captured from a real connected Android device via ADB.
 
 ### Light Effect Enabled
 
-<img src="docs/images/openflip-light-on.png" width="632" alt="OpenFlip light effect enabled">
+<img src="docs/images/openflip-light-on.png" width="316" alt="OpenFlip light effect enabled">
 
 ### Dark Theme + Light Effect
 
-<img src="docs/images/openflip-light-on-in-dark-theme.png" width="632" alt="OpenFlip light effect in dark theme">
+<img src="docs/images/openflip-light-on-in-dark-theme.png" width="316" alt="OpenFlip light effect in dark theme">
 
 ### Settings Sheet (Compose)
 
-<img src="docs/images/openflip-settings-sheet.png" width="632" alt="OpenFlip settings sheet">
+<img src="docs/images/openflip-settings-sheet.png" width="316" alt="OpenFlip settings sheet">
 
 ### Sleep Timer Dialog
 
-<img src="docs/images/openflip-sleep-timer-dialog.png" width="632" alt="OpenFlip sleep timer dialog">
+<img src="docs/images/openflip-sleep-timer-dialog.png" width="316" alt="OpenFlip sleep timer dialog">
 
 ### Seconds Display Enabled
 
-<img src="docs/images/openflip-show-seconds.png" width="632" alt="OpenFlip seconds display enabled">
+<img src="docs/images/openflip-show-seconds.png" width="316" alt="OpenFlip seconds display enabled">
 
 ### Dark Theme Light Bulb Toggle (GIF)
 

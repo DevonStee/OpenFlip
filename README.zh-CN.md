@@ -50,23 +50,23 @@ OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注�
 
 ### Light 效果开启
 
-<img src="docs/images/openflip-light-on.png" width="632" alt="OpenFlip Light 效果开启">
+<img src="docs/images/openflip-light-on.png" width="316" alt="OpenFlip Light 效果开启">
 
 ### 深色主题 + Light 效果
 
-<img src="docs/images/openflip-light-on-in-dark-theme.png" width="632" alt="OpenFlip 深色主题下的 Light 效果">
+<img src="docs/images/openflip-light-on-in-dark-theme.png" width="316" alt="OpenFlip 深色主题下的 Light 效果">
 
 ### 设置页（Compose）
 
-<img src="docs/images/openflip-settings-sheet.png" width="632" alt="OpenFlip 设置页">
+<img src="docs/images/openflip-settings-sheet.png" width="316" alt="OpenFlip 设置页">
 
 ### 倒计时设置弹窗
 
-<img src="docs/images/openflip-sleep-timer-dialog.png" width="632" alt="OpenFlip 倒计时设置弹窗">
+<img src="docs/images/openflip-sleep-timer-dialog.png" width="316" alt="OpenFlip 倒计时设置弹窗">
 
 ### 秒数显示开启
 
-<img src="docs/images/openflip-show-seconds.png" width="632" alt="OpenFlip 秒数显示开启">
+<img src="docs/images/openflip-show-seconds.png" width="316" alt="OpenFlip 秒数显示开启">
 
 ### 深色主题 Light Bulb 点亮（GIF）
 
