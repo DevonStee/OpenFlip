@@ -1,36 +1,11 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("com.google.dagger.hilt.android")
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 
-object Baseline {
-    // Locked dependency versions for Kotlin 2.0.x toolchain compatibility.
-    const val coreKtx = "1.15.0"
-    const val appcompat = "1.7.1"
-    const val material = "1.13.0"
-    const val constraintLayout = "2.2.1"
-    const val lifecycle = "2.8.7"
-    const val activity = "1.9.3"
-    const val fragment = "1.8.5"
-    const val composeBom = "2024.12.01"
-    const val cloudy = "0.2.4"
-    const val hilt = "2.55"
-    const val leakCanary = "2.12"
-    const val junit4 = "4.13.2"
-    const val mockito = "5.8.0"
-    const val mockitoKotlin = "5.2.1"
-    const val kotlinTest = "2.0.21"
-    const val coroutinesTest = "1.9.0"
-    const val androidxTestCore = "1.6.1"
-    const val robolectric = "4.13"
-    const val androidxJunitExt = "1.3.0"
-    const val espresso = "3.7.0"
-    const val testRules = "1.7.0"
-    const val testRunner = "1.7.0"
-}
 
 android {
     namespace = "com.bokehforu.openflip"
@@ -87,54 +62,54 @@ dependencies {
     implementation(project(":feature-clock"))
     implementation(project(":feature-chime"))
 
-    implementation("androidx.core:core-ktx:${Baseline.coreKtx}")
-    implementation("androidx.appcompat:appcompat:${Baseline.appcompat}")
-    implementation("com.google.android.material:material:${Baseline.material}")
-    implementation("androidx.constraintlayout:constraintlayout:${Baseline.constraintLayout}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Baseline.lifecycle}")
-    implementation("androidx.activity:activity-ktx:${Baseline.activity}")
-    implementation("androidx.fragment:fragment-ktx:${Baseline.fragment}")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
 
     // Compose
-    val composeBom = platform("androidx.compose:compose-bom:${Baseline.composeBom}")
+    val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
     
-    implementation("androidx.activity:activity-compose:${Baseline.activity}")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:${Baseline.lifecycle}")
-    implementation("androidx.lifecycle:lifecycle-process:${Baseline.lifecycle}")
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.process)
     
     // Cloudy - Liquid glass blur effect
-    implementation("com.github.skydoves:cloudy:${Baseline.cloudy}")
+    implementation(libs.skydoves.cloudy)
     
     // Hilt - Dependency Injection
-    implementation("com.google.dagger:hilt-android:${Baseline.hilt}")
-    ksp("com.google.dagger:hilt-compiler:${Baseline.hilt}")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     // Memory leak detection (debug only)
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:${Baseline.leakCanary}")
+    debugImplementation(libs.leakcanary.android)
     
     // Unit Test dependencies
-    testImplementation("junit:junit:${Baseline.junit4}")
-    testImplementation("org.mockito:mockito-core:${Baseline.mockito}")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:${Baseline.mockitoKotlin}")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:${Baseline.kotlinTest}")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Baseline.coroutinesTest}")
-    testImplementation("androidx.test:core:${Baseline.androidxTestCore}")
-    testImplementation("org.robolectric:robolectric:${Baseline.robolectric}")
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.robolectric)
     
     // Hilt Testing
-    testImplementation("com.google.dagger:hilt-android-testing:${Baseline.hilt}")
-    kspTest("com.google.dagger:hilt-compiler:${Baseline.hilt}")
+    testImplementation(libs.hilt.android.testing)
+    kspTest(libs.hilt.compiler)
     
     // Android Instrumented Test dependencies
-    androidTestImplementation("androidx.test.ext:junit:${Baseline.androidxJunitExt}")
-    androidTestImplementation("androidx.test.espresso:espresso-core:${Baseline.espresso}")
-    androidTestImplementation("androidx.test:rules:${Baseline.testRules}")
-    androidTestImplementation("androidx.test:runner:${Baseline.testRunner}")
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestImplementation(libs.androidx.test.runner)
 }
 
 // Task to check and setup chime audio files

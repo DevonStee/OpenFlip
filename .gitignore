@@ -5,7 +5,6 @@
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
-/.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 /.idea/modules/
@@ -16,60 +15,69 @@
 /.idea/compiler.xml
 /.idea/jarRepositories.xml
 /.idea/deviceManager.xml
+/.idea/appInsightsSettings.xml
+/.idea/deploymentTargetSelector.xml
+/.idea/migrations.xml
+/.idea/AndroidProjectSystem.xml
+/.idea/workspace.xml
 *.ipr
 *.iws
 
 # Build artifacts
 **/build/
-/build
-/app/build
-/core/build
-/data/build
-/domain/build
-/feature-clock/build
-/feature-settings/build
-/feature-chime/build
+/build/
 /captures
 .externalNativeBuild
 .cxx
 /app/release/
+*.apk
+*.aab
+output-metadata.json
+
+# Android Profiling
+*.hprof
+
+# Signing files
+*.jks
+*.keystore
+*.p12
+*.jceks
+google-services.json
+
+# Secrets
+secrets.properties
 
 # OS specific
 .DS_Store
 Thumbs.db
+Icon?
 
 # Kotlin
 .kotlin/
 .scripts/
 
-# Misc
-*.md.bak
-开发复盘日志.md
-local.properties
-全开发总结建议.md
-.ai/widget_refine.md
-.gemini/
-.config/
-
-# Agent specific
+# AI / Agent specific
 .agent/history/
-
-
-# Temporary/Development files
 .agent/task.md
-codex.md
+.gemini/
+.claude/
 .cursor/
-.alma-snapshots/
+.sisyphus/
+.config/
+codex.md
+
+# Log files
 *.log
 debug.log
-__pycache__/
-ui_verify_*/
 
-# IDE specific (additional)
-# Ignore user-specific IDE files
-.idea/appInsightsSettings.xml
-.idea/deploymentTargetSelector.xml
-.idea/migrations.xml
-.idea/AndroidProjectSystem.xml
-.idea/assetWizardSettings.xml
-.idea/workspace.xml
+# Python / Scripts
+__pycache__/
+.ruff_cache/
+ui_verify_*/
+.alma-snapshots/
+
+# Misc / User defined
+*.md.bak
+开发复盘日志.md
+全开发总结建议.md
+.ai/widget_refine.md

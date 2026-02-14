@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    implementation("androidx.annotation:annotation:1.8.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("javax.inject:javax.inject:1")
+    implementation(libs.androidx.annotation)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.javax.inject)
 }
