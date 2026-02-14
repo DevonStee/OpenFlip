@@ -1,6 +1,6 @@
 # OpenFlip (Android)
 
-[![Android CI](https://github.com/YOUR_USERNAME/fliqlo_android/actions/workflows/android.yml/badge.svg)](https://github.com/YOUR_USERNAME/fliqlo_android/actions/workflows/android.yml)
+[![Android CI](https://github.com/DevonStee/OpenFlip/actions/workflows/android.yml/badge.svg)](https://github.com/DevonStee/OpenFlip/actions/workflows/android.yml)
 
 [中文文档 (Simplified Chinese)](README.zh-CN.md)
 
