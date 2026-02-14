@@ -1,6 +1,7 @@
 # OpenFlip (Android)
 
 [![Android CI](https://github.com/DevonStee/OpenFlip/actions/workflows/android.yml/badge.svg)](https://github.com/DevonStee/OpenFlip/actions/workflows/android.yml)
+[![Download APK](https://img.shields.io/badge/Download-Latest_APK-green?style=for-the-badge&logo=android)](https://github.com/DevonStee/OpenFlip/releases/latest/download/app-release.apk)
 
 [中文文档 (Simplified Chinese)](README.zh-CN.md)
 
