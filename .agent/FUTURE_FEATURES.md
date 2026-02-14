@@ -22,70 +22,25 @@
 
 ---
 
-## ✅ Features to Implement
+## ✅ Implemented Features
 
-### 1. Dream/Screensaver Mode ⭐⭐⭐
+### Dream/Screensaver Mode ✅
 
-**Priority**: High
-**Difficulty**: Medium
-**User Demand**: High
+**Status**: Implemented in `ScreensaverClockService.kt` (`:app` module)
 
-#### What is Dream Mode?
+- Activates when device is charging/docked or user enables in system settings
+- Reuses existing flip clock view component
 
-Android's DreamService (screensaver) that activates when:
+### App Shortcuts ✅
 
-- Device is charging
-- Device is docked
-- User manually enables in "Settings → Display → Screen saver"
-
-#### Why Important?
-
-- Classic use case for flip clocks (desk clock while charging)
-- Native Android API with good ROM compatibility
-- Users expect this feature in clock apps
-
-#### Implementation Overview
-
-1. Create `FlipClockDreamService` extending `DreamService`
-2. Reuse existing `FlipClockView` component
-3. Register service in `AndroidManifest.xml`
-4. Add dream settings preview
-
-**Estimated Time**: 2-3 hours
-
----
-
-### 2. App Shortcuts ⭐
-
-**Priority**: Medium
-**Difficulty**: Very Low
-**User Demand**: Medium
-
-#### What are App Shortcuts?
-
-Quick actions shown when long-pressing the app icon:
+**Status**: Implemented in `res/xml/shortcuts.xml`
 
 - "Open with Dark Theme"
 - "Open with Light Theme"
 - "Open Settings"
 
-#### Why Implement?
-
-- 5-minute implementation
-- Improves perceived app quality
-- Enhances user experience with quick access
-
-#### App Shortcuts Implementation Overview
-
-1. Create `res/xml/shortcuts.xml`
-2. Define static shortcuts with icons and intents
-3. Handle shortcut intents in `MainActivity`
-
-**Estimated Time**: 15-30 minutes
-
 ---
 
-## Implementation Priority
+## 💡 Future Ideas
 
-1. **App Shortcuts** (Quick win - do first)
-2. **Dream/Screensaver Mode** (High value feature)
+_(No planned features at this time)_

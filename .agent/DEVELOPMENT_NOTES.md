@@ -3,9 +3,9 @@
 ## 📋 项目概览
 
 **项目性质**: 非官方时钟 Android 复刻版  
-**当前版本**: v0.5.0-beta  
-**代码规模**: ~2526 行 Kotlin  
-**架构**: MVVM-lite (无 ViewModel，使用 SettingsManager)
+**当前版本**: v0.6.0-beta  
+**架构**: MVVM + Hilt DI + UseCase 层  
+**模块**: 7 个 Gradle 模块 (`:app`, `:core`, `:data`, `:domain`, `:feature-clock`, `:feature-chime`, `:feature-settings`)
 
 ---
 
@@ -89,18 +89,18 @@
 ```bash
 ./gradlew assembleDebug
 adb install -r app/build/outputs/apk/debug/app-debug.apk
-adb shell am start -n com.bokehforu.openflip/.ui.MainActivity
+adb shell am start -n com.bokehforu.openflip/.feature.clock.ui.FullscreenClockActivity
 ```
 
 ---
 
 ## 📊 项目统计
 
-- **Kotlin 文件**: 13 个
-- **总代码行数**: ~2526 行
+- **Gradle 模块**: 7 个
 - **Widget 类型**: 5 个 (Classic, Glass, Solid, Split, White)
-- **设置项**: 11 个
-- **接口**: 3 个 (Listener, OledProtectionController, SettingsProvider)
+- **UseCases**: 14 个
+- **DreamService**: ScreensaverClockService (已实现)
+- **App Shortcuts**: 已实现 (Dark/Light/Settings)
 
 ---
 
@@ -188,5 +188,5 @@ windowConfigurator.applyBackgroundColor(settingsManager.isDarkTheme)
 
 ---
 
-**最后更新**: 2026-01-19  
+**最后更新**: 2026-02-13  
 **维护者**: black_knife_air

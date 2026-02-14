@@ -4,10 +4,12 @@
 
 ## Project Environment
 
-- **Language**: Kotlin 1.9+
-- **UI**: XML Layouts + Custom Views
-- **Design System**: Material Components 3 (1.13.0)
-- **Build**: Gradle 8.10, AGP 8.10+
+- **Language**: Kotlin 2.0.21
+- **UI**: XML Layouts + Custom Views (clock) | Jetpack Compose (settings)
+- **Design System**: Material Components 3
+- **DI**: Hilt 2.55 (Dagger compile-time DI)
+- **Build**: AGP 8.13.2, KSP 2.0.21
+- **Modules**: `:app`, `:core`, `:data`, `:domain`, `:feature-clock`, `:feature-chime`, `:feature-settings`
 - **Target SDK**: 35 | **Min SDK**: 26
 
 ---
@@ -16,16 +18,24 @@
 
 Before working on this project, review these skills in `.agent/skills/`:
 
+### Root-Level Skills
+
 | Skill | When to Use |
 | ------- | ------------- |
-| [Android Rotation Anti-Flicker](skills/android-rotation-antiflicker/SKILL.md) | Screen rotation issues |
-| [Android High-Performance Custom View](skills/android-highperf-customview/SKILL.md) | Custom View rendering, animation optimization |
-| [Android Widget Development](skills/android-widget-development/SKILL.md) | AppWidget / RemoteViews work |
-| [AI Collaboration Workflow](skills/ai-collab-workflow/SKILL.md) | Communication best practices |
-| [Color Tokens](skills/color-tokens/SKILL.md) | Color naming and token references |
-| [Best Practice Check](skills/best-practice-check/SKILL.md) | Code quality and architectural audits |
-| [Git Commit Awareness](skills/git-commit-awareness/SKILL.md) | **MANDATORY: Proactive commit detection after feature completion** |
-| [Codebase-Aware Implementation](skills/codebase-aware-implementation/SKILL.md) | **MANDATORY: Pattern discovery before implementing** |
+| [Android Theme Transition Safety](skills/android-theme-transition-safety/SKILL.md) | Theme switching race conditions |
+| [Commit Batching](skills/commit-batching/SKILL.md) | Organizing atomic commits |
+
+### User Skills (`skills/user/`)
+
+| Skill | When to Use |
+| ------- | ------------- |
+| [Android Rotation Anti-Flicker](skills/user/android-rotation-antiflicker/SKILL.md) | Screen rotation issues |
+| [Android High-Performance Custom View](skills/user/android-highperf-customview/SKILL.md) | Custom View rendering, animation optimization |
+| [Android Widget Development](skills/user/android-widget-development/SKILL.md) | AppWidget / RemoteViews work |
+| [Color Tokens](skills/user/color-tokens/SKILL.md) | Color naming and token references |
+| [Best Practice Check](skills/user/best-practice-check/SKILL.md) | Code quality and architectural audits |
+| [Git Commit Awareness](skills/user/git-commit-awareness/SKILL.md) | **MANDATORY: Proactive commit detection** |
+| [Codebase-Aware Implementation](skills/user/codebase-aware-implementation/SKILL.md) | **MANDATORY: Pattern discovery before implementing** |
 
 ---
 
@@ -95,7 +105,7 @@ refactor: extract FlipCard rendering logic
 
 ### Version Bumping
 
-After completing a feature set, update version in `app/build.gradle.kts`:
+After completing a feature set, update version in `:app` module's `build.gradle.kts`:
 
 ```kotlin
 versionName = "0.5.0-beta"
@@ -154,5 +164,5 @@ grep -r "similar_feature" app/src/
 git add [files]
 git commit -m "feat(scope): description
 
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
+Co-Authored-By: AI Assistant <noreply@ai.dev>"
 ```

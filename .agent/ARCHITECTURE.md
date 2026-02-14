@@ -1,53 +1,64 @@
 # OpenFlip Android - Technical Architecture
 
-> **Version**: 1.5-beta | **Target SDK**: 35 | **Min SDK**: 26
+> **Version**: 0.6.0-beta | **Target SDK**: 35 | **Min SDK**: 26
 
 ---
 
-## 1. Package Structure (current)
+## 1. Multi-Module Structure
 
 ```text
-com.bokehforu.openflip/
-├── ui/                      # UI layer: Activity, window, controllers, dialogs, helpers, Compose settings
-│   ├── FullscreenClockActivity.kt, WindowConfigurator.kt
-│   ├── controller/ FlipAnimationsController.kt, GearAnimationController.kt, KnobInteractionController.kt
-│   │               LightToggleController.kt, ShortcutIntentHandler.kt, SleepWakeController.kt, ThemeToggleController.kt
-│   ├── dialog/ SleepTimerDialogManager.kt
-│   ├── effect/ ConvexLensEffect.kt, GlassMagnificationEffect.kt
-│   ├── helper/ SystemBarStyleHelper.kt, GestureRouter.kt, WaterfallAnimationHelper.kt
-│   ├── settings/ SettingsMenuBottomSheet.kt, SettingsMenuSections.kt, SettingsMenuClickHelper.kt
-│   ├── compose/ SettingsButtons.kt, SettingsListItems.kt, SettingsItemComponents.kt, SettingsShapes.kt, GlassEffects.kt
-│   ├── theme/ OpenFlipTheme.kt, SettingsThemeHelper.kt, ThemeApplier.kt
-│   └── transition/ ColorTransitionController.kt
-├── controller/              # Coordination & interaction logic (non-UI rendering)
-│   ├── SettingsCoordinator.kt, UIStateController.kt, TimeManagementController.kt, TimeTravelController.kt
-│   ├── SystemIntegrationController.kt
-│   ├── interfaces/ HapticsProvider.kt, SoundProvider.kt, TimeSource.kt, SettingsStore.kt
-│   └── settings/ SettingsNavigationController.kt, SettingsExternalActionController.kt
-├── view/                    # Rendering layer: custom Views and renderers (no ui/widget imports)
-│   ├── FullscreenFlipClockView.kt, CircularTimerView.kt, InfiniteKnobView.kt, StateToggleGlowView.kt
-│   ├── outline providers: CircularOutlineProvider.kt, RoundedRectOutlineProvider.kt
-│   ├── card/ FlipCardComponent.kt, FlipCardConfig.kt, FlipCardState.kt, FlipCardGeometry.kt, FlipCardRenderer.kt
-│   ├── animation/ FlipAnimationManager.kt
-│   ├── renderer/ LightOverlayRenderer.kt
-│   └── theme/ FlipClockThemeApplier.kt
-├── manager/                 # System/service managers
-│   ├── DisplayBurnInProtectionManager.kt, TimeSecondsTicker.kt, TimeProvider.kt, Time.kt
-│   ├── FeedbackSoundManager.kt, HapticFeedbackManager.kt, LightEffectManager.kt
-├── settings/                # Settings source of truth
-│   └── AppSettingsManager.kt
-├── viewmodel/               # ViewModels
-│   ├── FullscreenClockViewModel.kt, FullscreenClockViewModelFactory.kt, SettingsViewModel.kt
-│   └── ClockUiState.kt, ClockUiEvent.kt
-├── widget/                  # AppWidgets (RemoteViews)
-│   ├── WidgetClockBaseProvider.kt
-│   ├── WidgetClock{Classic,Glass,Solid,Split,White}Provider.kt
-│   └── WidgetLeakDebugHelper.kt
-├── util/                    # Utilities
-│   ├── ThemeColorResolver.kt, FontProvider.kt, ViewExtensions.kt, QuitGuard.kt
-├── dream/                   # DreamService
-│   └── ScreensaverClockService.kt
-└── ui/theme/Color.kt        # Compose color tokens
+:app                          # Application entry point, DI, widgets, dream service
+├── OpenFlipApplication.kt    # @HiltAndroidApp entry point
+├── di/module/                # CoreModule, ManagerModule, ControllerModule
+├── dream/                    # ScreensaverClockService (DreamService)
+├── manager/                  # FeedbackSoundManager
+└── widget/                   # WidgetClockBaseProvider + 5 widget variants
+
+:core                         # Shared contracts, utilities (no Android framework deps beyond Context)
+├── manager/                  # HapticFeedbackManager, Time
+├── settings/                 # Settings, SettingsContracts, SettingsDefaults, SettingsHostController
+└── util/                     # FontProvider, ThemeColorResolver, ViewExtensions
+
+:domain                       # Pure business logic layer
+├── gateway/                  # HourlyChimeScheduler, HourlyChimeTester
+├── repository/               # SettingsRepository (interface)
+├── result/                   # Result type
+└── usecase/                  # 14 UseCases (ToggleTheme, StartSleepTimer, UpdateHapticEnabled, etc.)
+
+:data                         # Data/persistence layer
+├── repository/               # SettingsRepositoryImpl
+├── settings/                 # AppSettingsManager, SettingsStore
+└── util/                     # QuitGuard
+
+:feature-clock                # Main clock UI feature
+├── controller/               # SettingsCoordinator, SystemIntegration, TimeManagement, TimeTravel, UIState
+├── manager/                  # AppLifecycleMonitor, DisplayBurnInProtection, LightEffect, TimeProvider, TimeTicker
+├── ui/                       # FullscreenClockActivity, WindowConfigurator
+├── view/                     # FullscreenFlipClockView, InfiniteKnobView, CircularTimerView, StateToggleGlowView
+└── viewmodel/                # FullscreenClockViewModel, ClockUiState, ClockUiEvent
+
+:feature-settings             # Settings UI feature
+├── controller/               # HourlyChimeSettingsController
+├── viewmodel/                # SettingsViewModel
+└── res/                      # 30 drawable icons, shapes
+
+:feature-chime                # Hourly chime scheduling feature
+├── ChimeBootReceiver.kt, ChimeForegroundService.kt
+├── ChimeScheduleUtils.kt, ChimeTestReceiver.kt
+├── ChimeTimeChangeReceiver.kt, HourlyChimeManager.kt
+└── HourlyChimeReceiver.kt
+```
+
+### Module Dependency Graph
+
+```text
+:core ← (no deps)
+:domain ← :core
+:data ← :core, :domain
+:feature-clock ← :core, :data, :domain
+:feature-chime ← :core, :data, :domain, :feature-clock
+:feature-settings ← :core, :data, :domain
+:app ← :core, :data, :domain, :feature-clock, :feature-chime, :feature-settings
 ```
 
 ---
@@ -79,11 +90,35 @@ FullscreenClockActivity
 
 - **Owner**: constructed in `FullscreenClockActivity` and registered as a `LifecycleObserver`.
 - **Role**: centralizes system-level behaviors (wake lock mode, burn-in protection, sleep/wake, persistent brightness).
-- **Dependencies**: `AppCompatActivity`, `Window`, `SettingsStore`, `FullscreenClockViewModel`, `FullscreenFlipClockView`, `HapticsProvider`.
-- **Exceptions**: holds a `FullscreenFlipClockView` reference for OLED shift updates (allowed here, but must not do drawing/animation).
+- **Dependencies**: `AppCompatActivity`, `Window`, `SettingsStore`, `FullscreenClockViewModel`, `FullscreenFlipClockView`.
 - **Delegation**: Activity implements `SleepTimerDialogProvider`/`OledProtectionController` and forwards calls to this controller.
 
-### 2.3 Single Source of Truth
+### 2.3 Hilt Dependency Injection
+
+```
+di/module/
+├── CoreModule.kt          # @Singleton: ApplicationContext, CoroutineScope, ElapsedTimeSource
+├── ManagerModule.kt       # @Singleton: Vibrator, interface bindings (SettingsStore, HapticsProvider)
+└── ControllerModule.kt    # Activity-scoped bindings
+```
+
+**Key patterns**: `@HiltAndroidApp`, `@AndroidEntryPoint`, `@HiltViewModel`, `@AssistedInject`.
+
+### 2.4 UseCase Layer (`:domain`)
+
+Each settings operation is encapsulated in a single-responsibility UseCase:
+
+```kotlin
+class ToggleThemeUseCase @Inject constructor(
+    private val settingsRepository: SettingsRepository
+) {
+    suspend operator fun invoke(): Result<Unit>
+}
+```
+
+14 UseCases cover all settings mutations, enforcing business rules before persistence.
+
+### 2.5 Single Source of Truth
 
 `AppSettingsManager` is the **only** place where user preferences are stored and read.
 
@@ -103,7 +138,7 @@ class AppSettingsManager(context: Context) : SettingsStore {
 }
 ```
 
-### 2.4 Separation of Concerns (FlipCard)
+### 2.6 Separation of Concerns (FlipCard)
 
 The flip card now follows clean architecture:
 
@@ -115,21 +150,29 @@ The flip card now follows clean architecture:
 | `FlipCardRenderer` | Drawing only |
 | `FlipCardComponent` | Facade for existing API |
 
-### 2.5 Runtime Dependencies (brief)
+### 2.7 Runtime Dependencies
 
 ```mermaid
 graph TD
-    Activity[FullscreenClockActivity] --> VM[FullscreenClockViewModel]
-    Activity --> SettingsVM[SettingsViewModel]
-    Activity --> SysCtrl[SystemIntegrationController]
-    Activity --> UiCtrl[UI Controllers]
-    VM --> SettingsStore[SettingsStore (AppSettingsManager)]
-    VM --> TimeSource[TimeSource (TimeProvider)]
-    VM --> Haptics[HapticsProvider (HapticFeedbackManager)]
-    VM --> Sound[SoundProvider (FeedbackSoundManager)]
-    SysCtrl --> BurnIn[DisplayBurnInProtectionManager]
-    SysCtrl --> SleepWake[SleepWakeController]
-    SysCtrl --> SleepTimer[SleepTimerDialogManager]
+    App[:app] --> Clock[:feature-clock]
+    App --> Settings[:feature-settings]
+    App --> Chime[:feature-chime]
+    App --> Data[:data]
+    App --> Core[:core]
+    App --> Domain[:domain]
+    Clock --> Core
+    Clock --> Data
+    Clock --> Domain
+    Settings --> Core
+    Settings --> Data
+    Settings --> Domain
+    Chime --> Core
+    Chime --> Data
+    Chime --> Domain
+    Chime --> Clock
+    Data --> Core
+    Data --> Domain
+    Domain --> Core
 ```
 
 ---
@@ -205,8 +248,11 @@ TextClock (system-level time sync)
 
 ## 6. Dependency Rules
 
-1. **No circular deps**: `view/` MUST NOT import from `ui/` or `widget/`.
-2. **Interface boundaries**: Cross-package access via small interfaces (e.g., `SettingsProvider`, `OledProtectionController`, dialog providers) exposed by Activity; controllers consume interfaces, not concrete Activities.
-3. **Settings hub**: All prefs access flows through `AppSettingsManager` (via `SettingsStore`); controllers listen via its callbacks/flows.
-4. **Widgets isolated**: RemoteViews providers only use widget-safe resources/layouts; no direct dependency on `ui/` classes.
-5. **Compose scope**: Compose limited to settings components (`ui/compose`); primary clock remains XML + custom Views.
+1. **Module boundaries enforced**: `checkModuleBoundaries` Gradle task validates allowed inter-module deps at build time.
+2. **SharedPreferences isolation**: `checkSharedPreferencesIsolation` ensures only `:data` uses `SharedPreferences`.
+3. **Resource ownership**: `checkResourceOwnershipBoundaries` / `checkResourceSymbolBoundaries` prevent duplicate resources between `:app` and `:feature-settings`.
+4. **No circular deps**: `view/` within `:feature-clock` MUST NOT import from `ui/` or widget packages.
+5. **Interface boundaries**: Cross-module access via small interfaces (e.g., `SettingsHostController`, `SettingsContracts`) in `:core`.
+6. **Settings hub**: All prefs access flows through `AppSettingsManager` in `:data` (via `SettingsStore` interface).
+7. **Widgets isolated**: RemoteViews providers in `:app` only use widget-safe resources/layouts.
+8. **Compose scope**: Compose limited to settings components; primary clock remains XML + custom Views.
