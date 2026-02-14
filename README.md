@@ -6,6 +6,8 @@
 
 OpenFlip is a Braun-inspired flip clock for Android, focusing on mechanical animation fidelity, visual precision, and maintainable architecture.
 
+If you like this project, please give it a star! ⭐
+
 Key features:
 - **Custom rendering engine**: Physics-based flip animations using `Canvas` + 3D transforms
 - **Pixel-perfect layout**: Precise text positioning and light-overlay compensation across all screen densities
