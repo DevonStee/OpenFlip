@@ -59,7 +59,7 @@ Captured from a real connected Android device via ADB.
 
 ### Fullscreen Clock
 
-![OpenFlip fullscreen clock](docs/images/fullscreen_clock.gif)
+<img src="docs/images/fullscreen_clock.gif" width="316" alt="OpenFlip fullscreen clock">
 
 ### Light Effect Enabled
 

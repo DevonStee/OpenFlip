@@ -59,7 +59,7 @@ OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注�
 
 ### 全屏时钟
 
-![OpenFlip 全屏时钟](docs/images/fullscreen_clock.gif)
+<img src="docs/images/fullscreen_clock.gif" width="316" alt="OpenFlip 全屏时钟">
 
 ### Light 效果开启
 
