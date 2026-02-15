@@ -113,12 +113,14 @@ adb shell am start -n com.bokehforu.openflip/.feature.clock.ui.FullscreenClockAc
 **根本原因**：主题有两条更新路径在竞争：
 
 1. **命令式路径**（快）：
-   ```
+
+   ```text
    isDarkTheme = x → listener.onThemeChanged() → settingsCoordinator → 立即应用主题
    ```
 
 2. **响应式路径**（慢，有延迟）：
-   ```
+
+   ```text
    isDarkTheme = x → settingsFlow 更新 → ViewModel 收到 → _uiState 更新 → renderState() 被调用
    ```
 
@@ -129,6 +131,7 @@ adb shell am start -n com.bokehforu.openflip/.feature.clock.ui.FullscreenClockAc
 **决策**：使用命令式路径作为唯一的主题应用入口。
 
 **修改的文件**：
+
 1. `FullscreenClockActivity.kt` - `renderState()` 中移除：
    - `setDarkTheme(state.theme == ThemeMode.DARK)`
    - `themeApplier.applyTheme(state.theme == ThemeMode.DARK)`
@@ -148,6 +151,7 @@ adb shell am start -n com.bokehforu.openflip/.feature.clock.ui.FullscreenClockAc
 Android 的 `?attr/` 在 XML inflate 时一次性解析，运行时切换主题不会自动更新。
 
 **解决方案**：
+
 - `Theme.OpenFlip` 默认值设为 dark（app 默认是暗色）
 - 切换到 light 时通过代码覆盖
 
@@ -160,6 +164,7 @@ Android 的 `?attr/` 在 XML inflate 时一次性解析，运行时切换主题�
 **原因**：`WindowConfigurator.applyBackgroundColor()` 未在启动时调用。
 
 **修复**：在 `FullscreenClockActivity.onCreate()` 中添加：
+
 ```kotlin
 windowConfigurator.applyBackgroundColor(settingsManager.isDarkTheme)
 ```

@@ -43,4 +43,4 @@
 
 ## 💡 Future Ideas
 
-_(No planned features at this time)_
+(No planned features at this time)

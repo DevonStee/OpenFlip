@@ -67,7 +67,7 @@
 
 ### 2.1 Interface-Based Decoupling
 
-```
+```text
 FullscreenClockActivity
     ├── implements SettingsProvider / ThemeTransitionProvider / SleepTimerDialogProvider
     └── implements OledProtectionController → SettingsMenuBottomSheet applies OLED mode
@@ -95,7 +95,7 @@ FullscreenClockActivity
 
 ### 2.3 Hilt Dependency Injection
 
-```
+```text
 di/module/
 ├── CoreModule.kt          # @Singleton: ApplicationContext, CoroutineScope, ElapsedTimeSource
 ├── ManagerModule.kt       # @Singleton: Vibrator, interface bindings (SettingsStore, HapticsProvider)
@@ -143,7 +143,7 @@ class AppSettingsManager(context: Context) : SettingsStore {
 The flip card now follows clean architecture:
 
 | Component | Responsibility |
-|-----------|---------------|
+| :--- | :--- |
 | `FlipCardConfig` | Style constants (no magic numbers) |
 | `FlipCardState` | Pure data + computed properties |
 | `FlipCardGeometry` | Size/path calculations |

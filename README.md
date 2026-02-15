@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 -->
 # OpenFlip (Android)
 
 [![Android CI](https://img.shields.io/github/actions/workflow/status/DevonStee/OpenFlip/android.yml?style=for-the-badge&logo=github&label=CI)](https://github.com/DevonStee/OpenFlip/actions/workflows/android.yml)
@@ -18,6 +19,7 @@ OpenFlip is a Braun-inspired flip clock for Android, focusing on mechanical anim
 > If you like this project, please give it a star! ⭐
 
 Key features:
+
 - **Custom rendering engine**: Physics-based flip animations using `Canvas` + 3D transforms
 - **Pixel-perfect layout**: Precise text positioning and light-overlay compensation across all screen densities
 - **Modular architecture**: Hilt DI + multi-module layering for performance and extensibility
@@ -59,7 +61,7 @@ Captured from a real connected Android device via ADB.
 
 ### Fullscreen Clock
 
-<img src="docs/images/fullscreen_clock.gif" width="316" alt="OpenFlip fullscreen clock">
+![OpenFlip fullscreen clock](docs/images/fullscreen_clock.gif)
 
 ### Light Effect Enabled
 

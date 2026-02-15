@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 -->
 # OpenFlip（Android）
 
 [![Android CI](https://img.shields.io/github/actions/workflow/status/DevonStee/OpenFlip/android.yml?style=for-the-badge&logo=github&label=CI)](https://github.com/DevonStee/OpenFlip/actions/workflows/android.yml)
@@ -18,6 +19,7 @@ OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注�
 > 如果您喜欢这个项目，欢迎给我一个 star！⭐
 
 核心特性：
+
 - **自定义渲染引擎**：基于 `Canvas` + 3D 变换实现物理级翻页动画
 - **像素级排版**：精确的文字定位与光效补偿，适配各种屏幕密度
 - **模块化架构**：Hilt DI + 多模块分层，保证性能与可扩展性
@@ -59,7 +61,7 @@ OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注�
 
 ### 全屏时钟
 
-<img src="docs/images/fullscreen_clock.gif" width="316" alt="OpenFlip 全屏时钟">
+![OpenFlip 全屏时钟](docs/images/fullscreen_clock.gif)
 
 ### Light 效果开启
 
