@@ -1,23 +1,22 @@
 package com.bokehforu.openflip.widget.debug
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.pm.ApplicationInfo
-import androidx.core.content.edit
 
 /**
  * Helper class for monitoring widget memory usage and detecting potential leaks.
- * Only active in debug builds via LeakCanary.
+ *
+ * Modified to use in-memory state to comply with strict data layer isolation rules.
  */
 object WidgetLeakDebugHelper {
 
-    private const val PREFS_NAME = "widget_debug_prefs"
     private const val KEY_WIDGET_UPDATE_COUNT = "widget_update_count_%d"
     private const val KEY_LAST_UPDATE_TIME = "last_update_time_%d"
     private const val MAX_UPDATES_WITHOUT_CLEANUP = 10000
 
-    private var debugPrefs: SharedPreferences? = null
+    private val debugPrefs = mutableMapOf<String, Any>()
     private var isDebuggable: Boolean = false
+    private var isInitialized = false
 
     /**
      * Logs widget updates for debugging purposes.
@@ -30,10 +29,8 @@ object WidgetLeakDebugHelper {
 
         val count = getUpdateCount(widgetId) + 1
 
-        debugPrefs?.edit {
-            putInt(KEY_WIDGET_UPDATE_COUNT.format(widgetId), count)
-            putLong(KEY_LAST_UPDATE_TIME.format(widgetId), System.currentTimeMillis())
-        }
+        debugPrefs[KEY_WIDGET_UPDATE_COUNT.format(widgetId)] = count
+        debugPrefs[KEY_LAST_UPDATE_TIME.format(widgetId)] = System.currentTimeMillis()
 
         if (count > MAX_UPDATES_WITHOUT_CLEANUP) {
             android.util.Log.w(
@@ -49,17 +46,15 @@ object WidgetLeakDebugHelper {
     fun logWidgetDeleted(widgetId: Int) {
         if (!isDebuggable) return
 
-        debugPrefs?.edit {
-            remove(KEY_WIDGET_UPDATE_COUNT.format(widgetId))
-            remove(KEY_LAST_UPDATE_TIME.format(widgetId))
-        }
+        debugPrefs.remove(KEY_WIDGET_UPDATE_COUNT.format(widgetId))
+        debugPrefs.remove(KEY_LAST_UPDATE_TIME.format(widgetId))
     }
 
     /**
      * Gets the update count for a specific widget.
      */
     fun getUpdateCount(widgetId: Int): Int {
-        return debugPrefs?.getInt(KEY_WIDGET_UPDATE_COUNT.format(widgetId), 0) ?: 0
+        return (debugPrefs[KEY_WIDGET_UPDATE_COUNT.format(widgetId)] as? Int) ?: 0
     }
 
     /**
@@ -67,7 +62,7 @@ object WidgetLeakDebugHelper {
      */
     fun getAllWidgetStats(): Map<Int, Int> {
         val activeStats = mutableMapOf<Int, Int>()
-        debugPrefs?.all?.keys?.forEach { key ->
+        debugPrefs.keys.forEach { key ->
             if (key.startsWith(KEY_WIDGET_UPDATE_COUNT.format("").replace("%d", ""))) {
                 val widgetId = key.substringAfterLast("_").toIntOrNull()
                 widgetId?.let {
@@ -83,14 +78,13 @@ object WidgetLeakDebugHelper {
      */
     fun clearAllDebugData() {
         if (!isDebuggable) return
-        debugPrefs?.edit { clear() }
+        debugPrefs.clear()
     }
 
     private fun initDebugPrefs(context: Context) {
+        if (isInitialized) return
         isDebuggable = (context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
-        if (debugPrefs == null) {
-            debugPrefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        }
+        isInitialized = true
     }
 
     /**
