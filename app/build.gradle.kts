@@ -60,9 +60,10 @@ android {
         }
         release {
             isMinifyEnabled = true
-            val releaseConfig = signingConfigs.getByName("release")
-            if (releaseConfig.storeFile != null) {
-                signingConfig = releaseConfig
+            signingConfigs.findByName("release")?.let { releaseConfig ->
+                if (releaseConfig.storeFile != null) {
+                    signingConfig = releaseConfig
+                }
             }
         }
     }
