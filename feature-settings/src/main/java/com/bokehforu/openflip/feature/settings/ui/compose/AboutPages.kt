@@ -152,163 +152,164 @@ fun AboutPage(
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(top = 8.dp, bottom = 32.dp)
             )
 
-            Text(
-                text = stringResource(id = R.string.aboutTributeTitle),
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Light,
-                color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 32.dp, bottom = 8.dp)
-            )
+            AboutSectionCard {
+                Text(
+                    text = stringResource(id = R.string.aboutTributeTitle),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    lineHeight = 22.sp
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = stringResource(id = R.string.labelProjectRepo),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+                val repoUrl = stringResource(id = R.string.urlProjectRepo)
+                Text(
+                    text = repoUrl,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline
+                    ),
+                    color = LinkBlue,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp)
+                        .clickable {
+                            val intent = Intent(Intent.ACTION_VIEW, repoUrl.toUri())
+                            context.startActivity(intent)
+                        }
+                )
+            }
 
-            Text(
-                text = stringResource(id = R.string.labelProjectRepo),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp, bottom = 2.dp),
-                textAlign = TextAlign.Start
-            )
+            AboutSectionCard {
+                Text(
+                    text = stringResource(id = R.string.titleAcknowledgements),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                Text(
+                    text = stringResource(id = R.string.aboutIconSoundCredits),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    lineHeight = 22.sp,
+                    textAlign = TextAlign.Start
+                )
+                
+                Spacer(modifier = Modifier.height(24.dp))
+                
+                Text(
+                    text = stringResource(id = R.string.titleOpenSource),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                Text(
+                    text = stringResource(id = R.string.aboutOpenSourceCredits),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    lineHeight = 22.sp,
+                    textAlign = TextAlign.Start
+                )
+            }
 
-            val repoUrl = stringResource(id = R.string.urlProjectRepo)
-            Text(
-                text = repoUrl,
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline
-                ),
-                color = LinkBlue,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        val intent = Intent(Intent.ACTION_VIEW, repoUrl.toUri())
+            AboutSectionCard {
+                Text(
+                    text = stringResource(id = R.string.aboutDeveloperSupport),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    lineHeight = 22.sp,
+                    textAlign = TextAlign.Start
+                )
+
+                Surface(
+                    onClick = {
+                        val intent = Intent(Intent.ACTION_VIEW, "https://www.buymeacoffee.com/yanjiaqiid5".toUri())
                         context.startActivity(intent)
-                    }
-                    .padding(bottom = 8.dp),
-                textAlign = TextAlign.Start
-            )
-
-            // Acknowledgements
-            Text(
-                text = stringResource(id = R.string.titleAcknowledgements),
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Light,
-                color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 36.dp, bottom = 8.dp)
-            )
-            Text(
-                text = stringResource(id = R.string.aboutIconSoundCredits),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 4.dp),
-                textAlign = TextAlign.Justify
-            )
-
-            // Open Source
-            Text(
-                text = stringResource(id = R.string.titleOpenSource),
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Light,
-                color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 36.dp, bottom = 8.dp)
-            )
-            Text(
-                text = stringResource(id = R.string.aboutOpenSourceCredits),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 4.dp),
-                textAlign = TextAlign.Justify
-            )
-
-            // Support
-            Text(
-                text = stringResource(id = R.string.aboutDeveloperSupport),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 36.dp, bottom = 12.dp),
-                textAlign = TextAlign.Justify
-            )
-
-            // Buy Me a Coffee Button
-            Surface(
-                onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, "https://www.buymeacoffee.com/yanjiaqiid5".toUri())
-                    context.startActivity(intent)
-                },
-                modifier = Modifier
-                    .padding(top = 16.dp)
-                    .height(50.dp)
-                    .widthIn(min = 200.dp),
-                shape = MaterialTheme.shapes.medium, // Rounded corners
-                color = ColorBuyMeACoffeeYellow 
-            ) {
-                Row(
-                    modifier = Modifier.padding(horizontal = 24.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
+                    },
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .height(48.dp)
+                        .fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium, // Rounded corners
+                    color = ColorBuyMeACoffeeYellow 
                 ) {
-                    // Text
-                    Text(
-                        text = stringResource(id = R.string.actionBuyMeACoffeeShort),
-                        style = MaterialTheme.typography.labelLarge,
-                        color = Color.Black,
-                        fontWeight = FontWeight.Bold
-                    )
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.actionBuyMeACoffeeShort),
+                            style = MaterialTheme.typography.labelLarge,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 }
             }
 
-            // Stories
-            Text(
-                text = stringResource(id = R.string.aboutMainStory),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 24.dp),
-                textAlign = TextAlign.Justify
-            )
-            Text(
-                text = stringResource(id = R.string.aboutEvolutionStory),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 32.dp),
-                textAlign = TextAlign.Justify
-            )
-            Text(
-                text = stringResource(id = R.string.aboutV057Update),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 32.dp),
-                textAlign = TextAlign.Justify
-            )
+            AboutSectionCard {
+                Text(
+                    text = stringResource(id = R.string.aboutMainStory),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    lineHeight = 22.sp,
+                    textAlign = TextAlign.Start
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = stringResource(id = R.string.aboutEvolutionStory),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    lineHeight = 22.sp,
+                    textAlign = TextAlign.Start
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = stringResource(id = R.string.aboutV057Update),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    lineHeight = 22.sp,
+                    textAlign = TextAlign.Start
+                )
+            }
 
             Text(
                 text = stringResource(id = R.string.aboutEnjoySilence),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Light,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
-                modifier = Modifier.padding(top = 32.dp),
+                modifier = Modifier.padding(top = 16.dp, bottom = 32.dp),
                 textAlign = TextAlign.Center
             )
         }
+    }
+}
+
+@Composable
+private fun AboutSectionCard(
+    modifier: Modifier = Modifier,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(bottom = 16.dp),
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(24.dp),
+        color = MaterialTheme.colorScheme.surfaceContainer,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
+            content = content
+        )
     }
 }
 
