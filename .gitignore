@@ -43,6 +43,8 @@ Icon?
 .agent/history/
 .agent/task.md
 .agent/DEVELOPMENT_NOTES.md
+.agent/skills/
+.agent/workflows/
 .gemini/
 .claude/
 .cursor/
@@ -66,4 +68,3 @@ ui_verify_*/
 全开发总结建议.md
 .ai/widget_refine.md
 .gradle_home/
-docs/F-DROID_SUBMISSION_GUIDE.md
