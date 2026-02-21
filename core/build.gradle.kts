@@ -12,11 +12,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "21"
     }
 }
 
@@ -25,4 +25,8 @@ dependencies {
     implementation(libs.material)
     api(libs.kotlinx.coroutines.core)
     api(libs.javax.inject)
+}
+
+kotlin {
+    jvmToolchain(21)
 }
