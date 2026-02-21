@@ -26,14 +26,14 @@ RepoType: git
 Repo: https://github.com/DevonStee/OpenFlip.git
 
 Builds:
-  - versionCode: 13
-    versionName: 0.6.2-beta
-    commit: v0.6.2-beta
+  - versionName: 0.6.1-beta
+    versionCode: 12
+    commit: v0.6.1-beta
     subdir: app
     gradle:
       - yes
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 0.6.2-beta
-CurrentVersionCode: 13
+CurrentVersion: 0.6.1-beta
+CurrentVersionCode: 12
