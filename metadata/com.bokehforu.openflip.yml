@@ -2,9 +2,12 @@ Categories:
   - Multimedia
   - Utilities
 License: GPL-3.0-only
+AuthorName: DevonStee
+AuthorEmail: yanjiaqiid@gmail.com
+WebSite: https://github.com/DevonStee/OpenFlip
 SourceCode: https://github.com/DevonStee/OpenFlip
 IssueTracker: https://github.com/DevonStee/OpenFlip/issues
-Changelog: https://github.com/DevonStee/OpenFlip/blob/main/CHANGELOG.md
+Changelog: https://github.com/DevonStee/OpenFlip/releases
 
 Summary: A mechanical flip clock with realistic 3D animations.
 Description: |-
