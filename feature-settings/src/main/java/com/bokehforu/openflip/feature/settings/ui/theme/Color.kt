@@ -9,7 +9,7 @@ val DarkOnSurface = Color(0xFFE6E6E6)
 val DarkOnSurfaceVariant = Color(0xFF9B9B9B)
 val DarkSurfaceContainer = Color(0xFF333333)
 val DarkOutline = Color(0xFF323230)
-val DarkPrimary = Color(0xFFFF3B30)
+val DarkPrimary = Color(0xFFFFFFFF) // Changed from red to white
 
 val LightBackground = Color(0xFFF5F5F0)
 val LightSurface = Color(0xFFF5F5F0)
@@ -17,11 +17,14 @@ val LightOnSurface = Color(0xFF505050)
 val LightOnSurfaceVariant = Color(0xFF676968)
 val LightSurfaceContainer = Color(0xFFE8E7DE)
 val LightOutline = Color(0xFFD8D8D0)
-val LightPrimary = Color(0xFFFF3B30)
+val LightPrimary = Color(0xFF1C1C1C) // Changed from red to dark gray
 
 // Custom App Colors
-val ToggleFeatureEnabledGreen = Color(0xFF358A52)
-val DangerRed = Color(0xFFC4382A) // Brightened ~8% from #B3261E
+val DarkSuccess = Color(0xFF358A52) // Semantic green for success/enabled states in Dark theme
+val LightSuccess = Color(0xFF358A52) // Semantic green for success/enabled states in Light theme
+val DarkError = Color(0xFFC4382A) // Semantic red for destructive actions or warnings in Dark theme
+val LightError = Color(0xFFC4382A) // Semantic red for destructive actions or warnings in Light theme
+val LinkBlue = Color(0xFF007AFF) // Keep link blue as it's standard for web links
 
 // Switch Colors - Monochrome Neutral Scheme
 val SwitchCheckedThumbDark = Color(0xFFFFFFFF)      // White thumb when ON (dark theme)

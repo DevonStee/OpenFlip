@@ -27,8 +27,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.bokehforu.openflip.feature.settings.R
 import com.bokehforu.openflip.feature.settings.ui.theme.ColorBuyMeACoffeeYellow
+import com.bokehforu.openflip.feature.settings.ui.theme.LinkBlue
 import com.bokehforu.openflip.feature.settings.ui.theme.OpenFlipTheme
-import com.bokehforu.openflip.feature.settings.ui.theme.ToggleFeatureEnabledGreen
 
 data class VersionItem(
     val titleRes: Int,
@@ -94,25 +94,33 @@ fun VersionPage(
         }
 
         items(versionHistory) { item ->
-            Column(
+            Surface(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 28.dp)
+                    .padding(bottom = 16.dp),
+                shape = androidx.compose.foundation.shape.RoundedCornerShape(24.dp),
+                color = MaterialTheme.colorScheme.surfaceContainer,
             ) {
-                Text(
-                    text = stringResource(id = item.titleRes),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                Text(
-                    text = stringResource(id = item.descriptionRes),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    lineHeight = 20.sp,
-                    textAlign = TextAlign.Justify
-                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp)
+                ) {
+                    Text(
+                        text = stringResource(id = item.titleRes),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    Text(
+                        text = stringResource(id = item.descriptionRes),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        lineHeight = 22.sp,
+                        textAlign = TextAlign.Start
+                    )
+                }
             }
         }
     }
@@ -155,6 +163,33 @@ fun AboutPage(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 32.dp, bottom = 8.dp)
+            )
+
+            Text(
+                text = stringResource(id = R.string.labelProjectRepo),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp, bottom = 2.dp),
+                textAlign = TextAlign.Start
+            )
+
+            val repoUrl = stringResource(id = R.string.urlProjectRepo)
+            Text(
+                text = repoUrl,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline
+                ),
+                color = LinkBlue,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                        val intent = Intent(Intent.ACTION_VIEW, repoUrl.toUri())
+                        context.startActivity(intent)
+                    }
+                    .padding(bottom = 8.dp),
+                textAlign = TextAlign.Start
             )
 
             // Acknowledgements

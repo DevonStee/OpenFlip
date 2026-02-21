@@ -10,7 +10,7 @@ import com.bokehforu.openflip.feature.settings.ui.compose.SettingsDivider
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsNavigationItem
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsSwitchItem
 import com.bokehforu.openflip.feature.settings.ui.theme.LightSurface
-import com.bokehforu.openflip.feature.settings.ui.theme.ToggleFeatureEnabledGreen
+import com.bokehforu.openflip.feature.settings.ui.theme.LocalExtendedColors
 import com.bokehforu.openflip.feature.settings.viewmodel.SettingsViewModel
 import com.bokehforu.openflip.core.ui.TestTags
 
@@ -128,7 +128,7 @@ internal fun SettingsAppearanceSection(
         checked = bulbOff,
         onCheckedChange = onToggleTimedBulbOff,
         isDarkTheme = isDark,
-        checkedTrackColor = ToggleFeatureEnabledGreen,
+        checkedTrackColor = LocalExtendedColors.current.success,
         checkedThumbColor = Color.White,
         testTag = TestTags.SWITCH_TIMED_BULB_OFF
     )

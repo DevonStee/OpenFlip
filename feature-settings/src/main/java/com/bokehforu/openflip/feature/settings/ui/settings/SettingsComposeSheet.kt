@@ -444,13 +444,15 @@ fun SettingsComposeSheet(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(10.dp)
+                        .height(2.dp)
                         .align(Alignment.TopCenter)
                         .background(
-                            brush = androidx.compose.ui.graphics.Brush.verticalGradient(
-                                colors = listOf(
-                                    MaterialTheme.colorScheme.surface,
-                                    androidx.compose.ui.graphics.Color.Transparent
+                            brush = Brush.verticalGradient(
+                                colorStops = arrayOf(
+                                    0.0f to MaterialTheme.colorScheme.surface,
+                                    0.4f to MaterialTheme.colorScheme.surface.copy(alpha = 0.7f),
+                                    0.7f to MaterialTheme.colorScheme.surface.copy(alpha = 0.3f),
+                                    1.0f to Color.Transparent
                                 )
                             )
                         )
@@ -536,15 +538,15 @@ private fun SheetHeaderIconButton(
 ) {
     val tagModifier = if (testTag != null) Modifier.testTag(testTag) else Modifier
     Surface(
+        onClick = onClick,
         modifier = tagModifier
-
             .size(56.dp),
         shape = CircleShape,
         color = MaterialTheme.colorScheme.surfaceContainer
     ) {
-        IconButton(
-            onClick = onClick,
-            modifier = Modifier.fillMaxSize()
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
             Icon(
                 painter = painterResource(iconRes),

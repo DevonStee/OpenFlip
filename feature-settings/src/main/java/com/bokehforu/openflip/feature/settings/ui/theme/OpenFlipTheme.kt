@@ -9,7 +9,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import com.bokehforu.openflip.feature.settings.R
+
+// --- Extended Colors ---
+data class ExtendedColors(
+    val success: Color
+)
+
+val LocalExtendedColors = staticCompositionLocalOf {
+    ExtendedColors(success = Color.Unspecified)
+}
 
 // Colors are defined in Color.kt
 
@@ -22,7 +33,12 @@ private val DarkColorScheme = darkColorScheme(
     onBackground = Color.White,
     onSurface = DarkOnSurface,
     onSurfaceVariant = DarkOnSurfaceVariant,
-    outline = DarkOutline
+    outline = DarkOutline,
+    error = DarkError
+)
+
+private val DarkExtendedColors = ExtendedColors(
+    success = DarkSuccess
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -34,7 +50,12 @@ private val LightColorScheme = lightColorScheme(
     onBackground = LightOnSurface,
     onSurface = LightOnSurface,
     onSurfaceVariant = LightOnSurfaceVariant,
-    outline = LightOutline
+    outline = LightOutline,
+    error = LightError
+)
+
+private val LightExtendedColors = ExtendedColors(
+    success = LightSuccess
 )
 
 val OpenFlipUiFontFamily = FontFamily.SansSerif
@@ -64,10 +85,13 @@ fun OpenFlipTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+    val extendedColors = if (darkTheme) DarkExtendedColors else LightExtendedColors
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = OpenFlipTypography,
-        content = content
-    )
+    CompositionLocalProvider(LocalExtendedColors provides extendedColors) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = OpenFlipTypography,
+            content = content
+        )
+    }
 }

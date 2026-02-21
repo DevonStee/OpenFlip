@@ -59,6 +59,7 @@ Icon?
 # AI / Agent specific
 .agent/history/
 .agent/task.md
+.agent/DEVELOPMENT_NOTES.md
 .gemini/
 .claude/
 .cursor/

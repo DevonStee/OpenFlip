@@ -24,9 +24,8 @@ import com.bokehforu.openflip.feature.settings.ui.compose.SettingsActionItem
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsDivider
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsNavigationItem
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsSwitchItem
-import com.bokehforu.openflip.feature.settings.ui.theme.DangerRed
 import com.bokehforu.openflip.core.ui.TestTags
-import com.bokehforu.openflip.feature.settings.ui.theme.ToggleFeatureEnabledGreen
+import com.bokehforu.openflip.feature.settings.ui.theme.LocalExtendedColors
 import com.bokehforu.openflip.feature.settings.viewmodel.SettingsViewModel
 import com.bokehforu.openflip.core.settings.SettingsSleepTimerState
 import com.bokehforu.openflip.domain.result.Result
@@ -63,7 +62,7 @@ internal fun SettingsScreenWakeSection(
         onCheckedChange = onToggleOledProtection,
         description = stringResource(R.string.descriptionOledProtection),
         isDarkTheme = isDark,
-        checkedTrackColor = ToggleFeatureEnabledGreen,
+        checkedTrackColor = LocalExtendedColors.current.success,
         checkedThumbColor = Color.White,
         testTag = TestTags.SWITCH_OLED_PROTECTION
     )
@@ -102,7 +101,7 @@ internal fun SettingsSleepTimerSection(
         title = stringResource(R.string.titleSleepTimer),
         valueText = timerVal,
         onClick = onOpenSleepTimerPage,
-        valueTextColor = if (isTimerActive) DangerRed else null,
+        valueTextColor = if (isTimerActive) MaterialTheme.colorScheme.error else null,
         testTag = TestTags.NAV_SLEEP_TIMER
     )
 }
@@ -234,7 +233,7 @@ internal fun SettingsResetSection(
     SettingsActionItem(
         iconRes = R.drawable.icon_action_reset_24dp,
         title = stringResource(R.string.labelResetApp),
-        backgroundColor = ToggleFeatureEnabledGreen,
+        backgroundColor = LocalExtendedColors.current.success,
         contentColor = Color.White,
         iconSize = 32.dp,
         onClick = onReset,
@@ -249,7 +248,7 @@ internal fun SettingsQuitSection(
     SettingsActionItem(
         iconRes = R.drawable.icon_action_quit_app_24dp,
         title = stringResource(R.string.labelQuitApp),
-        backgroundColor = DangerRed,
+        backgroundColor = MaterialTheme.colorScheme.error,
         contentColor = Color.White,
         onClick = onQuit,
         testTag = TestTags.ACTION_QUIT

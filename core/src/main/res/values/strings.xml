@@ -171,6 +171,8 @@
     <!-- About Section Content -->
     <string name="aboutAndroidRobotCredit">* The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.</string>
     <string name="aboutTributeTitle">This is a tribute project and is NOT the official Fliqlo app. Thanks for the beautiful design.</string>
+    <string name="labelProjectRepo">The Project Repo:</string>
+    <string name="urlProjectRepo">https://github.com/DevonStee/OpenFlip</string>
     <string name="titleAcknowledgements">Acknowledgements</string>
     <string name="titleOpenSource">Open Source Libraries</string>
     <string name="aboutIconSoundCredits"><b>App Icon</b>\nthiings.co\n\n<b>Sound Effect</b>\nPixabay (Pixabay Content License)</string>

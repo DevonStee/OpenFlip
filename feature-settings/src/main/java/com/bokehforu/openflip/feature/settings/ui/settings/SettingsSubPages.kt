@@ -14,7 +14,6 @@ import com.bokehforu.openflip.feature.settings.R
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsActionItem
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsDivider
 import com.bokehforu.openflip.feature.settings.ui.compose.SettingsRadioItem
-import com.bokehforu.openflip.feature.settings.ui.theme.DangerRed
 import com.bokehforu.openflip.feature.settings.viewmodel.SettingsViewModel
 import com.bokehforu.openflip.core.settings.SettingsSleepTimerState
 import com.bokehforu.openflip.core.ui.TestTags
@@ -198,7 +197,7 @@ internal fun SettingsSleepTimerPage(
         SettingsActionItem(
             iconRes = R.drawable.icon_action_reset_24dp,
             title = stringResource(R.string.actionStopTimer),
-            backgroundColor = DangerRed,
+            backgroundColor = MaterialTheme.colorScheme.error,
             contentColor = androidx.compose.ui.graphics.Color.White,
             onClick = {
                 onStopSleepTimer()
