@@ -1,25 +1,8 @@
 # Android Studio / IntelliJ
+.idea/
+.gradle/
+local.properties
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-/.idea/modules/
-/.idea/shelf/
-/.idea/codeStyles/
-/.idea/inspectionProfiles/
-/.idea/vcs.xml
-/.idea/compiler.xml
-/.idea/jarRepositories.xml
-/.idea/deviceManager.xml
-/.idea/appInsightsSettings.xml
-/.idea/deploymentTargetSelector.xml
-/.idea/migrations.xml
-/.idea/AndroidProjectSystem.xml
-/.idea/workspace.xml
 *.ipr
 *.iws
 
