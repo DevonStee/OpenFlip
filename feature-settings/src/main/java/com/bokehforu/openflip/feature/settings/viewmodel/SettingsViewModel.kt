@@ -4,17 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bokehforu.openflip.domain.repository.SettingsRepository
 import com.bokehforu.openflip.domain.usecase.ToggleThemeUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateHapticEnabledUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateOledProtectionEnabledUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateOrientationModeUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateScaleEnabledUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateShowFlapsUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateShowSecondsUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateSoundEnabledUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateSwipeToDimEnabledUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateTimedBulbOffEnabledUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateTimeFormatUseCase
-import com.bokehforu.openflip.domain.usecase.UpdateWakeLockModeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -26,18 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
-    private val updateTimeFormatUseCase: UpdateTimeFormatUseCase,
-    private val toggleThemeUseCase: ToggleThemeUseCase,
-    private val updateShowSecondsUseCase: UpdateShowSecondsUseCase,
-    private val updateShowFlapsUseCase: UpdateShowFlapsUseCase,
-    private val updateHapticEnabledUseCase: UpdateHapticEnabledUseCase,
-    private val updateSoundEnabledUseCase: UpdateSoundEnabledUseCase,
-    private val updateOrientationModeUseCase: UpdateOrientationModeUseCase,
-    private val updateWakeLockModeUseCase: UpdateWakeLockModeUseCase,
-    private val updateSwipeToDimEnabledUseCase: UpdateSwipeToDimEnabledUseCase,
-    private val updateScaleEnabledUseCase: UpdateScaleEnabledUseCase,
-    private val updateTimedBulbOffEnabledUseCase: UpdateTimedBulbOffEnabledUseCase,
-    private val updateOledProtectionEnabledUseCase: UpdateOledProtectionEnabledUseCase
+    private val toggleThemeUseCase: ToggleThemeUseCase
 ) : ViewModel() {
 
     data class SettingsUiState(
@@ -160,18 +138,18 @@ class SettingsViewModel @Inject constructor(
 
     fun dispatch(action: SettingsUiAction) {
         when (action) {
-            is SettingsUiAction.SetTimeFormatMode -> updateTimeFormatUseCase.execute(action.mode)
-            is SettingsUiAction.SetOrientationMode -> updateOrientationModeUseCase.execute(action.mode)
-            is SettingsUiAction.SetWakeLockMode -> updateWakeLockModeUseCase.execute(action.mode)
+            is SettingsUiAction.SetTimeFormatMode -> settingsRepository.setTimeFormatMode(action.mode)
+            is SettingsUiAction.SetOrientationMode -> settingsRepository.setOrientationMode(action.mode)
+            is SettingsUiAction.SetWakeLockMode -> settingsRepository.setWakeLockMode(action.mode)
             is SettingsUiAction.SetDarkTheme -> toggleThemeUseCase.set(action.isDark)
-            is SettingsUiAction.SetShowSeconds -> updateShowSecondsUseCase.execute(action.enabled)
-            is SettingsUiAction.SetShowFlaps -> updateShowFlapsUseCase.execute(action.enabled)
-            is SettingsUiAction.SetHapticEnabled -> updateHapticEnabledUseCase.execute(action.enabled)
-            is SettingsUiAction.SetSoundEnabled -> updateSoundEnabledUseCase.execute(action.enabled)
-            is SettingsUiAction.SetSwipeToDimEnabled -> updateSwipeToDimEnabledUseCase.execute(action.enabled)
-            is SettingsUiAction.SetScaleEnabled -> updateScaleEnabledUseCase.execute(action.enabled)
-            is SettingsUiAction.SetTimedBulbOffEnabled -> updateTimedBulbOffEnabledUseCase.execute(action.enabled)
-            is SettingsUiAction.SetOledProtectionEnabled -> updateOledProtectionEnabledUseCase.execute(action.enabled)
+            is SettingsUiAction.SetShowSeconds -> settingsRepository.setShowSeconds(action.enabled)
+            is SettingsUiAction.SetShowFlaps -> settingsRepository.setShowFlaps(action.enabled)
+            is SettingsUiAction.SetHapticEnabled -> settingsRepository.setHapticEnabled(action.enabled)
+            is SettingsUiAction.SetSoundEnabled -> settingsRepository.setSoundEnabled(action.enabled)
+            is SettingsUiAction.SetSwipeToDimEnabled -> settingsRepository.setSwipeToDimEnabled(action.enabled)
+            is SettingsUiAction.SetScaleEnabled -> settingsRepository.setScaleEnabled(action.enabled)
+            is SettingsUiAction.SetTimedBulbOffEnabled -> settingsRepository.setTimedBulbOffEnabled(action.enabled)
+            is SettingsUiAction.SetOledProtectionEnabled -> settingsRepository.setOledProtectionEnabled(action.enabled)
             SettingsUiAction.ResetToDefaults -> settingsRepository.resetToDefaults()
         }
     }

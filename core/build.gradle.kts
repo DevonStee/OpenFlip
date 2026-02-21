@@ -23,6 +23,6 @@ android {
 dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.material)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.javax.inject)
+    api(libs.kotlinx.coroutines.core)
+    api(libs.javax.inject)
 }

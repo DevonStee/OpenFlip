@@ -10,7 +10,7 @@
 - **DI**: Hilt 2.55 (Dagger compile-time DI)
 - **Build**: AGP 8.13.2, KSP 2.0.21
 - **Modules**: `:app`, `:core`, `:data`, `:domain`, `:feature-clock`, `:feature-chime`, `:feature-settings`
-- **Target SDK**: 35 | **Min SDK**: 26
+- **Target SDK**: 36 | **Min SDK**: 26
 
 ---
 

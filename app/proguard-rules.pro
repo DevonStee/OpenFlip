@@ -9,12 +9,5 @@
 
 # Add any project specific keep options here:
 
-# Keep Widget classes from obfuscation
--keep class com.bokehforu.openflip.widget.** { *; }
-
-# Keep UI/settings classes from obfuscation (as requested)
--keep class com.bokehforu.openflip.feature.clock.ui.** { *; }
--keep class com.bokehforu.openflip.feature.clock.view.** { *; }
--keep class com.bokehforu.openflip.feature.settings.ui.** { *; }
--keep class com.bokehforu.openflip.feature.settings.viewmodel.** { *; }
--keep class com.bokehforu.openflip.core.settings.** { *; }
+# Keep Widget providers (referenced by class name in AndroidManifest)
+-keep class com.bokehforu.openflip.widget.**Provider { *; }

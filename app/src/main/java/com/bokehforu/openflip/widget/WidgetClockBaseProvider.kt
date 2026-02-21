@@ -7,7 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import com.bokehforu.openflip.R
-import com.bokehforu.openflip.data.widget.WidgetLeakDebugHelper
+import com.bokehforu.openflip.widget.debug.WidgetLeakDebugHelper
 import com.bokehforu.openflip.feature.clock.ui.FullscreenClockActivity
 
 /**

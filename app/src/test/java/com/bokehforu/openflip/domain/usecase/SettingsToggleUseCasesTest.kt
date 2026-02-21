@@ -6,6 +6,10 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
+/**
+ * Tests for settings toggle operations via SettingsRepository directly.
+ * Proxy UseCases were removed in favor of direct repository calls.
+ */
 class SettingsToggleUseCasesTest {
 
     @Test
@@ -17,18 +21,17 @@ class SettingsToggleUseCasesTest {
     }
 
     @Test
-    fun `update show flaps use case updates repository`() {
+    fun `repository setShowFlaps updates correctly`() {
         val repository = SettingsRepositoryImpl(FakeSettingsStore())
-        val useCase = UpdateShowFlapsUseCase(repository)
-        useCase.execute(false)
+        repository.setShowFlaps(false)
         assertFalse(repository.showFlaps())
     }
 
     @Test
-    fun `update haptic and sound use cases update repository`() {
+    fun `repository set haptic and sound updates correctly`() {
         val repository = SettingsRepositoryImpl(FakeSettingsStore())
-        UpdateHapticEnabledUseCase(repository).execute(false)
-        UpdateSoundEnabledUseCase(repository).execute(false)
+        repository.setHapticEnabled(false)
+        repository.setSoundEnabled(false)
         assertFalse(repository.isHapticEnabled())
         assertFalse(repository.isSoundEnabled())
     }

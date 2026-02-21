@@ -1,11 +1,9 @@
-package com.bokehforu.openflip.data.widget
+package com.bokehforu.openflip.widget.debug
 
-import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ApplicationInfo
 import androidx.core.content.edit
-import java.lang.ref.WeakReference
 
 /**
  * Helper class for monitoring widget memory usage and detecting potential leaks.
@@ -21,7 +19,6 @@ object WidgetLeakDebugHelper {
     private var debugPrefs: SharedPreferences? = null
     private var isDebuggable: Boolean = false
 
-
     /**
      * Logs widget updates for debugging purposes.
      * Tracks update frequency to detect potential memory issues.
@@ -31,13 +28,13 @@ object WidgetLeakDebugHelper {
         initDebugPrefs(appContext)
         if (!isDebuggable) return
 
-        // Track update count for this widget
         val count = getUpdateCount(widgetId) + 1
 
-        debugPrefs?.edit { putInt(KEY_WIDGET_UPDATE_COUNT.format(widgetId), count) }
-        debugPrefs?.edit { putLong(KEY_LAST_UPDATE_TIME.format(widgetId), System.currentTimeMillis()) }
+        debugPrefs?.edit {
+            putInt(KEY_WIDGET_UPDATE_COUNT.format(widgetId), count)
+            putLong(KEY_LAST_UPDATE_TIME.format(widgetId), System.currentTimeMillis())
+        }
 
-        // Warn if too many updates without cleanup
         if (count > MAX_UPDATES_WITHOUT_CLEANUP) {
             android.util.Log.w(
                 "WidgetLeakDebugHelper",
@@ -52,8 +49,10 @@ object WidgetLeakDebugHelper {
     fun logWidgetDeleted(widgetId: Int) {
         if (!isDebuggable) return
 
-        debugPrefs?.edit { remove(KEY_WIDGET_UPDATE_COUNT.format(widgetId)) }
-        debugPrefs?.edit { remove(KEY_LAST_UPDATE_TIME.format(widgetId)) }
+        debugPrefs?.edit {
+            remove(KEY_WIDGET_UPDATE_COUNT.format(widgetId))
+            remove(KEY_LAST_UPDATE_TIME.format(widgetId))
+        }
     }
 
     /**
@@ -70,7 +69,6 @@ object WidgetLeakDebugHelper {
         val activeStats = mutableMapOf<Int, Int>()
         debugPrefs?.all?.keys?.forEach { key ->
             if (key.startsWith(KEY_WIDGET_UPDATE_COUNT.format("").replace("%d", ""))) {
-                // Extract widget ID from key
                 val widgetId = key.substringAfterLast("_").toIntOrNull()
                 widgetId?.let {
                     activeStats[it] = getUpdateCount(it)
@@ -85,7 +83,6 @@ object WidgetLeakDebugHelper {
      */
     fun clearAllDebugData() {
         if (!isDebuggable) return
-
         debugPrefs?.edit { clear() }
     }
 
@@ -98,18 +95,14 @@ object WidgetLeakDebugHelper {
 
     /**
      * Validates widget operations are safe to perform.
-     * Can be called to ensure the context is still valid.
      */
     fun validateContext(context: Context?): Boolean {
         if (context == null) return false
-
         return try {
-            // Try to access basic context properties
             context.packageName
             context.applicationInfo != null
             true
         } catch (e: Exception) {
-            // Context no longer valid (e.g., after process death)
             false
         }
     }
@@ -136,7 +129,6 @@ object WidgetLeakDebugHelper {
         } catch (e: IllegalStateException) {
             onError(e)
         } catch (e: Exception) {
-            // Log unexpected errors
             if (isDebuggable) {
                 android.util.Log.w("WidgetLeakDebugHelper", "Unexpected error in widget operation: ${e.message}")
             }
