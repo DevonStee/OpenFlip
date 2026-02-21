@@ -18,8 +18,8 @@ android {
         applicationId = "com.bokehforu.openflip"
         minSdk = 26
         targetSdk = 36
-        versionCode = 12
-        versionName = "0.6.1-beta"
+        versionCode = 13
+        versionName = "0.6.2-beta"
 
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
