@@ -1,0 +1,36 @@
+Categories:
+  - Multimedia
+  - Utilities
+License: GPL-3.0-only
+SourceCode: https://github.com/DevonStee/OpenFlip
+IssueTracker: https://github.com/DevonStee/OpenFlip/issues
+Changelog: https://github.com/DevonStee/OpenFlip/blob/main/CHANGELOG.md
+
+Summary: A mechanical flip clock with realistic 3D animations.
+Description: |-
+  OpenFlip is a Braun-inspired flip clock for Android, focusing on mechanical animation
+  fidelity, visual precision, and maintainable architecture.
+
+  Key features:
+  - Custom rendering engine: Physics-based flip animations using Canvas + 3D transforms.
+  - Simulated bulb light: Warm light overlay recreates the glow of a real desk lamp.
+  - Rotary knob time control: Drag the knob to fast-flip through digits with momentum.
+  - Hourly chime: Configurable chime sound on the hour.
+  - Sleep timer: Set a countdown to automatically close the app.
+  - OLED burn-in protection: Subtle pixel shifting for screen longevity.
+
+RepoType: git
+Repo: https://github.com/DevonStee/OpenFlip.git
+
+Builds:
+  - versionName: 0.6.0-beta
+    versionCode: 11
+    commit: v0.6.0-beta
+    subdir: app
+    gradle:
+      - yes
+
+AutoUpdateMode: Version v%v
+UpdateCheckMode: Tags
+CurrentVersion: 0.6.0-beta
+CurrentVersionCode: 11

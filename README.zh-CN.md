@@ -9,7 +9,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/DevonStee/OpenFlip?style=flat-square&label=Latest)](https://github.com/DevonStee/OpenFlip/releases/latest)
 [![API](https://img.shields.io/badge/API-26%2B-brightgreen?style=flat-square&logo=android)](https://developer.android.com/about/versions/oreo)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](https://kotlinlang.org)
-[![License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=flat-square)](LICENSE)
 
 [English Version](README.md)
 
@@ -90,10 +90,6 @@ OpenFlip 是一个受 Braun 设计风格启发的 Android 翻页时钟，专注�
 ### 秒数跳动（GIF）
 
 <img src="docs/images/openflip-seconds-ticking.gif" width="316" alt="OpenFlip 秒数跳动">
-
-### Knob 旋钮调时交互
-
-<img src="docs/images/openflip-knob-fast-flip.png" width="316" alt="OpenFlip Knob 旋钮调时交互">
 
 ### Vertical Dim 演示（GIF）
 
@@ -330,13 +326,6 @@ app/src/main/java/com/bokehforu/openflip/
 
 ## 许可证
 
-本项目代码及设计资源在以下条款下提供：
+本项目采用 [GNU General Public License v3.0](LICENSE) 开源协议。
 
-- **授予许可**：本项目对个人学习、教学研究及非营利性开源社区完全免费。您可以自由地访问、修改并分发其源代码。
-- **商用限制**：严禁任何形式的商业利用。商业利用包括但不限于：
-  - 将本项目或其衍生版本上架至任何应用商店进行销售或展示。
-  - 在本项目中集成广告、内购或其他营利性插件。
-  - 将本项目作为收费课程、商业外包项目或付费软件的组成部分。
-- **相同方式共享**：任何基于本项目的修改版本或衍生作品，必须继承本协议，且必须保持源代码公开及非商业化限制。
-
-详情请参阅 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans)。
+详情请参阅 [LICENSE](LICENSE) 文件。

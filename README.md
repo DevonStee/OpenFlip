@@ -9,7 +9,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/DevonStee/OpenFlip?style=flat-square&label=Latest)](https://github.com/DevonStee/OpenFlip/releases/latest)
 [![API](https://img.shields.io/badge/API-26%2B-brightgreen?style=flat-square&logo=android)](https://developer.android.com/about/versions/oreo)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](https://kotlinlang.org)
-[![License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=flat-square)](LICENSE)
 
 [中文文档 (Simplified Chinese)](README.zh-CN.md)
 
@@ -90,10 +90,6 @@ Captured from a real connected Android device via ADB.
 ### Seconds Ticking (GIF)
 
 <img src="docs/images/openflip-seconds-ticking.gif" width="316" alt="OpenFlip seconds ticking">
-
-### Knob Rotation Interaction
-
-<img src="docs/images/openflip-knob-fast-flip.png" width="316" alt="OpenFlip knob rotation interaction">
 
 ### Vertical Dim Demo (GIF)
 
@@ -330,13 +326,6 @@ app/src/main/java/com/bokehforu/openflip/
 
 ## License
 
-This project's code and design resources are provided under the following terms:
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
-- **License Grant**: Completely free for personal learning, educational research, and non-profit open-source communities. You are free to access, modify, and distribute the source code.
-- **Commercial Restrictions**: Any form of commercial exploitation is **strictly prohibited**. This includes but is not limited to:
-  - Publishing or selling this project or its derivatives on any app store.
-  - Integrating ads, in-app purchases, or other profit-making plugins.
-  - Using this project as part of paid courses, commercial outsourcing, or paid software.
-- **Share Alike**: Any modified versions or derivative works must inherit this agreement and remains open-source under the same non-commercial restrictions.
-
-For more details, see [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+See the [LICENSE](LICENSE) file for the full license text.
