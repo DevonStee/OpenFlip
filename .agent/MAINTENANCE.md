@@ -138,7 +138,7 @@ Example:
    - Add Android 15 compatibility notes
    - Refresh code examples
 
-   Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
+   Co-Authored-By: AI Assistant <noreply@ai.dev>"
    ```
 
 ---

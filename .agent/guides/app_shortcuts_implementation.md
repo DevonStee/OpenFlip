@@ -1,4 +1,7 @@
-# Implementation Guide: App Shortcuts
+# Implementation Guide: App Shortcuts `[IMPLEMENTED]`
+
+> **Status**: Implemented in `res/xml/shortcuts.xml`. Three shortcuts: Dark Theme, Light Theme, Settings.  
+> This guide is retained as historical reference.
 
 ## Overview
 

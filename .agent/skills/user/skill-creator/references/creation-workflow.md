@@ -14,9 +14,7 @@ Run the initialization script (if available) or create the standard directory st
 
 ### Directory Selection
 
-- **`user/`**: Default for user-created skills. Place your new skill here unless instructed otherwise.
-- **`public/`**: For general, system-wide resources (rarely used for personal skills).
-- **`private/`**: For sensitive or internal tool configurations.
+- **`user/`**: Default location for all custom skills.
 
 ### Structure
 

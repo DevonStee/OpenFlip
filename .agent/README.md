@@ -59,6 +59,8 @@ Skills are organized into root-level and user-created categories. See [skills/RE
 | [code-cleanup-methodology](skills/user/code-cleanup-methodology/SKILL.md) | Code cleanup methodology |
 | [code-quality-audit](skills/user/code-quality-audit/SKILL.md) | Code quality auditing |
 | [options-button-visual-guidelines](skills/user/options-button-visual-guidelines/SKILL.md) | Options button visual guidelines |
+| [android-native-design](skills/user/android-native-design/SKILL.md) | Native Android design patterns |
+| [android-robustness-bestpractices](skills/user/android-robustness-bestpractices/SKILL.md) | Robustness best practices |
 | [readme-architecture-sync](skills/user/readme-architecture-sync/SKILL.md) | README-architecture synchronization |
 | [skill-creator](skills/user/skill-creator/SKILL.md) | Creating new skills |
 

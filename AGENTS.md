@@ -2,6 +2,8 @@
 
 OpenFlip is a Braun-inspired minimalist flip clock application for Android, focusing on aesthetic purity and realistic mechanical animations. It is a tribute project inspired by the Fliqlo design.
 
+> For detailed AI assistant skills, guides, and architectural documentation, see [`.agent/`](.agent/README.md).
+
 ## Tech Stack
 - **Language**: Kotlin
 - **UI Frameworks**: 

@@ -30,6 +30,8 @@ Each skill must include:
 - [android-rotation-antiflicker](android-rotation-antiflicker/SKILL.md)
 - [android-highperf-customview](android-highperf-customview/SKILL.md)
 - [android-widget-development](android-widget-development/SKILL.md)
+- [android-native-design](android-native-design/SKILL.md)
+- [android-robustness-bestpractices](android-robustness-bestpractices/SKILL.md)
 - [android-ui-proactive-verification](android-ui-proactive-verification/SKILL.md)
 - [android-button-intent-clarification](android-button-intent-clarification/SKILL.md)
 - [android-button-touch-strategy](android-button-touch-strategy/SKILL.md)
@@ -48,6 +50,10 @@ Each skill must include:
 - [code-quality-audit](code-quality-audit/SKILL.md)
 - [code-cleanup-methodology](code-cleanup-methodology/SKILL.md)
 - [color-tokens](color-tokens/SKILL.md)
+
+### UI Design Skills
+
+- [options-button-visual-guidelines](options-button-visual-guidelines/SKILL.md)
 
 ---
 

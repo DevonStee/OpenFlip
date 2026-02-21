@@ -1,4 +1,7 @@
-# Implementation Guide: Dream/Screensaver Mode
+# Implementation Guide: Dream/Screensaver Mode `[IMPLEMENTED]`
+
+> **Status**: Implemented as `ScreensaverClockService` in `:app` module.  
+> This guide is retained as historical reference. The actual implementation differs from the pseudocode below.
 
 ## Overview
 
