@@ -155,5 +155,5 @@ tasks.matching {
 }
 
 kotlin {
-    jvmToolchain(17)
+
 }
