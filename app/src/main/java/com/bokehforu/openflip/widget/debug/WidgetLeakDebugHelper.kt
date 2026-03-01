@@ -10,11 +10,9 @@ import android.content.pm.ApplicationInfo
  */
 object WidgetLeakDebugHelper {
 
-    private data class WidgetStats(val updateCount: Int = 0, val lastUpdateTime: Long = 0)
-
     private const val MAX_UPDATES_WITHOUT_CLEANUP = 10000
 
-    private val widgetStats = mutableMapOf<Int, WidgetStats>()
+    private val widgetStats = mutableMapOf<Int, Int>()
     private var isDebuggable: Boolean? = null
 
     /**
@@ -22,11 +20,11 @@ object WidgetLeakDebugHelper {
      * Tracks update frequency to detect potential memory issues.
      */
     fun logWidgetUpdate(context: Context, widgetId: Int, providerClass: Class<*>) {
-        if (isDebuggable == null) initDebugPrefs(context.applicationContext)
+        initDebugPrefs(context.applicationContext)
         if (isDebuggable != true) return
 
-        val count = getUpdateCount(widgetId) + 1
-        widgetStats[widgetId] = WidgetStats(updateCount = count, lastUpdateTime = System.currentTimeMillis())
+        val count = (widgetStats[widgetId] ?: 0) + 1
+        widgetStats[widgetId] = count
 
         if (count > MAX_UPDATES_WITHOUT_CLEANUP) {
             android.util.Log.w(
@@ -48,14 +46,14 @@ object WidgetLeakDebugHelper {
      * Gets the update count for a specific widget.
      */
     fun getUpdateCount(widgetId: Int): Int {
-        return widgetStats[widgetId]?.updateCount ?: 0
+        return widgetStats[widgetId] ?: 0
     }
 
     /**
      * Gets all active widget IDs and their update counts.
      */
     fun getAllWidgetStats(): Map<Int, Int> {
-        return widgetStats.mapValues { it.value.updateCount }
+        return widgetStats.toMap()
     }
 
     /**
