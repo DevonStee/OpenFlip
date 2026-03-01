@@ -10,13 +10,12 @@ import android.content.pm.ApplicationInfo
  */
 object WidgetLeakDebugHelper {
 
-    private const val KEY_WIDGET_UPDATE_COUNT = "widget_update_count_%d"
-    private const val KEY_LAST_UPDATE_TIME = "last_update_time_%d"
+    private const val KEY_WIDGET_UPDATE_COUNT_PREFIX = "widget_update_count_"
+    private const val KEY_LAST_UPDATE_TIME_PREFIX = "last_update_time_"
     private const val MAX_UPDATES_WITHOUT_CLEANUP = 10000
 
     private val debugPrefs = mutableMapOf<String, Any>()
-    private var isDebuggable: Boolean = false
-    private var isInitialized = false
+    private var isDebuggable: Boolean? = null
 
     /**
      * Logs widget updates for debugging purposes.
@@ -25,12 +24,12 @@ object WidgetLeakDebugHelper {
     fun logWidgetUpdate(context: Context, widgetId: Int, providerClass: Class<*>) {
         val appContext = context.applicationContext
         initDebugPrefs(appContext)
-        if (!isDebuggable) return
+        if (isDebuggable != true) return
 
         val count = getUpdateCount(widgetId) + 1
 
-        debugPrefs[KEY_WIDGET_UPDATE_COUNT.format(widgetId)] = count
-        debugPrefs[KEY_LAST_UPDATE_TIME.format(widgetId)] = System.currentTimeMillis()
+        debugPrefs[KEY_WIDGET_UPDATE_COUNT_PREFIX + widgetId] = count
+        debugPrefs[KEY_LAST_UPDATE_TIME_PREFIX + widgetId] = System.currentTimeMillis()
 
         if (count > MAX_UPDATES_WITHOUT_CLEANUP) {
             android.util.Log.w(
@@ -44,17 +43,17 @@ object WidgetLeakDebugHelper {
      * Logs widget deletion for debugging.
      */
     fun logWidgetDeleted(widgetId: Int) {
-        if (!isDebuggable) return
+        if (isDebuggable != true) return
 
-        debugPrefs.remove(KEY_WIDGET_UPDATE_COUNT.format(widgetId))
-        debugPrefs.remove(KEY_LAST_UPDATE_TIME.format(widgetId))
+        debugPrefs.remove(KEY_WIDGET_UPDATE_COUNT_PREFIX + widgetId)
+        debugPrefs.remove(KEY_LAST_UPDATE_TIME_PREFIX + widgetId)
     }
 
     /**
      * Gets the update count for a specific widget.
      */
     fun getUpdateCount(widgetId: Int): Int {
-        return (debugPrefs[KEY_WIDGET_UPDATE_COUNT.format(widgetId)] as? Int) ?: 0
+        return (debugPrefs[KEY_WIDGET_UPDATE_COUNT_PREFIX + widgetId] as? Int) ?: 0
     }
 
     /**
@@ -63,7 +62,7 @@ object WidgetLeakDebugHelper {
     fun getAllWidgetStats(): Map<Int, Int> {
         val activeStats = mutableMapOf<Int, Int>()
         debugPrefs.keys.forEach { key ->
-            if (key.startsWith(KEY_WIDGET_UPDATE_COUNT.format("").replace("%d", ""))) {
+            if (key.startsWith(KEY_WIDGET_UPDATE_COUNT_PREFIX)) {
                 val widgetId = key.substringAfterLast("_").toIntOrNull()
                 widgetId?.let {
                     activeStats[it] = getUpdateCount(it)
@@ -77,14 +76,13 @@ object WidgetLeakDebugHelper {
      * Clears all debug data. Useful for testing.
      */
     fun clearAllDebugData() {
-        if (!isDebuggable) return
+        if (isDebuggable != true) return
         debugPrefs.clear()
     }
 
     private fun initDebugPrefs(context: Context) {
-        if (isInitialized) return
+        if (isDebuggable != null) return
         isDebuggable = (context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
-        isInitialized = true
     }
 
     /**
@@ -94,7 +92,6 @@ object WidgetLeakDebugHelper {
         if (context == null) return false
         return try {
             context.packageName
-            context.applicationInfo != null
             true
         } catch (e: Exception) {
             false
@@ -116,16 +113,7 @@ object WidgetLeakDebugHelper {
 
         try {
             operation()
-        } catch (e: SecurityException) {
-            onError(e)
-        } catch (e: IllegalArgumentException) {
-            onError(e)
-        } catch (e: IllegalStateException) {
-            onError(e)
         } catch (e: Exception) {
-            if (isDebuggable) {
-                android.util.Log.w("WidgetLeakDebugHelper", "Unexpected error in widget operation: ${e.message}")
-            }
             android.util.Log.e("WidgetLeakDebugHelper", "Unexpected error in widget operation: ${e.message}", e)
             onError(e)
         }
