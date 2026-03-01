@@ -10,11 +10,11 @@ import android.content.pm.ApplicationInfo
  */
 object WidgetLeakDebugHelper {
 
-    private const val KEY_WIDGET_UPDATE_COUNT_PREFIX = "widget_update_count_"
-    private const val KEY_LAST_UPDATE_TIME_PREFIX = "last_update_time_"
+    private data class WidgetStats(val updateCount: Int = 0, val lastUpdateTime: Long = 0)
+
     private const val MAX_UPDATES_WITHOUT_CLEANUP = 10000
 
-    private val debugPrefs = mutableMapOf<String, Any>()
+    private val widgetStats = mutableMapOf<Int, WidgetStats>()
     private var isDebuggable: Boolean? = null
 
     /**
@@ -27,9 +27,7 @@ object WidgetLeakDebugHelper {
         if (isDebuggable != true) return
 
         val count = getUpdateCount(widgetId) + 1
-
-        debugPrefs[KEY_WIDGET_UPDATE_COUNT_PREFIX + widgetId] = count
-        debugPrefs[KEY_LAST_UPDATE_TIME_PREFIX + widgetId] = System.currentTimeMillis()
+        widgetStats[widgetId] = WidgetStats(updateCount = count, lastUpdateTime = System.currentTimeMillis())
 
         if (count > MAX_UPDATES_WITHOUT_CLEANUP) {
             android.util.Log.w(
@@ -44,32 +42,21 @@ object WidgetLeakDebugHelper {
      */
     fun logWidgetDeleted(widgetId: Int) {
         if (isDebuggable != true) return
-
-        debugPrefs.remove(KEY_WIDGET_UPDATE_COUNT_PREFIX + widgetId)
-        debugPrefs.remove(KEY_LAST_UPDATE_TIME_PREFIX + widgetId)
+        widgetStats.remove(widgetId)
     }
 
     /**
      * Gets the update count for a specific widget.
      */
     fun getUpdateCount(widgetId: Int): Int {
-        return (debugPrefs[KEY_WIDGET_UPDATE_COUNT_PREFIX + widgetId] as? Int) ?: 0
+        return widgetStats[widgetId]?.updateCount ?: 0
     }
 
     /**
      * Gets all active widget IDs and their update counts.
      */
     fun getAllWidgetStats(): Map<Int, Int> {
-        val activeStats = mutableMapOf<Int, Int>()
-        debugPrefs.keys.forEach { key ->
-            if (key.startsWith(KEY_WIDGET_UPDATE_COUNT_PREFIX)) {
-                val widgetId = key.substringAfterLast("_").toIntOrNull()
-                widgetId?.let {
-                    activeStats[it] = getUpdateCount(it)
-                }
-            }
-        }
-        return activeStats
+        return widgetStats.mapValues { it.value.updateCount }
     }
 
     /**
@@ -77,7 +64,7 @@ object WidgetLeakDebugHelper {
      */
     fun clearAllDebugData() {
         if (isDebuggable != true) return
-        debugPrefs.clear()
+        widgetStats.clear()
     }
 
     private fun initDebugPrefs(context: Context) {
