@@ -22,8 +22,7 @@ object WidgetLeakDebugHelper {
      * Tracks update frequency to detect potential memory issues.
      */
     fun logWidgetUpdate(context: Context, widgetId: Int, providerClass: Class<*>) {
-        val appContext = context.applicationContext
-        initDebugPrefs(appContext)
+        if (isDebuggable == null) initDebugPrefs(context.applicationContext)
         if (isDebuggable != true) return
 
         val count = getUpdateCount(widgetId) + 1
