@@ -127,3 +127,25 @@ class LightToggleController @AssistedInject constructor(
 - Noise shader caching in `FlipCardRenderer` to reduce GC on theme changes.
 - Gesture safety: brightness dim only on single-finger scroll; pinch (multi-finger) no longer triggers dim.
 - Light overlay: removed PorterDuff ADD to avoid GPU→software fallback.
+
+## Cursor Cloud specific instructions
+
+This is a pure Android/Gradle project with no backend services, databases, or Docker dependencies. The VM snapshot already has the Android SDK installed at `/opt/android-sdk` with platform API 36 and build-tools 36.0.0.
+
+### Environment
+
+- `ANDROID_HOME=/opt/android-sdk` and `JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64` are set in `~/.bashrc`.
+- JDK 21 is pre-installed. The project targets `jvmTarget = "17"` which is compatible.
+- Gradle wrapper (`./gradlew`) handles Gradle 9.3.0 download automatically.
+
+### Key commands
+
+See the "Key Commands" section above. All three (`./gradlew build`, `./gradlew test`, `./gradlew lint`) run headlessly without an emulator.
+
+### Gotchas
+
+- **No emulator available**: `./gradlew installDebug` requires a connected device/emulator. Use `./gradlew assembleDebug` to build the APK without installing. Unit tests run via Robolectric and do not need an emulator.
+- **First build is slow** (~5 min) due to Gradle distribution download and dependency resolution. Subsequent builds are incremental (~seconds).
+- **AGP 8.13.2 requires build-tools 36.0.0**: If the SDK is missing this version, the build will fail with a "failed to find Build Tools" error. The update script handles this.
+- **Hilt/KSP code generation**: After changing DI modules or `@Inject` annotations, run `./gradlew clean build` to regenerate Hilt components.
+- **Multi-module architecture**: The project has 7 modules (`:app`, `:core`, `:data`, `:domain`, `:feature-clock`, `:feature-chime`, `:feature-settings`) with enforced dependency boundaries checked at build time.
