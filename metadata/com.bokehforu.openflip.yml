@@ -4,7 +4,6 @@ Categories:
 License: GPL-3.0-or-later
 AuthorName: DevonStee
 AuthorEmail: yanjiaqiid@gmail.com
-WebSite: https://github.com/DevonStee/OpenFlip
 SourceCode: https://github.com/DevonStee/OpenFlip
 IssueTracker: https://github.com/DevonStee/OpenFlip/issues
 Changelog: https://github.com/DevonStee/OpenFlip/releases
@@ -19,6 +18,9 @@ Builds:
     subdir: app
     gradle:
       - yes
+
+Binaries: https://github.com/DevonStee/OpenFlip/releases/download/v%v/app-release.apk
+AllowedAPKSigningKeys: e0bce02adace5d68ce104976488f9bf7e1635585ddaacc2be1ea21eef937775e
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
