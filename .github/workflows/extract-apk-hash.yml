@@ -1,0 +1,22 @@
+name: Extract APK Signing Hash
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract-hash:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download APK from release
+        run: |
+          curl -L -o app-release.apk https://github.com/DevonStee/OpenFlip/releases/download/v0.6.1-beta/app-release.apk
+
+      - name: Extract APK Signing Certificate SHA256
+        run: |
+          echo "=== APK Signing Certificate SHA-256 ==="
+          keytool -printcert -jarfile app-release.apk | grep -i "SHA256:" | awk '{print $2}' | tr -d ':'
+          echo "========================================"
+          echo ""
+          echo "=== Full certificate info ==="
+          keytool -printcert -jarfile app-release.apk
