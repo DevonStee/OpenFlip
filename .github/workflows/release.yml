@@ -44,6 +44,14 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: ./gradlew assembleRelease
 
+      - name: Extract APK Signing Certificate SHA256
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          APK_PATH="app/build/outputs/apk/release/app-release.apk"
+          echo "=== APK Signing Certificate SHA-256 ==="
+          keytool -printcert -jarfile "$APK_PATH" | grep -i "SHA256:" | awk '{print $2}' | tr -d ':'
+          echo "========================================"
+
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/v')
         id: create_release
